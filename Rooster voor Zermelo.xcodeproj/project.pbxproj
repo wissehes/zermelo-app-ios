@@ -11,6 +11,16 @@
 		892632E028C3A94400B9C624 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DF28C3A94400B9C624 /* ContentView.swift */; };
 		892632E228C3A94600B9C624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E128C3A94600B9C624 /* Assets.xcassets */; };
 		892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E428C3A94600B9C624 /* Preview Assets.xcassets */; };
+		892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632EC28C3A96100B9C624 /* WelcomeView.swift */; };
+		8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 8965E2D428C3D06D001D9B8E /* CodeScanner */; };
+		898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925328C3D65F00100AD6 /* ZermeloQRData.swift */; };
+		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
+		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
+		89ED829928C5307F00306872 /* TokenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829828C5307F00306872 /* TokenSaver.swift */; };
+		89ED829B28C530C000306872 /* SavedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829A28C530C000306872 /* SavedToken.swift */; };
+		89ED829F28C534A200306872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829E28C534A200306872 /* HomeView.swift */; };
+		89ED82A128C53ADB00306872 /* ZermeloMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED82A028C53ADA00306872 /* ZermeloMeResponse.swift */; };
+		89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED82A328C53D2E00306872 /* ZermeloLivescheduleResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,15 @@
 		892632DF28C3A94400B9C624 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		892632E128C3A94600B9C624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		892632E428C3A94600B9C624 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		892632EC28C3A96100B9C624 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Rooster-voor-Zermelo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
+		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
+		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
+		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
+		89ED829E28C534A200306872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		89ED82A028C53ADA00306872 /* ZermeloMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloMeResponse.swift; sourceTree = "<group>"; };
+		89ED82A328C53D2E00306872 /* ZermeloLivescheduleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloLivescheduleResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */,
+				898C925728C3D76000100AD6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +72,10 @@
 		892632DC28C3A94400B9C624 /* Rooster voor Zermelo */ = {
 			isa = PBXGroup;
 			children = (
+				89ED829728C5307200306872 /* Helpers */,
+				898C925228C3D65100100AD6 /* Types */,
+				8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */,
+				892632EB28C3A95800B9C624 /* Views */,
 				892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */,
 				892632DF28C3A94400B9C624 /* ContentView.swift */,
 				892632E128C3A94600B9C624 /* Assets.xcassets */,
@@ -65,6 +90,51 @@
 				892632E428C3A94600B9C624 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		892632EB28C3A95800B9C624 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89ED829D28C5349C00306872 /* HomeView */,
+				892632EC28C3A96100B9C624 /* WelcomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		898C925228C3D65100100AD6 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				89ED82A228C53D1800306872 /* ZermeloHTTP */,
+				898C925328C3D65F00100AD6 /* ZermeloQRData.swift */,
+				89ED829A28C530C000306872 /* SavedToken.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		89ED829728C5307200306872 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				89ED829828C5307F00306872 /* TokenSaver.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		89ED829D28C5349C00306872 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				89ED829E28C534A200306872 /* HomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		89ED82A228C53D1800306872 /* ZermeloHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				89ED82A028C53ADA00306872 /* ZermeloMeResponse.swift */,
+				898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */,
+				89ED82A328C53D2E00306872 /* ZermeloLivescheduleResponse.swift */,
+			);
+			path = ZermeloHTTP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +153,10 @@
 			dependencies = (
 			);
 			name = "Rooster voor Zermelo";
+			packageProductDependencies = (
+				8965E2D428C3D06D001D9B8E /* CodeScanner */,
+				898C925628C3D76000100AD6 /* Alamofire */,
+			);
 			productName = "Rooster voor Zermelo";
 			productReference = 892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +185,10 @@
 				Base,
 			);
 			mainGroup = 892632D128C3A94400B9C624;
+			packageReferences = (
+				8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 892632DB28C3A94400B9C624 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +216,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				892632E028C3A94400B9C624 /* ContentView.swift in Sources */,
+				89ED829928C5307F00306872 /* TokenSaver.swift in Sources */,
+				89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */,
+				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,
+				898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */,
+				89ED829B28C530C000306872 /* SavedToken.swift in Sources */,
+				89ED829F28C534A200306872 /* HomeView.swift in Sources */,
+				89ED82A128C53ADB00306872 /* ZermeloMeResponse.swift in Sources */,
+				892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */,
 				892632DE28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +356,8 @@
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rooster-voor-Zermelo-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +387,8 @@
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rooster-voor-Zermelo-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +429,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8965E2D428C3D06D001D9B8E /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		898C925628C3D76000100AD6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 892632D228C3A94400B9C624 /* Project object */;
 }
