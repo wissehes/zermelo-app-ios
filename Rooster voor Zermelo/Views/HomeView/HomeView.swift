@@ -74,15 +74,48 @@ struct HomeView: View {
         
     }
     
+    func timeView(appointment: ZermeloLivescheduleAppointment) -> some View {
+        let start = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+        let endDate = Date(timeIntervalSince1970: TimeInterval(appointment.end))
+                                            
+        return Text("\(start, style: .time) - \(endDate, style: .time)")
+    }
+    
     var todayView: some View {
         List(todayAppointments, id: \.start) { item in
-            Text(item.subjects.joined(separator: ", "))
+            HStack {
+                Text(item.startTimeSlotName)
+                    .fontWeight(.bold)
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.accentColor, lineWidth: 5)
+                            .padding(5)
+                    )
+                
+                VStack(alignment: .leading) {
+                    
+                    if item.subjects.first != nil {
+                        Text(item.subjects.joined(separator: ", "))
+                            .font(.headline)
+                    } else {
+                        Text("Leeg")
+                            .italic()
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                    }
+                   
+                    timeView(appointment: item)
+                        .font(.subheadline)
+                }
+            }
         }
     }
 }
-//
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(token: ., me: .constant(nil))
-//    }
-//}
+
+            //struct HomeView_Previews: PreviewProvider {
+            //    static var previews: some View {
+            //        HomeView(token: ., me: .constant(nil))
+            //    }
+            //}
