@@ -12,6 +12,14 @@ final class HomeViewModel: ObservableObject {
     @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []
     @Published var isLoading = true
     
+    @Published var appointmentDetailsShown = false
+    @Published var selectedAppointment: ZermeloLivescheduleAppointment?
+    
+    func showItemDetails(_ item: ZermeloLivescheduleAppointment) {
+        self.selectedAppointment = item
+        appointmentDetailsShown = true
+    }
+    
     func load(me: ZermeloMeData) {
         self.isLoading = true
         print("loading...")
