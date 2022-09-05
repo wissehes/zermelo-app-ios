@@ -48,42 +48,6 @@ struct HomeView: View {
         return Text("\(start, style: .time) - \(endDate, style: .time)")
     }
     
-    func itemDetailView(_ item: ZermeloLivescheduleAppointment) -> some View {
-        NavigationView {
-            List {
-                Section("Info") {
-                    itemDetailViewDetails([item.startTimeSlotName], single: "Blok:", multiple: nil)
-                    itemDetailViewDetails(item.subjects, single:"Vak:", multiple: "Vakken:")
-                    itemDetailViewDetails(item.teachers, single: "Docent:", multiple: "Docenten:")
-                    itemDetailViewDetails(item.locations, single: "Locatie:", multiple: "Locaties:")
-                    itemDetailViewDetails(item.groups, single: "Groep:", multiple: "Groepen:")
-                }
-                
-                if let actions = item.actions {
-                    Section("Andere Keuzes") {
-                        ForEach(actions, id: \.post) { item in
-                            Text(item.appointment.subjects.joined(separator: ", "))
-                        }
-                    }
-                }
-            }.navigationTitle("Blokinformatie")
-        }
-    }
-    
-    func itemDetailViewDetails(_ value: [String], single: String, multiple: String?) -> some View {
-        HStack {
-            Text(value.count == 1 ? single : multiple ?? single)
-                .fontWeight(.bold)
-            Spacer()
-            if value.isEmpty {
-                Text("Geen/niet beschikbaar")
-                    .italic()
-            } else {
-                Text(value.joined(separator: ", "))
-            }
-        }
-    }
-    
     func itemView(_ item: ZermeloLivescheduleAppointment) -> some View {
         HStack {
             Text(item.startTimeSlotName)
@@ -132,7 +96,7 @@ struct HomeView: View {
             itemView(item)
                 .sheet(isPresented: $viewModel.appointmentDetailsShown) {
                     if let item = viewModel.selectedAppointment {
-                        itemDetailView(item)
+                        AppointmentView(item: item)
                     }
                 }
         }
