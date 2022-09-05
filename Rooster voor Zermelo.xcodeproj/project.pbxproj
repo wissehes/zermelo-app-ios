@@ -42,6 +42,7 @@
 		89ED82A328C53D2E00306872 /* ZermeloLivescheduleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloLivescheduleResponse.swift; sourceTree = "<group>"; };
 		89F7051C28C6826700AFF2DF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		89F7051E28C682A000AFF2DF /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		89F7052028C68ACE00AFF2DF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		892632D128C3A94400B9C624 = {
 			isa = PBXGroup;
 			children = (
+				89F7052028C68ACE00AFF2DF /* README.md */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
 				892632DB28C3A94400B9C624 /* Products */,
 			);
