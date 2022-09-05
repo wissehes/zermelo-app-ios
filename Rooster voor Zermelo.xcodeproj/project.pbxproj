@@ -21,6 +21,8 @@
 		89ED829F28C534A200306872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829E28C534A200306872 /* HomeView.swift */; };
 		89ED82A128C53ADB00306872 /* ZermeloMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED82A028C53ADA00306872 /* ZermeloMeResponse.swift */; };
 		89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED82A328C53D2E00306872 /* ZermeloLivescheduleResponse.swift */; };
+		89F7051D28C6826700AFF2DF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F7051C28C6826700AFF2DF /* HomeViewModel.swift */; };
+		89F7051F28C682A000AFF2DF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F7051E28C682A000AFF2DF /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		89ED829E28C534A200306872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		89ED82A028C53ADA00306872 /* ZermeloMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloMeResponse.swift; sourceTree = "<group>"; };
 		89ED82A328C53D2E00306872 /* ZermeloLivescheduleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloLivescheduleResponse.swift; sourceTree = "<group>"; };
+		89F7051C28C6826700AFF2DF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		89F7051E28C682A000AFF2DF /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				89ED829828C5307F00306872 /* TokenSaver.swift */,
+				89F7051E28C682A000AFF2DF /* API.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				89ED829E28C534A200306872 /* HomeView.swift */,
+				89F7051C28C6826700AFF2DF /* HomeViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				892632E028C3A94400B9C624 /* ContentView.swift in Sources */,
+				89F7051D28C6826700AFF2DF /* HomeViewModel.swift in Sources */,
 				89ED829928C5307F00306872 /* TokenSaver.swift in Sources */,
 				89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */,
 				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,
@@ -224,6 +231,7 @@
 				89ED829F28C534A200306872 /* HomeView.swift in Sources */,
 				89ED82A128C53ADB00306872 /* ZermeloMeResponse.swift in Sources */,
 				892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */,
+				89F7051F28C682A000AFF2DF /* API.swift in Sources */,
 				892632DE28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

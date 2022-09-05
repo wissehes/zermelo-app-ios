@@ -8,55 +8,23 @@
 import SwiftUI
 import Alamofire
 
-struct HomeView: View {
-    var token: SavedToken
-    
+struct HomeView: View {    
     // Only use `didSet` on `me` because it is the last
     // thing set, after the token.
     var me: ZermeloMeData {
         didSet {
-            load()
+            viewModel.load(me: me)
         }
     }
     
     var signOut: () -> ()
     
-    @State private var todayAppointments: [ZermeloLivescheduleAppointment] = []
-    @State private var isLoading = true
-    
-    func load() {
-        self.isLoading = true
-        print("loading...")
-        
-        let params: Parameters = [
-            "student": me.code,
-            "week": 202236
-        ]
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(token.access_token)"
-        ]
-        
-        AF.request("https://\(token.portal).zportal.nl/api/v3/liveschedule", parameters: params, headers: headers)
-            .validate()
-            .responseDecodable(of: GetZermeloLiveschedule.self) { response in
-                self.isLoading = false
-                switch response.result {
-                case .success(let _data):
-                    guard let data = _data.response.data.first else { return }
-                    
-                    self.todayAppointments = data.appointments.filter {
-                        Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
-                    }
-                case .failure(let err):
-                    print(err)
-                }
-            }
-    }
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationView {
             Group {
-                if isLoading {
+                if viewModel.isLoading {
                     ProgressView()
                 } else {
                     todayView
@@ -69,7 +37,7 @@ struct HomeView: View {
                         }
                     }
                 }
-        }.onAppear { load() }
+        }.onAppear { viewModel.load(me: me) }
         
     }
     
@@ -117,7 +85,7 @@ struct HomeView: View {
     }
     
     var todayView: some View {
-        List(todayAppointments, id: \.start) { item in
+        List(viewModel.todayAppointments, id: \.start) { item in
             itemView(item)
         }
     }

@@ -16,8 +16,8 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if let token = token, let me = me {
-                HomeView(token: token, me: me, signOut: signOut)
+            if let me = me {
+                HomeView(me: me, signOut: signOut)
             } else {
                 Text("Loading!")
                     .padding()
