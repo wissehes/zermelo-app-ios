@@ -25,9 +25,6 @@ struct HomeView: View {
     @State private var isLoading = true
     
     func load() {
-        //        guard let token = token else { return print("no token") }
-        //        guard let me = me else { return print("no me") }
-        
         self.isLoading = true
         print("loading...")
         
@@ -47,7 +44,9 @@ struct HomeView: View {
                 case .success(let _data):
                     guard let data = _data.response.data.first else { return }
                     
-                    self.todayAppointments = data.appointments
+                    self.todayAppointments = data.appointments.filter {
+                        Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
+                    }
                 case .failure(let err):
                     print(err)
                 }
@@ -81,21 +80,21 @@ struct HomeView: View {
         return Text("\(start, style: .time) - \(endDate, style: .time)")
     }
     
-    var todayView: some View {
-        List(todayAppointments, id: \.start) { item in
-            HStack {
-                Text(item.startTimeSlotName)
-                    .fontWeight(.bold)
-                    .frame(width: 25, height: 25, alignment: .center)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.accentColor, lineWidth: 5)
-                            .padding(5)
-                    )
+    func itemView(_ item: ZermeloLivescheduleAppointment) -> some View {
+        HStack {
+            Text(item.startTimeSlotName)
+                .fontWeight(.bold)
+                .frame(width: 25, height: 25, alignment: .center)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.accentColor, lineWidth: 5)
+                        .padding(5)
+                )
+            
+            VStack(alignment: .leading) {
                 
-                VStack(alignment: .leading) {
-                    
+                HStack {
                     if item.subjects.first != nil {
                         Text(item.subjects.joined(separator: ", "))
                             .font(.headline)
@@ -105,11 +104,21 @@ struct HomeView: View {
                             .font(.headline)
                             .foregroundColor(.secondary)
                     }
-                   
-                    timeView(appointment: item)
-                        .font(.subheadline)
+                    Text("-")
+                    Text(item.teachers.joined(separator: ", "))
+                    Text("-")
+                    Text(item.locations.joined(separator: ", "))
                 }
+               
+                timeView(appointment: item)
+                    .font(.subheadline)
             }
+        }
+    }
+    
+    var todayView: some View {
+        List(todayAppointments, id: \.start) { item in
+            itemView(item)
         }
     }
 }
