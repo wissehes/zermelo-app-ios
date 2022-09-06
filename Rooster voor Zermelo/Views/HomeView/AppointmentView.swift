@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AppointmentView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+
     var item: ZermeloLivescheduleAppointment
     
     var body: some View {
@@ -22,28 +24,51 @@ struct AppointmentView: View {
                     itemDetailView(item.groups, single: "Groep:", multiple: "Groepen:")
                 }
                 
-                if let actions = item.actions {
-                    Section("Andere Keuzes") {
+                Section("Andere Keuzes") {
+                    
+                    if item.actions == nil {
+                        Text("Geen andere keuzes.")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    if let actions = item.actions {
+                        if actions.isEmpty {
+                            Text("Geen andere keuzes.")
+                                .foregroundColor(.secondary)
+                        }
+                        
                         ForEach(actions, id: \.post) { item in
                             actionView(action: item)
                         }
                     }
                 }
             }.navigationTitle("Blokinformatie")
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button { presentationMode.wrappedValue.dismiss() } label: {
+                            Label("Sluiten", systemImage: "xmark.circle")
+                        }
+                    }
+                }
         }
     }
     
     func actionView(action: ZermeloLivescheduleAction) -> some View {
         
         HStack {
-//            
-//            if action.allowed {
-//                
-//            }
-//            
+            
+            if action.allowed {
+                Label("Toegestaan", systemImage: "circle")
+                    .labelStyle(.iconOnly)
+            } else {
+                Label("Niet toegestaan", systemImage: "circle.slash")
+                    .labelStyle(.iconOnly)
+            }
+            
             VStack(alignment: .leading) {
-                Text("\(action.appointment.subjects.joined()) - \(action.appointment.locations.joined()) - \(action.appointment.teachers.joined())")
+                Text("**\(action.appointment.subjects.joined())** - \(action.appointment.locations.joined()) - \(action.appointment.teachers.joined())")
                 Text(action.status.map { $0.nl }.joined())
+                    .foregroundColor(.secondary)
             }
         }
     }
