@@ -27,7 +27,12 @@ struct HomeView: View {
                 if viewModel.isLoading {
                     ProgressView()
                 } else {
-                    todayView
+                    TabView {
+                        todayView
+                            .tabItem {
+                                Label("Vandaag", systemImage: "calendar")
+                            }
+                    }
                 }
             }.navigationTitle("Home")
                 .toolbar {
@@ -44,7 +49,7 @@ struct HomeView: View {
     func timeView(appointment: ZermeloLivescheduleAppointment) -> some View {
         let start = Date(timeIntervalSince1970: TimeInterval(appointment.start))
         let endDate = Date(timeIntervalSince1970: TimeInterval(appointment.end))
-                                            
+        
         return Text("\(start, style: .time) - \(endDate, style: .time)")
     }
     
@@ -82,29 +87,47 @@ struct HomeView: View {
                         Text(item.locations.joined(separator: ", "))
                     }
                 }
-               
+                
                 timeView(appointment: item)
                     .font(.subheadline)
+                
+                if let desc = item.changeDescription {
+                    if !desc.isEmpty {
+                        Text(desc)
+                            .font(.subheadline)
+                            .italic()
+                    }
+                }
             }
-        }.onTapGesture {
-            viewModel.showItemDetails(item)
+            Spacer()
+            Button {
+                viewModel.showItemDetails(item)
+            } label: {
+                Label("Info", systemImage: "info.circle")
+                    .labelStyle(.iconOnly)
+            }
+            
         }
     }
     
     var todayView: some View {
-        List(viewModel.todayAppointments, id: \.start) { item in
-            itemView(item)
-                .sheet(isPresented: $viewModel.appointmentDetailsShown) {
-                    if let item = viewModel.selectedAppointment {
-                        AppointmentView(item: item)
-                    }
+        List {
+            Section("Vandaag") {
+                ForEach(viewModel.todayAppointments, id: \.start) { item in
+                    itemView(item)
+                        .sheet(isPresented: $viewModel.appointmentDetailsShown) {
+                            if let item = viewModel.selectedAppointment {
+                                AppointmentView(item: item)
+                            }
+                        }
                 }
+            }
         }
     }
 }
 
-            //struct HomeView_Previews: PreviewProvider {
-            //    static var previews: some View {
-            //        HomeView(token: ., me: .constant(nil))
-            //    }
-            //}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(token: ., me: .constant(nil))
+//    }
+//}
