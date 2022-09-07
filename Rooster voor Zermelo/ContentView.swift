@@ -17,7 +17,17 @@ struct ContentView: View {
     var body: some View {
         Group {
             if let me = me {
-                HomeView(me: me, signOut: signOut)
+                TabView {
+                    HomeView(me: me, signOut: signOut)
+                        .tabItem {
+                            Label("Vandaag", systemImage: "calendar")
+                        }
+                    
+                    WeekView(me: me)
+                        .tabItem {
+                            Label("Week", systemImage: "calendar.badge.clock")
+                        }
+                }
             } else {
                 Text("Loading!")
                     .padding()
