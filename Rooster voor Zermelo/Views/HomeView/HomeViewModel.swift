@@ -8,11 +8,6 @@
 import Foundation
 import Alamofire
 
-struct Day {
-    let date: Date
-    var appointments: [ZermeloLivescheduleAppointment]
-}
-
 final class HomeViewModel: ObservableObject {
     @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []
     @Published var isLoading = true
@@ -21,11 +16,6 @@ final class HomeViewModel: ObservableObject {
     
     @Published var appointmentDetailsShown = false
     @Published var selectedAppointment: ZermeloLivescheduleAppointment?
-    
-    func showItemDetails(_ item: ZermeloLivescheduleAppointment) {
-        self.selectedAppointment = item
-        appointmentDetailsShown = true
-    }
     
     func load(me: ZermeloMeData) {
         self.isLoading = true
@@ -37,6 +27,7 @@ final class HomeViewModel: ObservableObject {
             case .success(let data):
                 
                 for appointment in data {
+                    self.days = []
                     let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
                     
                     let foundRow = self.days.firstIndex { day in
@@ -49,9 +40,7 @@ final class HomeViewModel: ObservableObject {
                         self.days.append(Day( date: date, appointments: [appointment] ))
                     }
                 }
-                
-                print(self.days.map { $0.appointments.map { $0.subjects } })
-                
+
                 self.todayAppointments = data.filter {
                     Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
                 }
