@@ -36,7 +36,7 @@ struct ZermeloLivescheduleData: Codable {
 
 // MARK: - ZermeloLivescheduleAction
 struct ZermeloLivescheduleAction: Codable {
-    let appointment: ZermeloLivescheduleAppointment
+    let appointment: ZermeloLivescheduleAppointment?
     let status: [ZermeloLivescheduleStatus]
     let allowed: Bool
     let post: String
@@ -48,7 +48,7 @@ struct ZermeloLivescheduleAppointment: Codable {
     let actions: [ZermeloLivescheduleAction]?
     let start, end: Int
     let cancelled: Bool
-    let appointmentType: ZermeloLivescheduleAppointmentType
+    let appointmentType: String
     let online, appointmentOptional: Bool
     let appointmentInstance: Int?
     let startTimeSlotName, endTimeSlotName: String
@@ -56,7 +56,7 @@ struct ZermeloLivescheduleAppointment: Codable {
     let changeDescription, schedulerRemark: String?
     let id: Int?
     let plannedAttendance, studentEnrolled: Bool?
-    let allowedActions: ZermeloLivescheduleAllowedActions?
+    let allowedActions: String?
     let attendanceOverruled: Bool?
     let availableSpace: Int?
     
@@ -85,13 +85,13 @@ struct ZermeloLivescheduleStatus: Codable {
     let nl: String
     let en: String
 }
-
-enum ZermeloLivescheduleAllowedActions: String, Codable {
-    case none = "none"
-}
-
-enum ZermeloLivescheduleAppointmentType: String, Codable {
-    case choice = "choice"
-    case lesson = "lesson"
-}
-
+//
+//enum ZermeloLivescheduleAllowedActions: String, Codable {
+//    case none = "none"
+//}
+//
+//enum ZermeloLivescheduleAppointmentType: String, Codable {
+//    case choice = "choice"
+//    case lesson = "lesson"
+//}
+//
