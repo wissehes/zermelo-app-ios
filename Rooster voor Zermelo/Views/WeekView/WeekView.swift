@@ -34,7 +34,6 @@ struct WeekView: View {
                     ForEach(viewModel.days, id: \.date.timeIntervalSince1970) { day in
                         Section {
                             DayView(appointments: day.appointments, showDetails: showItemDetails)
-                                .id(day.date.ISO8601Format())
                         } header: {
                             if Calendar.current.isDateInToday(day.date) {
                                 Text("Vandaag (\(day.date, style: .date))")
@@ -45,20 +44,27 @@ struct WeekView: View {
                             }
                         }.textCase(nil)
                             .headerProminence(.increased)
-
+                            .id(day.date.ISO8601Format())
                     }
                 }.navigationTitle("Week")
                     .toolbar {
                         ToolbarItem(placement: .primaryAction) {
                             Button("Vandaag") { scrollToToday(proxy) }
                         }
+                        ToolbarItem(placement:.bottomBar) {
+                            DatePicker("Week", selection: $viewModel.selectedDate, displayedComponents: .date)
+                        }
                     }
-                    .listStyle(.insetGrouped)
+                    .listStyle(.sidebar)
                     .refreshable {
-                        await viewModel.load(me: me, proxy: proxy)
+                        await viewModel.load(me: me, proxy: proxy, date: nil)
                     }.task {
-                        await viewModel.load(me: me, proxy: proxy)
-                    }.sheet(isPresented: $viewModel.appointmentDetailsShown) {
+                        await viewModel.load(me: me, proxy: proxy, date: nil)
+                    }.onChange(of: viewModel.selectedDate, perform: { newValue in
+                        Task {
+                            await viewModel.load(me: me, proxy: proxy, date: newValue)
+                        }
+                    }).sheet(isPresented: $viewModel.appointmentDetailsShown) {
                         if let item = viewModel.selectedAppointment {
                             AppointmentView(item: item)
                         }
