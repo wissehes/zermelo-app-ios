@@ -11,7 +11,7 @@ struct DayView: View {
     var appointments: [ZermeloLivescheduleAppointment]
     
     var showDetails: (ZermeloLivescheduleAppointment) -> ()
-    
+        
     init(appointments: [ZermeloLivescheduleAppointment], showDetails: @escaping (ZermeloLivescheduleAppointment) -> ()) {
         self.appointments = appointments.sorted(by: { app1, app2 in
             let date1 = Date(timeIntervalSince1970: TimeInterval(app1.start))
@@ -25,8 +25,24 @@ struct DayView: View {
     
     var body: some View {
         ForEach(appointments, id: \.start) { item in
-            itemView(item)
+            DayItemView(item: item, showDetails: showDetails)
         }
+    }
+}
+
+struct DayItemView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+
+    
+    var item: ZermeloLivescheduleAppointment
+    var showDetails: (ZermeloLivescheduleAppointment) -> ()
+    
+    var isRightNow: Bool {
+        let start = Date(timeIntervalSince1970: TimeInterval(item.start))
+        let end = Date(timeIntervalSince1970: TimeInterval(item.end))
+        
+        return start.timeIntervalSince1970 < Date().timeIntervalSince1970 && Date().timeIntervalSince1970 < end.timeIntervalSince1970
     }
     
     func timeView(appointment: ZermeloLivescheduleAppointment) -> some View {
@@ -36,17 +52,17 @@ struct DayView: View {
         return Text("\(start, style: .time) - \(endDate, style: .time)")
     }
     
-    func itemView(_ item: ZermeloLivescheduleAppointment) -> some View {
+    var body: some View {
         HStack {
-            Text(item.startTimeSlotName)
-                .fontWeight(.bold)
-                .frame(width: 25, height: 25, alignment: .center)
-                .padding()
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.accentColor, lineWidth: 5)
+                .background(RoundedRectangle(cornerRadius: 10).fill(isRightNow ? Color("TimeSlotColor") : colorScheme == .light ? .white : .black))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.accentColor, lineWidth: 5)
-                        .padding(5)
+                    Text(item.startTimeSlotName)
+                        .fontWeight(.bold)
                 )
+                .frame(width: 50, height: 50, alignment: .center)
+                .padding(5)
             
             VStack(alignment: .leading) {
                 
