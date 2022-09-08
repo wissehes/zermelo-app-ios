@@ -66,9 +66,14 @@ struct AppointmentView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("**\(action.appointment.subjects.joined())** - \(action.appointment.locations.joined()) - \(action.appointment.teachers.joined())")
-                Text(action.status.map { $0.nl }.joined())
-                    .foregroundColor(.secondary)
+                if let app = action.appointment {
+                    Text("**\(app.subjects.joined())** - \(app.locations.joined()) - \(app.teachers.joined())")
+                }
+
+                if !action.status.isEmpty {
+                    Text(action.status.map { $0.nl }.joined())
+                        .foregroundColor(.secondary)
+                }
             }
         }
     }
