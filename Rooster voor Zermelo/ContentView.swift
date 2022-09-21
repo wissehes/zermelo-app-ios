@@ -10,76 +10,38 @@ import Alamofire
 
 struct ContentView: View {
     
-    @State private var isShowingWelcomeScreen = false
-    @State private var token: SavedToken? = nil
-    @State private var me: ZermeloMeData? = nil
+//    @State private var isShowingWelcomeScreen = false
+//    @State private var token: SavedToken? = nil
+//    @State private var me: ZermeloMeData? = nil
+    
+    @EnvironmentObject var authManager: AuthManager
     
     var body: some View {
         Group {
-            if let me = me {
-                TabView {
-                    HomeView(me: me, signOut: signOut)
-                        .tabItem {
-                            Label("Vandaag", systemImage: "calendar")
-                        }
-                    
-                    WeekView(me: me)
-                        .tabItem {
-                            Label("Week", systemImage: "calendar.badge.clock")
-                        }
+            if authManager.isLoggedIn {
+                if authManager.isLoading {
+                    ProgressView()
+                } else {
+                    loggedInScreen
                 }
             } else {
-                Text("Loading!")
-                    .padding()
+                WelcomeView(handleClose: authManager.handleWelcomeScreenClosed)
             }
         }
-            .sheet(isPresented: $isShowingWelcomeScreen) {
-                WelcomeView(handleClose: handleWelcomeClose)
-                    .interactiveDismissDisabled()
-            }
-            .onAppear {
-                checkSavedToken()
-            }
     }
     
-    func signOut() {
-        TokenSaver.delete()
-        self.token = nil
-        self.me = nil
-        self.isShowingWelcomeScreen = true
-    }
-    
-    func handleWelcomeClose(_ savedToken: SavedToken){
-        isShowingWelcomeScreen = false
-        load(savedToken)
-    }
-    
-    func checkSavedToken() {
-        if let token = TokenSaver.get() {
-            load(token)
-        } else {
-            isShowingWelcomeScreen = true
-        }
-    }
-    
-    func load(_ token: SavedToken) {
-        self.token = token
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(token.access_token)"
-        ]
-        
-        AF.request("https://\(token.portal).zportal.nl/api/v3/users/~me", headers: headers)
-            .validate()
-            .responseDecodable(of: GetZermeloMe.self) { response in
-                switch response.result {
-                case .success(let data):
-                    guard let data = data.response.data.first else { return }
-                    self.me = data
-                    
-                case .failure(let err):
-                    print(err)
+    var loggedInScreen: some View {
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Vandaag", systemImage: "calendar")
                 }
-            }
+            
+            WeekView()
+                .tabItem {
+                    Label("Week", systemImage: "calendar.badge.clock")
+                }
+        }
     }
 }
 

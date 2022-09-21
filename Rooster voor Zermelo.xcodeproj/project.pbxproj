@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8905E44F28DB292D00CA8027 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905E44E28DB292D00CA8027 /* AboutView.swift */; };
+		8905E45128DB5C3700CA8027 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905E45028DB5C3700CA8027 /* AuthManager.swift */; };
 		892632DE28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */; };
 		892632E028C3A94400B9C624 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DF28C3A94400B9C624 /* ContentView.swift */; };
 		892632E228C3A94600B9C624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E128C3A94600B9C624 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8905E44E28DB292D00CA8027 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		8905E45028DB5C3700CA8027 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rooster voor Zermelo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rooster_voor_ZermeloApp.swift; sourceTree = "<group>"; };
 		892632DF28C3A94400B9C624 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				89ED829D28C5349C00306872 /* HomeView */,
 				892632EC28C3A96100B9C624 /* WelcomeView.swift */,
 				8947BD3B28C797B40063E3DF /* DayView.swift */,
+				8905E44E28DB292D00CA8027 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			children = (
 				89ED829828C5307F00306872 /* TokenSaver.swift */,
 				89F7051E28C682A000AFF2DF /* API.swift */,
+				8905E45028DB5C3700CA8027 /* AuthManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -244,7 +250,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8982676E28C68E0000C85D12 /* AppointmentView.swift in Sources */,
+				8905E45128DB5C3700CA8027 /* AuthManager.swift in Sources */,
 				8947BD3C28C797B40063E3DF /* DayView.swift in Sources */,
+				8905E44F28DB292D00CA8027 /* AboutView.swift in Sources */,
 				892632E028C3A94400B9C624 /* ContentView.swift in Sources */,
 				89F7051D28C6826700AFF2DF /* HomeViewModel.swift in Sources */,
 				8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */,

@@ -17,28 +17,31 @@ struct WelcomeView: View {
     var handleClose: (_ token: SavedToken) -> ()
     
     var body: some View {
-        TabView(selection: $selectedView) {
-            firstScreen
-                .tag(1)
-            
-            secondScreen
-                .tag(2)
-            
-            thirdScreen
-                .tag(3)
-            
-            fourthScreen
-                .tag(4)
-        }.tabViewStyle(.page(indexDisplayMode: .always))
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(
-                    codeTypes: [.qr],
-                    showViewfinder: true,
-                    simulatedData: "test",
-                    completion: handleScan
-                )
-            }
+        NavigationView {
+            TabView(selection: $selectedView) {
+                firstScreen
+                    .tag(1)
+                
+                secondScreen
+                    .tag(2)
+                
+                thirdScreen
+                    .tag(3)
+                
+                fourthScreen
+                    .tag(4)
+            }.navigationTitle("Welkom")
+                .tabViewStyle(.page(indexDisplayMode: .always))
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .sheet(isPresented: $isShowingScanner) {
+                    CodeScannerView(
+                        codeTypes: [.qr],
+                        showViewfinder: true,
+                        simulatedData: "test",
+                        completion: handleScan
+                    )
+                }
+        }
     }
     
     var firstScreen: some View {
@@ -167,7 +170,7 @@ struct WelcomeView: View {
         AF.request("https://\(data.institution).zportal.nl/api/v3/oauth/token", method: .post, parameters: params)
             .validate()
             .responseDecodable(of: ZermeloTokenRequest.self){ response in
-                isLoading = false
+//                isLoading = false
 
                 switch response.result {
                 case .failure(let err):

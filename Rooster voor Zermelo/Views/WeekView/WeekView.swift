@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WeekView: View {
-    var me: ZermeloMeData
+    @EnvironmentObject var authManager: AuthManager
     
     @StateObject var viewModel = WeekViewModel()
     let tomorrow = Date().addingTimeInterval(24 * 60 * 60)
@@ -57,11 +57,14 @@ struct WeekView: View {
                     }
                     .listStyle(.sidebar)
                     .refreshable {
+                        guard let me = authManager.me else { return }
                         await viewModel.load(me: me, proxy: proxy, date: nil)
                     }.task {
+                        guard let me = authManager.me else { return }
                         await viewModel.load(me: me, proxy: proxy, date: nil)
                     }.onChange(of: viewModel.selectedDate, perform: { newValue in
                         Task {
+                            guard let me = authManager.me else { return }
                             await viewModel.load(me: me, proxy: proxy, date: newValue)
                         }
                     }).sheet(isPresented: $viewModel.appointmentDetailsShown) {

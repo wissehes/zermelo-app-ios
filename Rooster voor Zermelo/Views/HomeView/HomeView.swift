@@ -11,13 +11,8 @@ import Alamofire
 struct HomeView: View {    
     // Only use `didSet` on `me` because it is the last
     // thing set, after the token.
-    var me: ZermeloMeData {
-        didSet {
-            viewModel.load(me: me)
-        }
-    }
     
-    var signOut: () -> ()
+    @EnvironmentObject var authManager: AuthManager
     
     @StateObject var viewModel = HomeViewModel()
     
@@ -31,9 +26,11 @@ struct HomeView: View {
             todayView
                 .navigationTitle("Home")
                 .toolbar {
-                    ToolbarItem(placement: .destructiveAction) {
-                        Button("Uitloggen") {
-                            signOut()
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            AboutView()
+                        } label: {
+                            Label("Over deze app", systemImage: "info.circle")
                         }
                     }
                     
@@ -43,7 +40,10 @@ struct HomeView: View {
                         }
                     }
                 }
-        }.onAppear { viewModel.load(me: me) }
+        }.onAppear {
+            guard let me = authManager.me else { return }
+            viewModel.load(me: me)
+        }
     }
     var todayView: some View {
         List {
