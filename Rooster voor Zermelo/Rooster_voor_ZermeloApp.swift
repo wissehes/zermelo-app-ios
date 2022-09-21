@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Rooster_voor_ZermeloApp: App {
+    @StateObject var authManager = AuthManager()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authManager)
         }
     }
 }
