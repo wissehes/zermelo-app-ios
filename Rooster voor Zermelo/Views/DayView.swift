@@ -11,7 +11,7 @@ struct DayView: View {
     var appointments: [ZermeloLivescheduleAppointment]
     
     var showDetails: (ZermeloLivescheduleAppointment) -> ()
-        
+    
     init(appointments: [ZermeloLivescheduleAppointment], showDetails: @escaping (ZermeloLivescheduleAppointment) -> ()) {
         self.appointments = appointments.sorted(by: { app1, app2 in
             let date1 = Date(timeIntervalSince1970: TimeInterval(app1.start))
@@ -33,7 +33,6 @@ struct DayView: View {
 struct DayItemView: View {
     
     @Environment(\.colorScheme) var colorScheme
-
     
     var item: ZermeloLivescheduleAppointment
     var showDetails: (ZermeloLivescheduleAppointment) -> ()
@@ -95,10 +94,18 @@ struct DayItemView: View {
                         Text(desc)
                             .font(.subheadline)
                             .italic()
+                            .foregroundColor(.secondary)
                     }
                 }
             }
             Spacer()
+            
+            if !(item.changeDescription?.isEmpty ?? true) || item.cancelled {
+                Label(item.cancelled ? "Uitval" : "Aangepast", systemImage: "exclamationmark.triangle.fill")
+                    .labelStyle(.iconOnly)
+                    .foregroundColor(item.cancelled ? .red : .yellow)
+            }
+            
             Button {
                 showDetails(item)
             } label: {
@@ -106,7 +113,7 @@ struct DayItemView: View {
                     .labelStyle(.iconOnly)
             }
             
-        }
+        }.accentColor(item.cancelled ? .red : .accentColor)
     }
 }
 
