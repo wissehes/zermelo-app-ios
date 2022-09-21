@@ -10,21 +10,38 @@ import SwiftUI
 struct AppointmentView: View {
     
     @Environment(\.presentationMode) var presentationMode
-
+    
     var item: ZermeloLivescheduleAppointment
+    var date: Date {
+        return Date(timeIntervalSince1970: TimeInterval(item.start))
+    }
     
     var body: some View {
         NavigationView {
             List {
-                Section("Info") {
-                    itemDetailView([item.startTimeSlotName], single: "Blok:", multiple: nil)
-                    itemDetailView(item.subjects, single:"Vak:", multiple: "Vakken:")
-                    itemDetailView(item.teachers, single: "Docent:", multiple: "Docenten:")
-                    itemDetailView(item.locations, single: "Locatie:", multiple: "Locaties:")
-                    itemDetailView(item.groups, single: "Groep:", multiple: "Groepen:")
-                }
+                
+                statusView
+                
+                infoSection
                 
                 Section("Andere Keuzes") {
+                    
+                    if !item.subjects.isEmpty {
+                        
+                        HStack {
+                            
+                            Label("Ingeschreven", systemImage: "checkmark.square")
+                                .foregroundColor(.green)
+                                .labelStyle(.iconOnly)
+                            
+                            VStack(alignment: .leading) {
+                                Text("**\(item.subjects.joined())** - \(item.locations.joined()) - \(item.teachers.joined())")
+                                
+                                Text("Ingeschreven")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
                     
                     if item.actions == nil {
                         Text("Geen andere keuzes.")
@@ -53,6 +70,40 @@ struct AppointmentView: View {
         }
     }
     
+    @ViewBuilder
+    var statusView:  some View {
+        if let desc = item.changeDescription, !desc.isEmpty {
+            Section("Status") {
+                Label {
+                    Text(desc)
+                } icon: {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundColor(.yellow)
+                }
+
+            }
+        }
+    }
+    
+    var infoSection: some View {
+        Section("Info") {
+            itemDetailView([item.startTimeSlotName], icon: "clock", single: "Blok:", multiple: nil)
+            itemDetailView(item.subjects, icon: "graduationcap", single:"Vak:", multiple: "Vakken:")
+            itemDetailView(item.teachers, icon: "person", single: "Docent:", multiple: "Docenten:")
+            itemDetailView(item.locations, icon: "location", single: "Locatie:", multiple: "Locaties:")
+            itemDetailView(item.groups, icon: "person.3.sequence", single: "Groep:", multiple: "Groepen:")
+            
+            HStack {
+                Label("Datum", systemImage: "calendar")
+                    .fontWeight(.bold)
+                Spacer()
+                
+                Text(date, style: .date)
+            }
+            
+        }
+    }
+    
     func actionView(action: ZermeloLivescheduleAction) -> some View {
         
         HStack {
@@ -62,6 +113,7 @@ struct AppointmentView: View {
                     .labelStyle(.iconOnly)
             } else {
                 Label("Niet toegestaan", systemImage: "circle.slash")
+                    .foregroundColor(.red)
                     .labelStyle(.iconOnly)
             }
             
@@ -69,7 +121,7 @@ struct AppointmentView: View {
                 if let app = action.appointment {
                     Text("**\(app.subjects.joined())** - \(app.locations.joined()) - \(app.teachers.joined())")
                 }
-
+                
                 if !action.status.isEmpty {
                     Text(action.status.map { $0.nl }.joined())
                         .foregroundColor(.secondary)
@@ -78,9 +130,9 @@ struct AppointmentView: View {
         }
     }
     
-    func itemDetailView(_ value: [String], single: String, multiple: String?) -> some View {
+    func itemDetailView(_ value: [String], icon: String, single: String, multiple: String?) -> some View {
         HStack {
-            Text(value.count == 1 ? single : multiple ?? single)
+            Label(value.count == 1 ? single : multiple ?? single, systemImage: icon)
                 .fontWeight(.bold)
             Spacer()
             if value.isEmpty {
@@ -88,46 +140,8 @@ struct AppointmentView: View {
                     .italic()
             } else {
                 Text(value.joined(separator: ", "))
+                    .font(.system(.body, design: .monospaced))
             }
         }
     }
 }
-
-//struct AppointmentViewPreview: View {
-//
-//    @State var appointment: ZermeloLivescheduleAppointment?
-//
-//    func load() {
-//        API.getLiveSchedule(
-//            me: ZermeloMeData(
-//                code: "107012",
-//                roles: [],
-//                firstName: "",
-//                lastName: ""
-//            )
-//        ) { result in
-//            switch result {
-//            case .success(let data):
-//                self.appointment = data.first
-//            case .failure(_):
-//                          break;
-//            }
-//        }
-//    }
-//
-//    @ViewBuilder
-//    var body: some View {
-//            if let app = appointment {
-//                AppointmentView(item: app)
-//            } else {
-//                ProgressView()
-//                    .onAppear { load() }
-//        }
-//    }
-//}
-
-//struct AppointmentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AppointmentViewPreview()
-//    }
-//}

@@ -44,7 +44,6 @@ struct HomeView: View {
                     }
                 }
         }.onAppear { viewModel.load(me: me) }
-        
     }
     var todayView: some View {
         List {
