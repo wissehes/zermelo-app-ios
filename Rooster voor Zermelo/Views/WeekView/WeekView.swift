@@ -28,7 +28,7 @@ struct WeekView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollViewReader { proxy in
                 List {
                     ForEach(viewModel.days, id: \.date.timeIntervalSince1970) { day in
