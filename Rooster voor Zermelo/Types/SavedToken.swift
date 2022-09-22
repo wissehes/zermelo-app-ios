@@ -25,4 +25,14 @@ extension SavedToken {
         self.token_type = tokenInfo.token_type
         self.expires = expireDate
     }
+    
+    init(institution: String, tokenInfo: ZermeloTokenRequest) {
+        var expireDate = Date()
+        expireDate.addTimeInterval(TimeInterval(tokenInfo.expires_in))
+        
+        self.portal = institution;
+        self.access_token = tokenInfo.access_token
+        self.token_type = tokenInfo.token_type
+        self.expires = expireDate
+    }
 }

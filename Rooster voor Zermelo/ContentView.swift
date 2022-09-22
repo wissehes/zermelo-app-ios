@@ -25,7 +25,7 @@ struct ContentView: View {
                     loggedInScreen
                 }
             } else {
-                WelcomeView(handleClose: authManager.handleWelcomeScreenClosed)
+                WelcomeView()
             }
         }
     }

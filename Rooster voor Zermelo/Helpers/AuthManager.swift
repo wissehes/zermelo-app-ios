@@ -33,6 +33,35 @@ class AuthManager: ObservableObject {
         self.load(savedToken)
     }
     
+    func handleLogin(_ school: String, code: String, completion: @escaping (AFError?) -> Void) {
+        
+        let codeFormatted = code.trimmingCharacters(in: .whitespaces)
+        let schoolFormatted = school.trimmingCharacters(in: .whitespaces).lowercased()
+        
+        let params: Parameters = [
+            "grant_type": "authorization_code",
+            "code": codeFormatted
+        ]
+        
+        AF.request("https://\(schoolFormatted).zportal.nl/api/v3/oauth/token", method: .post, parameters: params)
+            .validate()
+            .responseDecodable(of: ZermeloTokenRequest.self) { response in
+                switch response.result {
+                case .failure(let err):
+                    print("AF Error")
+                    print(err)
+                    completion(err)
+                case .success(let tokenInfo):
+                    let tokenData = SavedToken.init(institution: school, tokenInfo: tokenInfo)
+                    TokenSaver.save(tokendata: tokenData)
+                    
+                    completion(nil)
+                    self.token = tokenData
+                    self.load(tokenData)
+                }
+            }
+    }
+    
     private func checkSavedToken() {
         if let token = TokenSaver.get() {
             load(token)

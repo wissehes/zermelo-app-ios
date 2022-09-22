@@ -10,3 +10,11 @@
 | Setup | Home  | Blokinfo | Week |
 | ----  | ----- | -------- | ---- |
 | ![Setup screen](./Screenshots/setup.png) | ![Homescreen](./Screenshots/home.png) | ![Blokinfo](./Screenshots/blokinfo.png) | ![Week screen](./Screenshots/week.png) |
+
+## Namen
+
+- *Rooster voor Zermelo* (niet beschikbaar)
+- Zermelo App
+- RoosterApp voor Zermelo
+- Schedulator (Zermelo)
+
