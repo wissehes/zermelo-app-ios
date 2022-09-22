@@ -9,66 +9,76 @@ import SwiftUI
 import CodeScanner
 import Alamofire
 
+fileprivate enum WelcomeScreen: Hashable {
+    case first
+    case second
+    case third
+    case fourth
+    
+    case manualCode
+}
+
 struct WelcomeView: View {
     @State private var selectedView = 1
     @State private var isShowingScanner = false
     @State private var isLoading = false
     
-    var handleClose: (_ token: SavedToken) -> ()
     
     var body: some View {
-        NavigationView {
-            TabView(selection: $selectedView) {
-                firstScreen
-                    .tag(1)
-                
-                secondScreen
-                    .tag(2)
-                
-                thirdScreen
-                    .tag(3)
-                
-                fourthScreen
-                    .tag(4)
-            }.navigationTitle("Welkom")
-                .tabViewStyle(.page(indexDisplayMode: .always))
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
-                .sheet(isPresented: $isShowingScanner) {
-                    CodeScannerView(
-                        codeTypes: [.qr],
-                        showViewfinder: true,
-                        simulatedData: "test",
-                        completion: handleScan
-                    )
+        NavigationStack {
+            FirstWelcomeScreen()
+//            ManualCodeScreen()
+                .navigationDestination(for: WelcomeScreen.self) { i in
+                    switch i {
+                    case .first:
+                        FirstWelcomeScreen()
+                    case .second:
+                        SecondWelcomeScreen()
+                    case .third:
+                        ThirdWelcomeScreen()
+                    case .fourth:
+                        FourthWelcomeScreen()
+                    case .manualCode:
+                        ManualCodeScreen()
+                    }
                 }
         }
     }
-    
-    var firstScreen: some View {
+}
+
+struct FirstWelcomeScreen: View {
+    var body: some View {
         VStack {
             Spacer()
             
             Text("Welkom bij Rooster voor Zermelo")
+                .font(.title)
             Text("Om Rooster voor Zermelo te kunnen gebruiken, moeten we eerst inloggen.")
             
             Spacer()
             
-            Button("Laten we beginnen") {
-                withAnimation {
-                    selectedView = 2
-                }
-            }.buttonStyle(.borderedProminent)
+            NavigationLink {
+                SecondWelcomeScreen()
+            } label: {
+                
+                NavigationLink(value: WelcomeScreen.second) {
+                    Text("Laten we beginnen")
+                }.buttonStyle(.borderedProminent)
+
+            }
+
             
             Spacer()
-        }.padding()
+        }
+        .multilineTextAlignment(.center)
+        .navigationTitle("Welkom")
+        .padding()
     }
-    
-    var secondScreen: some View {
+}
+
+struct SecondWelcomeScreen: View {
+    var body: some View {
         VStack {
-            Text("Stap 1")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
 //            Spacer()
             
             Text("Ga op je laptop naar jouw Zermelo Portal en klik op \"Portal\"").padding()
@@ -80,23 +90,20 @@ struct WelcomeView: View {
             
             Spacer()
             
-            Button("Volgende") {
-                withAnimation {
-                    selectedView = 3
-                }
-            }.buttonStyle(.borderedProminent)
+            NavigationLink("Volgende", value: WelcomeScreen.third)
+                .buttonStyle(.borderedProminent)
+                .padding()
             
-            Spacer()
+//            Spacer()
         }.multilineTextAlignment(.center)
+            .navigationTitle("Stap 1")
     }
-    
-    var thirdScreen: some View {
+}
+
+struct ThirdWelcomeScreen: View {
+    var body: some View {
         VStack {
-            Text("Stap 2")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Text("Druk dan linksbovenin op het icoontje onder het huisje. Druk vervolgens op \"Koppel externe applicatie\"").padding()
+            Text("Druk dan linksbovenin op het icoontje onder het huisje.\nDruk vervolgens op \"`Koppel externe applicatie`\"").padding()
             
             Image("ZermeloLogin2")
                 .resizable()
@@ -105,30 +112,35 @@ struct WelcomeView: View {
             
             Spacer()
             
-            Button("Volgende") {
-                withAnimation {
-                    selectedView = 4
-                }
-            }.buttonStyle(.borderedProminent)
+            NavigationLink("Volgende", value: WelcomeScreen.fourth)
+                .buttonStyle(.borderedProminent)
+                .padding()
             
-            Spacer()
-        }
+//            Spacer()
+        }.navigationTitle("Stap 2")
     }
+}
+
+struct FourthWelcomeScreen: View {
     
-    var fourthScreen: some View {
-        VStack {
-            Text("Stap 3")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+    @State private var isShowingScanner = false
+    @State private var isLoading = false
+    
+    @EnvironmentObject var authManager: AuthManager
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 10) {
+//            Spacer()
             
-            Spacer()
-            
-            Text("Als het goed is, ben je nu bij dit scherm.").padding()
+            Text("Als het goed is, ben je nu bij dit scherm.")
+                .font(.headline)
+                .padding()
             
             Image("ZermeloLogin3")
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: 250)
+                .border(.gray, width: 2)
             
             Text("Als dat zo is, kunnen we nu de QR-Code gaan scannen.").padding()
             
@@ -143,8 +155,20 @@ struct WelcomeView: View {
             }
                 .buttonStyle(.borderedProminent)
             
-            Spacer()
-        }
+            NavigationLink(value: WelcomeScreen.manualCode) {
+                Label("Code invoeren", systemImage: "keyboard")
+
+            }.padding()
+            
+        }.navigationTitle("Stap 3")
+            .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(
+                    codeTypes: [.qr],
+                    showViewfinder: true,
+                    simulatedData: "test",
+                    completion: handleScan
+                )
+            }
     }
     
     func handleScan(result: Result<ScanResult, ScanError>){
@@ -179,17 +203,87 @@ struct WelcomeView: View {
                 case .success(let tokenInfo):
                     let tokenData = SavedToken.init(qrData: data, tokenInfo: tokenInfo)
                     TokenSaver.save(tokendata: tokenData)
-                    
-                    self.handleClose(tokenData)
+                    authManager.handleWelcomeScreenClosed(tokenData)
                 }
             }
     }
 }
 
+struct ManualCodeScreen: View {
+    
+    @EnvironmentObject var authManager: AuthManager
+
+    @State private var school = ""
+    @State private var code = ""
+    
+    @State private var isLoading = false
+    @State private var loginErrorAlert = false
+            
+    var body: some View {
+        Form {
+            Text("Doet de QR code het niet? Of wil je geen QR code scannen? Hier kan je de gegevens handmatig invoeren.")
+            
+            HStack {
+                Label("School", systemImage: "graduationcap")
+                    .bold()
+                TextField("School", text: $school)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .multilineTextAlignment(.trailing)
+                Text(".zportal.nl")
+                    .font(.subheadline)
+            }
+            
+            HStack {
+                Label("Code", systemImage: "key")
+                    .bold()
+                
+                TextField("Code", text: $code)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+            
+            HStack {
+                Button {
+                    login()
+                } label: {
+                    Label("Inloggen", systemImage: "person.circle.fill")
+                        .bold()
+                }.disabled(isLoading || school.isEmpty || code.isEmpty)
+                
+                Spacer()
+                
+                if isLoading {
+                    ProgressView()
+                }
+            }
+            
+            
+        }.navigationTitle("Handmatig invoeren")
+            .scrollDismissesKeyboard(.interactively)
+            .alert("Er ging iets mis!", isPresented: $loginErrorAlert) {
+                Button("Oké", role: .cancel) { }
+            } message: {
+                Text("Er ging iets mis tijdens het inloggen. Controleer of je alles goed hebt ingevuld en probeer het opnieuw.")
+            }
+
+    }
+    
+    func login() {
+        isLoading = true
+
+        authManager.handleLogin(school, code: code) { error in
+            self.isLoading = false
+            if error != nil {
+                self.loginErrorAlert = true
+            }
+        }
+    }
+}
+
+
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView() { token in
-            print(token)
-        }
+        WelcomeView()
     }
 }
