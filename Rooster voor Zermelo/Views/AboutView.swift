@@ -14,8 +14,8 @@ struct AboutView: View {
     
     var body: some View {
         List {
-            Section("Rooster Voor Zermelo") {
-                Text("Rooster voor Zermelo is gemaakt door [Wisse Hes](https://wissehes.nl)")
+            Section("RoosterApp Voor Zermelo") {
+                Text("RoosterApp voor Zermelo is gemaakt door [Wisse Hes](https://wissehes.nl)")
                 
                 Link(destination: URL(string: "https://github.com/wissehes/zermelo-app-ios")!) {
                     Label("GitHub (broncode)", systemImage: "chevron.left.forwardslash.chevron.right")

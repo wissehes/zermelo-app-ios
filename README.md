@@ -1,5 +1,5 @@
-#  Rooster voor Zermelo
-### (english: Schedule for Zermelo)
+#  RoosterApp voor Zermelo
+### (english: Schedule App for Zermelo)
 
 ## (en) Is an iOS app for viewing/editing your Zermelo schedule.
 ## (nl) Is een iOS app om je Zermelo rooster te bekijken.
