@@ -17,7 +17,6 @@ struct AppointmentView: View {
     }
     
     var body: some View {
-        NavigationView {
             List {
                 
                 statusView
@@ -55,19 +54,11 @@ struct AppointmentView: View {
                         }
                         
                         ForEach(actions, id: \.post) { item in
-                            actionView(action: item)
+                            AppointmentActionView(action: item)
                         }
                     }
                 }
             }.navigationTitle("Blokinformatie")
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button { presentationMode.wrappedValue.dismiss() } label: {
-                            Label("Sluiten", systemImage: "xmark.circle")
-                        }
-                    }
-                }
-        }
     }
     
     @ViewBuilder
@@ -101,32 +92,6 @@ struct AppointmentView: View {
                 Text(date, style: .date)
             }
             
-        }
-    }
-    
-    func actionView(action: ZermeloLivescheduleAction) -> some View {
-        
-        HStack {
-            
-            if action.allowed {
-                Label("Toegestaan", systemImage: "circle")
-                    .labelStyle(.iconOnly)
-            } else {
-                Label("Niet toegestaan", systemImage: "circle.slash")
-                    .foregroundColor(.red)
-                    .labelStyle(.iconOnly)
-            }
-            
-            VStack(alignment: .leading) {
-                if let app = action.appointment {
-                    Text("**\(app.subjects.joined())** - \(app.locations.joined()) - \(app.teachers.joined())")
-                }
-                
-                if !action.status.isEmpty {
-                    Text(action.status.map { $0.nl }.joined())
-                        .foregroundColor(.secondary)
-                }
-            }
         }
     }
     
