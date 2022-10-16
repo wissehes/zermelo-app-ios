@@ -62,11 +62,7 @@ struct WeekView: View {
                             guard let me = authManager.me else { return }
                             await viewModel.load(me: me, proxy: proxy, date: newValue)
                         }
-                    }).sheet(isPresented: $viewModel.appointmentDetailsShown) {
-                        if let item = viewModel.selectedAppointment {
-                            AppointmentView(item: item)
-                        }
-                    }.navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
+                    }).navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                         AppointmentView(item: appointment)
                     }
             }
