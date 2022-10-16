@@ -33,34 +33,44 @@ struct HomeView: View {
                             Label("Over deze app", systemImage: "info.circle")
                         }
                     }
-                    
-                    ToolbarItem(placement: .automatic) {
-                        if viewModel.isLoading {
-                            ProgressView()
-                        }
-                    }
                 }
-        }.onAppear {
+        }.navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
+            AppointmentView(item: appointment)
+        }.task {
             guard let me = authManager.me else { return }
-            viewModel.load(me: me)
+            await viewModel.load(me: me)
+        }.refreshable {
+            await viewModel.reload()
         }
     }
+    
+    @ViewBuilder
     var todayView: some View {
-        List {
-            Section("Vandaag") {
-                DayView(appointments: viewModel.todayAppointments, showDetails: showItemDetails)
-                    .sheet(isPresented: $viewModel.appointmentDetailsShown) {
-                        if let item = viewModel.selectedAppointment {
-                            AppointmentView(item: item)
-                        }
-                    }
-            }.headerProminence(.increased)
+        if viewModel.todayAppointments.isEmpty {
+            VStack {
+                Image(systemName: "calendar.badge.exclamationmark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 75, height: 75)
+                    .foregroundColor(.secondary)
+                
+                Text("Geen afspraken gevonden.")
+                    .font(.title)
+                    .foregroundColor(.secondary)
+            }
+        } else {
+            List {
+                Section("Vandaag") {
+                    DayView(appointments: viewModel.todayAppointments)
+                }.headerProminence(.increased)
+            }
         }
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(token: ., me: .constant(nil))
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+            .environmentObject(AuthManager())
+    }
+}

@@ -13,11 +13,6 @@ struct WeekView: View {
     @StateObject var viewModel = WeekViewModel()
     let tomorrow = Date().addingTimeInterval(24 * 60 * 60)
     
-    func showItemDetails(_ item: ZermeloLivescheduleAppointment) {
-        viewModel.selectedAppointment = item
-        viewModel.appointmentDetailsShown = true
-    }
-    
     func scrollToToday(_ proxy: ScrollViewProxy) {
         let todayDate = viewModel.days.first(where: { Calendar.current.isDateInToday($0.date) })
         if let todayDate = todayDate {
@@ -33,7 +28,7 @@ struct WeekView: View {
                 List {
                     ForEach(viewModel.days, id: \.date.timeIntervalSince1970) { day in
                         Section {
-                            DayView(appointments: day.appointments, showDetails: showItemDetails)
+                            DayView(appointments: day.appointments)
                         } header: {
                             if Calendar.current.isDateInToday(day.date) {
                                 Text("Vandaag (\(day.date, style: .date))")
@@ -71,6 +66,8 @@ struct WeekView: View {
                         if let item = viewModel.selectedAppointment {
                             AppointmentView(item: item)
                         }
+                    }.navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
+                        AppointmentView(item: appointment)
                     }
             }
         }
