@@ -8,6 +8,15 @@
 import SwiftUI
 import Alamofire
 
+struct ReverseLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.title
+            configuration.icon
+        }
+    }
+}
+
 struct HomeView: View {    
     // Only use `didSet` on `me` because it is the last
     // thing set, after the token.
@@ -15,11 +24,6 @@ struct HomeView: View {
     @EnvironmentObject var authManager: AuthManager
     
     @StateObject var viewModel = HomeViewModel()
-    
-    func showItemDetails(_ item: ZermeloLivescheduleAppointment) {
-        viewModel.selectedAppointment = item
-        viewModel.appointmentDetailsShown = true
-    }
     
     var body: some View {
         NavigationStack {
@@ -33,14 +37,31 @@ struct HomeView: View {
                             Label("Over deze app", systemImage: "info.circle")
                         }
                     }
+                    
+                    ToolbarItem(placement: .bottomBar) {
+                        HStack {
+                            Button("Vandaag") { viewModel.selectedDate = Date() }
+                                .disabled(viewModel.todaySelected)
+                            
+                            Spacer()
+                            
+                            DatePicker("Datum", selection: $viewModel.selectedDate, displayedComponents: [.date])
+                                .labelsHidden()
+                        }
+                    }
                 }
-        }.navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
-            AppointmentView(item: appointment)
+                .navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
+                    AppointmentView(item: appointment)
+                }
         }.task {
             guard let me = authManager.me else { return }
             await viewModel.load(me: me)
         }.refreshable {
             await viewModel.reload()
+        }.onChange(of: viewModel.selectedDate) { newValue in
+            Task {
+                await viewModel.reload()
+            }
         }
     }
     
@@ -60,8 +81,10 @@ struct HomeView: View {
             }
         } else {
             List {
-                Section("Vandaag") {
+                Section {
                     DayView(appointments: viewModel.todayAppointments)
+                } header: {
+                    Text("\(viewModel.selectedDate, style: .date) \(viewModel.todaySelected ? "(Vandaag)" : "")")
                 }.headerProminence(.increased)
             }
         }

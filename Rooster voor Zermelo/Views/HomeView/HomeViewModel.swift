@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []
@@ -14,42 +15,31 @@ final class HomeViewModel: ObservableObject {
     
     @Published var days: [Day] = []
     
-    @Published var appointmentDetailsShown = false
     @Published var selectedAppointment: ZermeloLivescheduleAppointment?
+    
+    @Published var selectedDate: Date = Date()
+    var todaySelected: Bool {
+        return Calendar.current.isDateInToday(selectedDate)
+    }
     
     var me: ZermeloMeData?
     
     func load(me: ZermeloMeData) async {
         self.me = me
+        DispatchQueue.main.async {
+            withAnimation {
+                self.todayAppointments = []
+            }
+        }
         
         do {
-            let appointments = try await API.getLiveScheduleAsync(me: me)
-            
-            for appointment in appointments {
-                DispatchQueue.main.async {
-                    self.days = []
-                }
-                
-                let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-                
-                let foundRow = self.days.firstIndex { day in
-                    Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
-                }
-                DispatchQueue.main.async {
-                    if let foundRow = foundRow {
-                        self.days[foundRow].appointments.append(appointment)
-                    } else {
-                        self.days.append(Day( date: date, appointments: [appointment] ))
-                    }
-                }
-            }
-
+            let foundAppointments = try await API.getScheduleForDay(me: me, date: selectedDate)
             DispatchQueue.main.async {
-                self.todayAppointments = appointments.filter {
-                    Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
+                withAnimation {
+                    self.todayAppointments = foundAppointments
                 }
             }
-        } catch(let err){
+        } catch(let err) {
             print(err)
         }
     }
