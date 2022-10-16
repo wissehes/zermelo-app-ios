@@ -43,7 +43,15 @@ struct ZermeloLivescheduleAction: Codable {
 }
 
 // MARK: - ZermeloLivescheduleAppointment
-struct ZermeloLivescheduleAppointment: Codable {
+struct ZermeloLivescheduleAppointment: Codable, Hashable {
+    static func == (lhs: ZermeloLivescheduleAppointment, rhs: ZermeloLivescheduleAppointment) -> Bool {
+        lhs.id == rhs.id || lhs.subjects == rhs.subjects
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let status: [ZermeloLivescheduleStatus]?
     let actions: [ZermeloLivescheduleAction]?
     let start, end: Int
@@ -60,22 +68,12 @@ struct ZermeloLivescheduleAppointment: Codable {
     let attendanceOverruled: Bool?
     let availableSpace: Int?
     
-    //    let onlineTeachers: [JSONAny]
-    //    let onlineLocationURL, capacity, expectedStudentCount, expectedStudentCountOnline: JSONNull?
-    //    let content: JSONNull?
 
     enum CodingKeys: String, CodingKey {
         case status, actions, start, end, cancelled, appointmentType, online
         case appointmentOptional = "optional"
         case appointmentInstance, startTimeSlotName, endTimeSlotName, subjects, groups, locations, teachers
         case changeDescription, schedulerRemark, id, plannedAttendance, studentEnrolled, allowedActions, attendanceOverruled, availableSpace
-        
-//        case onlineTeachers
-//        case expectedStudentCountOnline
-//        case expectedStudentCount
-//        case capacity
-//        case onlineLocationURL = "onlineLocationUrl"
-//        case content
     }
 }
 
