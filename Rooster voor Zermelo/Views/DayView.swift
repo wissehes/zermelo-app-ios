@@ -10,7 +10,7 @@ import SwiftUI
 struct DayView: View {
     var appointments: [ZermeloLivescheduleAppointment]
     
-    init(appointments: [ZermeloLivescheduleAppointment], showDetails: @escaping (ZermeloLivescheduleAppointment) -> ()) {
+    init(appointments: [ZermeloLivescheduleAppointment]) {
         self.appointments = appointments.sorted(by: { app1, app2 in
             let date1 = Date(timeIntervalSince1970: TimeInterval(app1.start))
             let date2 = Date(timeIntervalSince1970: TimeInterval(app2.start))
