@@ -65,4 +65,19 @@ final class API {
             return data.appointments
         } else { return [] }
     }
+    
+    static func getScheduleForDay(me: ZermeloMeData, date: Date) async throws -> [ZermeloLivescheduleAppointment] {
+        let weekAppointments = try await self.getLiveScheduleAsync(me: me, week: getWeek(date))
+        
+        if weekAppointments.isEmpty {
+            return []
+        }
+        
+        let filtered = weekAppointments.filter { app in
+            let appointmentDate = Date(timeIntervalSince1970: TimeInterval(app.start))
+            return Calendar.current.isDate(appointmentDate, equalTo: date, toGranularity: .day)
+        }
+        
+        return filtered
+    }
 }
