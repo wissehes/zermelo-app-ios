@@ -22,8 +22,8 @@ struct AppointmentView: View {
                 statusView
                 
                 infoSection
-                
-                Section("Andere Keuzes") {
+                                
+                Section {
                     
                     if !item.subjects.isEmpty {
                         
@@ -57,6 +57,10 @@ struct AppointmentView: View {
                             AppointmentActionView(action: item)
                         }
                     }
+                } header: {
+                    Text("Andere keuzes")
+                } footer: {
+                    Text("Via deze app kan je (nog) geen andere keuzes invullen.")
                 }
             }.navigationTitle("Blokinformatie")
     }

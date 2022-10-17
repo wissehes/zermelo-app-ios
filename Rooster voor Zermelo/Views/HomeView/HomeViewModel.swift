@@ -26,11 +26,11 @@ final class HomeViewModel: ObservableObject {
     
     func load(me: ZermeloMeData) async {
         self.me = me
-        DispatchQueue.main.async {
-            withAnimation {
-                self.todayAppointments = []
-            }
-        }
+//        DispatchQueue.main.async {
+//            withAnimation {
+//                self.todayAppointments = []
+//            }
+//        }
         
         do {
             let foundAppointments = try await API.getScheduleForDay(me: me, date: selectedDate)
