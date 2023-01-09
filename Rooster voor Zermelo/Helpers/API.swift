@@ -15,7 +15,7 @@ final class API {
         let components = Calendar.current.dateComponents([.year, .weekOfYear], from: date ?? Date())
         
         if let year = components.year, let week = components.weekOfYear {
-            return String(describing: year) + String(describing: week)
+            return String(describing: year) + String(format: "%02d", week)
         } else {
             return ""
         }
