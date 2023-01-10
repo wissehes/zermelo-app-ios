@@ -14,6 +14,7 @@
 		892632E228C3A94600B9C624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E128C3A94600B9C624 /* Assets.xcassets */; };
 		892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E428C3A94600B9C624 /* Preview Assets.xcassets */; };
 		892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632EC28C3A96100B9C624 /* WelcomeView.swift */; };
+		892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 892AA7DD296D8AD000BC883D /* Localizable.strings */; };
 		8947BD3828C793060063E3DF /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3728C793060063E3DF /* WeekView.swift */; };
 		8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3928C7932E0063E3DF /* WeekViewModel.swift */; };
 		8947BD3C28C797B40063E3DF /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3B28C797B40063E3DF /* DayView.swift */; };
@@ -42,6 +43,8 @@
 		892632E128C3A94600B9C624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		892632E428C3A94600B9C624 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		892632EC28C3A96100B9C624 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		892AA7DC296D8AD000BC883D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		892AA7DE296D8AD300BC883D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8947BD3728C793060063E3DF /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		8947BD3928C7932E0063E3DF /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		8947BD3B28C797B40063E3DF /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 			children = (
 				8986658028DB8DD000D7A98C /* Screenshots */,
 				89F7052028C68ACE00AFF2DF /* README.md */,
+				892AA7DD296D8AD000BC883D /* Localizable.strings */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
 				892632DB28C3A94400B9C624 /* Products */,
 			);
@@ -269,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */,
+				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +309,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		892AA7DD296D8AD000BC883D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				892AA7DC296D8AD000BC883D /* en */,
+				892AA7DE296D8AD300BC883D /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		892632E628C3A94600B9C624 /* Debug */ = {

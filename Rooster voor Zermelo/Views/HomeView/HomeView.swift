@@ -28,24 +28,24 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             todayView
-                .navigationTitle("Home")
+                .navigationTitle("home.home")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
                             AboutView()
                         } label: {
-                            Label("Over deze app", systemImage: "info.circle")
+                            Label("about.about", systemImage: "info.circle")
                         }
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-                            Button("Vandaag") { viewModel.selectedDate = Date() }
+                            Button("word.today") { viewModel.selectedDate = Date() }
                                 .disabled(viewModel.todaySelected)
                             
                             Spacer()
                             
-                            DatePicker("Datum", selection: $viewModel.selectedDate, displayedComponents: [.date])
+                            DatePicker("word.date", selection: $viewModel.selectedDate, displayedComponents: [.date])
                                 .labelsHidden()
                         }
                     }
@@ -77,7 +77,7 @@ struct HomeView: View {
                     .frame(width: 75, height: 75)
                     .foregroundColor(.secondary)
                 
-                Text("Geen afspraken gevonden.")
+                Text("home.noAppointmentsFound")
                     .font(.title)
                     .foregroundColor(.secondary)
             }
@@ -86,7 +86,7 @@ struct HomeView: View {
                 Section {
                     DayView(appointments: viewModel.todayAppointments)
                 } header: {
-                    Text("\(viewModel.selectedDate, style: .date) \(viewModel.todaySelected ? "(Vandaag)" : "")")
+                    Text("\(viewModel.selectedDate, style: .date) \(viewModel.todaySelected ? "word.today.parentheses" : "")")
                 }.headerProminence(.increased)
             }
         }

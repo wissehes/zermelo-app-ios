@@ -51,9 +51,9 @@ struct FirstWelcomeScreen: View {
         VStack {
             Spacer()
             
-            Text("Welkom bij Rooster voor Zermelo")
+            Text("welcome.first.title")
                 .font(.title)
-            Text("Om Rooster voor Zermelo te kunnen gebruiken, moeten we eerst inloggen.")
+            Text("welcome.first.subtitle")
             
             Spacer()
             
@@ -62,7 +62,7 @@ struct FirstWelcomeScreen: View {
             } label: {
                 
                 NavigationLink(value: WelcomeScreen.second) {
-                    Text("Laten we beginnen")
+                    Text("welcome.first.begin")
                 }.buttonStyle(.borderedProminent)
 
             }
@@ -71,7 +71,7 @@ struct FirstWelcomeScreen: View {
             Spacer()
         }
         .multilineTextAlignment(.center)
-        .navigationTitle("Welkom")
+        .navigationTitle("word.welcome")
         .padding()
     }
 }
@@ -81,7 +81,7 @@ struct SecondWelcomeScreen: View {
         VStack {
 //            Spacer()
             
-            Text("Ga op je laptop naar jouw Zermelo Portal en klik op \"Portal\"").padding()
+            Text("welcome.second.title").padding()
             
             Image("ZermeloLogin1")
                 .resizable()
@@ -90,20 +90,20 @@ struct SecondWelcomeScreen: View {
             
             Spacer()
             
-            NavigationLink("Volgende", value: WelcomeScreen.third)
+            NavigationLink("word.next", value: WelcomeScreen.third)
                 .buttonStyle(.borderedProminent)
                 .padding()
             
 //            Spacer()
         }.multilineTextAlignment(.center)
-            .navigationTitle("Stap 1")
+            .navigationTitle("welcome.second.step")
     }
 }
 
 struct ThirdWelcomeScreen: View {
     var body: some View {
         VStack {
-            Text("Druk dan linksbovenin op het icoontje onder het huisje.\nDruk vervolgens op \"`Koppel externe applicatie`\"").padding()
+            Text("welcome.third.title").padding()
             
             Image("ZermeloLogin2")
                 .resizable()
@@ -112,12 +112,12 @@ struct ThirdWelcomeScreen: View {
             
             Spacer()
             
-            NavigationLink("Volgende", value: WelcomeScreen.fourth)
+            NavigationLink("word.next", value: WelcomeScreen.fourth)
                 .buttonStyle(.borderedProminent)
                 .padding()
             
 //            Spacer()
-        }.navigationTitle("Stap 2")
+        }.navigationTitle("welcome.third.step")
     }
 }
 
@@ -132,7 +132,7 @@ struct FourthWelcomeScreen: View {
         VStack(alignment: .center, spacing: 10) {
 //            Spacer()
             
-            Text("Als het goed is, ben je nu bij dit scherm.")
+            Text("welcome.fourth.title")
                 .font(.headline)
                 .padding()
             
@@ -142,7 +142,7 @@ struct FourthWelcomeScreen: View {
                 .frame(maxHeight: 250)
                 .border(.gray, width: 2)
             
-            Text("Als dat zo is, kunnen we nu de QR-Code gaan scannen.").padding()
+            Text("welcome.fourth.subtitle").padding()
             
             Spacer()
             
@@ -150,17 +150,17 @@ struct FourthWelcomeScreen: View {
                 if isLoading {
                     ProgressView()
                 } else {
-                    Label("QR-code scannen", systemImage: "qrcode.viewfinder")
+                    Label("welcome.fourth.scanQRCode", systemImage: "qrcode.viewfinder")
                 }
             }
                 .buttonStyle(.borderedProminent)
             
             NavigationLink(value: WelcomeScreen.manualCode) {
-                Label("Code invoeren", systemImage: "keyboard")
+                Label("welcome.fourth.enterCode", systemImage: "keyboard")
 
             }.padding()
             
-        }.navigationTitle("Stap 3")
+        }.navigationTitle("welcome.fourth.step")
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(
                     codeTypes: [.qr],
@@ -221,12 +221,12 @@ struct ManualCodeScreen: View {
             
     var body: some View {
         Form {
-            Text("Doet de QR code het niet? Of wil je geen QR code scannen? Hier kan je de gegevens handmatig invoeren.")
+            Text("welcome.manual.title")
             
             HStack {
-                Label("School", systemImage: "graduationcap")
+                Label("welcome.manual.school", systemImage: "graduationcap")
                     .bold()
-                TextField("School", text: $school)
+                TextField("welcome.manual.school", text: $school)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.trailing)
@@ -235,10 +235,10 @@ struct ManualCodeScreen: View {
             }
             
             HStack {
-                Label("Code", systemImage: "key")
+                Label("welcome.manual.code", systemImage: "key")
                     .bold()
                 
-                TextField("Code", text: $code)
+                TextField("welcome.manual.code", text: $code)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
@@ -247,7 +247,7 @@ struct ManualCodeScreen: View {
                 Button {
                     login()
                 } label: {
-                    Label("Inloggen", systemImage: "person.circle.fill")
+                    Label("welcome.manual.login", systemImage: "person.circle.fill")
                         .bold()
                 }.disabled(isLoading || school.isEmpty || code.isEmpty)
                 
@@ -259,12 +259,12 @@ struct ManualCodeScreen: View {
             }
             
             
-        }.navigationTitle("Handmatig invoeren")
+        }.navigationTitle("welcome.manual.navTitle")
             .scrollDismissesKeyboard(.interactively)
-            .alert("Er ging iets mis!", isPresented: $loginErrorAlert) {
-                Button("Oké", role: .cancel) { }
+            .alert("welcome.manual.alert.title", isPresented: $loginErrorAlert) {
+                Button("word.ok", role: .cancel) { }
             } message: {
-                Text("Er ging iets mis tijdens het inloggen. Controleer of je alles goed hebt ingevuld en probeer het opnieuw.")
+                Text("welcome.manual.alert.description")
             }
 
     }
