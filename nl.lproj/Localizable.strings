@@ -1,0 +1,76 @@
+/* 
+  Localizable.strings
+  Rooster voor Zermelo
+
+  Created by Wisse Hes on 10/01/2023.
+  
+  Dutch strings
+*/
+// MARK: Welcome screen
+
+// MARK: - First screen
+
+"welcome.first.title" = "Welkom bij Rooster voor Zermelo";
+"welcome.first.subtitle" = "Om Rooster voor Zermelo te kunnen gebruiken, moeten we eerst inloggen.";
+"welcome.first.begin" = "Laten we beginnen";
+
+// MARK: - Second screen
+
+"welcome.second.title" = "Ga op je laptop naar jouw Zermelo Portal en klik op \"Portal\"";
+"welcome.second.step" = "Stap 1";
+
+// MARK: - Third screen
+
+"welcome.third.title" = "Druk dan linksbovenin op het icoontje onder het huisje.\nDruk vervolgens op \"`Koppel externe applicatie`\"";
+"welcome.third.step" = "Stap 2";
+
+// MARK: - Fourth screen
+
+"welcome.fourth.title" = "Als het goed is, ben je nu bij dit scherm.";
+"welcome.fourth.subtitle" = "Als dat zo is, kunnen we nu de QR-Code gaan scannen.";
+"welcome.fourth.scanQRCode" = "QR-Code scannen";
+"welcome.fourth.enterCode" = "Code invoeren";
+"welcome.fourth.step" = "Stap 3";
+
+// MARK: - Manual code screen
+
+"welcome.manual.title" = "Doet de QR code het niet? Of wil je geen QR code scannen? Hier kan je de gegevens handmatig invoeren.";
+"welcome.manual.school" = "School";
+"welcome.manual.code" = "Code";
+"welcome.manual.login" = "Inloggen";
+"welcome.manual.navTitle" = "Handmatig invoeren";
+
+"welcome.manual.alert.title" = "Er ging iets mis!";
+"welcome.manual.alert.description" = "Er ging iets mis tijdens het inloggen. Controleer of je alles goed hebt ingevuld en probeer het opnieuw.";
+
+// MARK: Home
+"home.home" = "Home";
+"home.noAppointmentsFound" = "Geen afspraken gevonden.";
+
+// MARK: About this app
+"about.about" = "Over deze app";
+"about.madeBy" = "RoosterApp voor Zermelo is gemaakt door [Wisse Hes](https://wissehes.nl)";
+"about.github" = "GitHub (broncode)";
+"about.website" = "Website";
+"about.contact" = "Contact";
+"about.logout" = "Uitloggen";
+"about.logout.confirm.title" = "Weet je het zeker?";
+"about.logout.confirm.subtitle" = "Als je dit doet, moet je opnieuw inloggen via het Zermelo Portal";
+"about.logout.confirm.confirm" = "Ja, uitloggen";
+
+
+"about.privacy" = "Privacy";
+"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, er worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo."
+
+"about.disclaimer" = "Disclaimer";
+"about.disclaimer.text" = "Deze app is niet gemaakt door `Zermelo Software BV`. \nDeze app is niet ook verwant aan `Zermelo` of `Zermelo Software BV`.";
+
+// MARK: Words
+
+"word.welcome" = "Welkom";
+"word.next" = "Volgende";
+"word.ok" = "Oké";
+"word.today" = "Vandaag";
+"word.today.parentheses" = "(Vandaag)";
+"word.date" = "Datum";
+"word.cancel" = "Annuleren";
