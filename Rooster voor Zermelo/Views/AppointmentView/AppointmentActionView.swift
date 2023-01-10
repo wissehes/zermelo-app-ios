@@ -11,8 +11,17 @@ import Alamofire
 struct AppointmentActionView: View {
     var action: ZermeloLivescheduleAction
     @EnvironmentObject var authManager: AuthManager
+    @Environment(\.locale) var locale
     
     @State var isLoading = false
+    
+    var statuses: [String] {
+        if locale.identifier == "nl" {
+            return action.status.map { $0.nl }
+        } else {
+            return action.status.map { $0.en }
+        }
+    }
     
     var body: some View {
         HStack {
@@ -28,11 +37,11 @@ struct AppointmentActionView: View {
     var info: some View {
         VStack(alignment: .leading) {
             if let app = action.appointment {
-                Text("**\(app.subjects.joined())** - \(app.locations.joined()) - \(app.teachers.joined())")
+                Text("**\(app.subjects.joined(separator: ","))** - \(app.locations.joined(separator: ",")) - \(app.teachers.joined(separator: ","))")
             }
             
-            if !action.status.isEmpty {
-                Text(action.status.map { $0.nl }.joined())
+            ForEach(statuses, id: \.self) { status in
+                Text(status)
                     .foregroundColor(.secondary)
             }
         }
@@ -43,10 +52,10 @@ struct AppointmentActionView: View {
         if isLoading {
             ProgressView()
         } else if action.allowed {
-            Label("Toegestaan", systemImage: "circle")
+            Label("appointment.action.status.allowed", systemImage: "circle")
                 .labelStyle(.iconOnly)
         } else {
-            Label("Niet toegestaan", systemImage: "circle.slash")
+            Label("appointment.action.status.notAllowed", systemImage: "circle.slash")
                 .foregroundColor(.red)
                 .labelStyle(.iconOnly)
         }

@@ -21,6 +21,27 @@ final class HomeViewModel: ObservableObject {
     var todaySelected: Bool {
         return Calendar.current.isDateInToday(selectedDate)
     }
+    var tomorrowSelected: Bool {
+        return Calendar.current.isDateInTomorrow(selectedDate)
+    }
+    
+    var formatter: DateFormatter
+    
+    init() {
+        self.formatter = DateFormatter()
+        self.formatter.dateFormat = "EEEE d MMMM"
+    }
+    
+    var navTitle: LocalizedStringKey {
+        let formatted = formatter.string(from: self.selectedDate)
+        if self.todaySelected {
+            return "word.today.parentheses \(formatted)"
+        } else if self.tomorrowSelected {
+            return "word.tomorrow.parentheses \(formatted)"
+        } else {
+            return "\(formatted)"
+        }
+    }
     
     var me: ZermeloMeData?
     
@@ -49,36 +70,36 @@ final class HomeViewModel: ObservableObject {
         await self.load(me: me, animation: false)
     }
     
-//    func load(me: ZermeloMeData) {
-//        self.isLoading = true
-//        print("loading...")
-//
-//        API.getLiveSchedule(me: me) { result in
-//            self.isLoading = false
-//            switch result {
-//            case .success(let data):
-//
-//                for appointment in data {
-//                    self.days = []
-//                    let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-//
-//                    let foundRow = self.days.firstIndex { day in
-//                        Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
-//                    }
-//
-//                    if let foundRow = foundRow {
-//                        self.days[foundRow].appointments.append(appointment)
-//                    } else {
-//                        self.days.append(Day( date: date, appointments: [appointment] ))
-//                    }
-//                }
-//
-//                self.todayAppointments = data.filter {
-//                    Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
-//                }
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        }
-//    }
+    //    func load(me: ZermeloMeData) {
+    //        self.isLoading = true
+    //        print("loading...")
+    //
+    //        API.getLiveSchedule(me: me) { result in
+    //            self.isLoading = false
+    //            switch result {
+    //            case .success(let data):
+    //
+    //                for appointment in data {
+    //                    self.days = []
+    //                    let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+    //
+    //                    let foundRow = self.days.firstIndex { day in
+    //                        Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
+    //                    }
+    //
+    //                    if let foundRow = foundRow {
+    //                        self.days[foundRow].appointments.append(appointment)
+    //                    } else {
+    //                        self.days.append(Day( date: date, appointments: [appointment] ))
+    //                    }
+    //                }
+    //
+    //                self.todayAppointments = data.filter {
+    //                    Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
+    //                }
+    //            case .failure(let failure):
+    //                print(failure)
+    //            }
+    //        }
+    //    }
 }

@@ -29,27 +29,27 @@ struct AppointmentView: View {
                         
                         HStack {
                             
-                            Label("Ingeschreven", systemImage: "checkmark.square")
+                            Label("appointment.enrolled", systemImage: "checkmark.square")
                                 .foregroundColor(.green)
                                 .labelStyle(.iconOnly)
                             
                             VStack(alignment: .leading) {
                                 Text("**\(item.subjects.joined())** - \(item.locations.joined()) - \(item.teachers.joined())")
                                 
-                                Text("Ingeschreven")
+                                Text("appointment.enrolled")
                                     .foregroundColor(.secondary)
                             }
                         }
                     }
                     
                     if item.actions == nil {
-                        Text("Geen andere keuzes.")
+                        Text("appointment.noOtherChoices")
                             .foregroundColor(.secondary)
                     }
                     
                     if let actions = item.actions {
                         if actions.isEmpty {
-                            Text("Geen andere keuzes.")
+                            Text("appointment.noOtherChoices")
                                 .foregroundColor(.secondary)
                         }
                         
@@ -58,11 +58,11 @@ struct AppointmentView: View {
                         }
                     }
                 } header: {
-                    Text("Andere keuzes")
+                    Text("appointment.otherChoices")
                 } footer: {
-                    Text("Via deze app kan je (nog) geen andere keuzes invullen.")
+                    Text("appointment.cannotEnroll")
                 }
-            }.navigationTitle("Blokinformatie")
+            }.navigationTitle("appointment.appointment")
     }
     
     @ViewBuilder
@@ -82,14 +82,38 @@ struct AppointmentView: View {
     
     var infoSection: some View {
         Section("Info") {
-            itemDetailView([item.startTimeSlotName], icon: "clock", single: "Blok:", multiple: nil)
-            itemDetailView(item.subjects, icon: "graduationcap", single:"Vak:", multiple: "Vakken:")
-            itemDetailView(item.teachers, icon: "person", single: "Docent:", multiple: "Docenten:")
-            itemDetailView(item.locations, icon: "location", single: "Locatie:", multiple: "Locaties:")
-            itemDetailView(item.groups, icon: "person.3.sequence", single: "Groep:", multiple: "Groepen:")
+            itemDetailView([item.startTimeSlotName], icon: "clock", single: "appointment.period", multiple: nil)
+            
+            itemDetailView(
+                item.subjects,
+                icon: "graduationcap",
+                single:"appointment.subjects.single",
+                multiple: "appointment.subjects.multiple"
+            )
+            
+            itemDetailView(
+                item.teachers,
+                icon: "person",
+                single: "appointment.teacher.single",
+                multiple: "appointment.teacher.multiple"
+            )
+            
+            itemDetailView(
+                item.locations,
+                icon: "location",
+                single: "appointment.location.single",
+                multiple: "appointment.location.multiple"
+            )
+            
+            itemDetailView(
+                item.groups,
+                icon: "person.3.sequence",
+                single: "appointment.group.single",
+                multiple: "appointment.group.multiple"
+            )
             
             HStack {
-                Label("Datum", systemImage: "calendar")
+                Label("word.date", systemImage: "calendar")
                     .fontWeight(.bold)
                 Spacer()
                 
@@ -99,13 +123,13 @@ struct AppointmentView: View {
         }
     }
     
-    func itemDetailView(_ value: [String], icon: String, single: String, multiple: String?) -> some View {
+    func itemDetailView(_ value: [String], icon: String, single: LocalizedStringKey, multiple: LocalizedStringKey?) -> some View {
         HStack {
             Label(value.count == 1 ? single : multiple ?? single, systemImage: icon)
                 .fontWeight(.bold)
             Spacer()
             if value.isEmpty {
-                Text("Geen/niet beschikbaar")
+                Text("word.none")
                     .italic()
             } else {
                 Text(value.joined(separator: ", "))

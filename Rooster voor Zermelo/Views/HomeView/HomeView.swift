@@ -86,7 +86,7 @@ struct HomeView: View {
                 Section {
                     DayView(appointments: viewModel.todayAppointments)
                 } header: {
-                    Text("\(viewModel.selectedDate, style: .date) \(viewModel.todaySelected ? "word.today.parentheses" : "")")
+                    Text(viewModel.navTitle)
                 }.headerProminence(.increased)
             }
         }

@@ -60,10 +60,41 @@
 
 
 "about.privacy" = "Privacy";
-"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, er worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo."
+"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, er worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo.";
 
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "Deze app is niet gemaakt door `Zermelo Software BV`. \nDeze app is niet ook verwant aan `Zermelo` of `Zermelo Software BV`.";
+
+// MARK: Schedule
+"schedule.empty" = "Leeg";
+"schedule.cancelled" = "Uitval";
+"schedule.edited" = "Aangepast";
+
+// MARK: Appointment
+"appointment.enrolled" = "Ingeschreven";
+"appointment.noOtherChoices" = "Geen andere keuzes.";
+"appointment.otherChoices" = "Andere keuzes";
+"appointment.cannotEnroll" = "Via deze app kan je (nog) geen andere keuzes invullen.";
+"appointment.appointment" = "Blokinformatie";
+
+"appointment.period" = "Blok:";
+
+"appointment.subjects.single" = "Vak:";
+"appointment.subjects.multiple" = "Vakken:";
+
+"appointment.teacher.single" = "Docent:";
+"appointment.teacher.multiple" = "Docenten:";
+
+"appointment.location.single" = "Locatie:";
+"appointment.location.multiple" = "Locaties:";
+
+"appointment.group.single" = "Groep:";
+"appointment.group.multiple" = "Groepen:";
+
+// MARK: - Action
+
+"appointment.action.status.allowed" = "Toegestaan";
+"appointment.action.status.notAllowed" = "Niet toegestaan";
 
 // MARK: Words
 
@@ -71,6 +102,9 @@
 "word.next" = "Volgende";
 "word.ok" = "Oké";
 "word.today" = "Vandaag";
-"word.today.parentheses" = "(Vandaag)";
+"word.today.parentheses %@" = "Vandaag (%@)";
+"word.tomorrow.parentheses %@" = "Morgen (%@)";
 "word.date" = "Datum";
 "word.cancel" = "Annuleren";
+"word.empty" = "Leeg";
+"word.none" = "Geen/niet beschikbaar";

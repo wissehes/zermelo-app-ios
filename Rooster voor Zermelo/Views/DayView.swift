@@ -66,7 +66,7 @@ struct DayItemView: View {
                             Text(item.subjects.joined(separator: ", "))
                                 .font(.headline)
                         } else {
-                            Text("Leeg")
+                            Text("word.empty")
                                 .italic()
                                 .font(.headline)
                                 .foregroundColor(.secondary)
@@ -97,7 +97,7 @@ struct DayItemView: View {
                 Spacer()
                 
                 if !(item.changeDescription?.isEmpty ?? true) || item.cancelled {
-                    Label(item.cancelled ? "Uitval" : "Aangepast", systemImage: "exclamationmark.triangle.fill")
+                    Label(item.cancelled ? "schedule.cancelled" : "schedule.edited", systemImage: "exclamationmark.triangle.fill")
                         .labelStyle(.iconOnly)
                         .foregroundColor(item.cancelled ? .red : .yellow)
                 }
