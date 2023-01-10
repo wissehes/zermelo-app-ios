@@ -67,7 +67,9 @@ struct HomeView: View {
     
     @ViewBuilder
     var todayView: some View {
-        if viewModel.todayAppointments.isEmpty {
+        if viewModel.isLoading {
+            ProgressView().padding()
+        } else if viewModel.todayAppointments.isEmpty {
             VStack {
                 Image(systemName: "calendar.badge.exclamationmark")
                     .resizable()

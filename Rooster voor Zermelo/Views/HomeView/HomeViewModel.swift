@@ -24,19 +24,19 @@ final class HomeViewModel: ObservableObject {
     
     var me: ZermeloMeData?
     
-    func load(me: ZermeloMeData) async {
+    func load(me: ZermeloMeData, animation: Bool = true) async {
         self.me = me
-//        DispatchQueue.main.async {
-//            withAnimation {
-//                self.todayAppointments = []
-//            }
-//        }
-        
         do {
             let foundAppointments = try await API.getScheduleForDay(me: me, date: selectedDate)
             DispatchQueue.main.async {
-                withAnimation {
+                if animation {
+                    withAnimation {
+                        self.todayAppointments = foundAppointments
+                        self.isLoading = false
+                    }
+                } else {
                     self.todayAppointments = foundAppointments
+                    self.isLoading = false
                 }
             }
         } catch(let err) {
@@ -46,7 +46,7 @@ final class HomeViewModel: ObservableObject {
     
     func reload() async {
         guard let me = me else { return }
-        await self.load(me: me)
+        await self.load(me: me, animation: false)
     }
     
 //    func load(me: ZermeloMeData) {
