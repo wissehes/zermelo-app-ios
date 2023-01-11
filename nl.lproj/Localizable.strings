@@ -101,9 +101,12 @@
 "word.welcome" = "Welkom";
 "word.next" = "Volgende";
 "word.ok" = "Oké";
+
 "word.today" = "Vandaag";
 "word.today.parentheses %@" = "Vandaag (%@)";
 "word.tomorrow.parentheses %@" = "Morgen (%@)";
+"word.week" = "Week";
+
 "word.date" = "Datum";
 "word.cancel" = "Annuleren";
 "word.empty" = "Leeg";

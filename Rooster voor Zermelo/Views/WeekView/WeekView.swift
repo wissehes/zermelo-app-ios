@@ -31,9 +31,9 @@ struct WeekView: View {
                             DayView(appointments: day.appointments)
                         } header: {
                             if Calendar.current.isDateInToday(day.date) {
-                                Text("Vandaag (\(day.date, style: .date))")
+                                Text("word.today.parentheses \(day.date, style: .date)")
                             } else if Calendar.current.isDate(tomorrow, equalTo: day.date, toGranularity: .day) {
-                                Text("Morgen (\(day.date, style: .date)")
+                                Text("word.tomorrow.parentheses \(day.date, style: .date)")
                             } else {
                                 Text(formatDate(day.date))
                             }
@@ -41,13 +41,13 @@ struct WeekView: View {
                             .headerProminence(.increased)
                             .id(day.date.ISO8601Format())
                     }
-                }.navigationTitle("Week")
+                }.navigationTitle("word.week")
                     .toolbar {
                         ToolbarItem(placement: .primaryAction) {
-                            Button("Vandaag") { scrollToToday(proxy) }
+                            Button("word.today") { scrollToToday(proxy) }
                         }
                         ToolbarItem(placement:.bottomBar) {
-                            DatePicker("Week", selection: $viewModel.selectedDate, displayedComponents: .date)
+                            DatePicker("word.week", selection: $viewModel.selectedDate, displayedComponents: .date)
                         }
                     }
                     .listStyle(.sidebar)

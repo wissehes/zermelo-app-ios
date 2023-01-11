@@ -102,10 +102,13 @@
 "word.welcome" = "Welcome";
 "word.next" = "Next";
 "word.ok" = "OK";
+
 "word.today" = "Today";
 "word.today.parentheses %@" = "Today (%@)";
 "word.tomorrow.parentheses %@" = "Tomorrow (%@)";
 "word.date" = "Date";
+"word.week" = "Week";
+
 "word.cancel" = "Cancel";
 "word.empty" = "Empty";
 "word.none" = "None/not available";
