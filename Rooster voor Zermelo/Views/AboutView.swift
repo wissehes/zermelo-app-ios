@@ -18,7 +18,7 @@ struct AboutView: View {
                 Text("about.madeBy")
                 
                 Link(destination: URL(string: "https://github.com/wissehes/zermelo-app-ios")!) {
-                    Label("about.madeBy", systemImage: "chevron.left.forwardslash.chevron.right")
+                    Label("about.github", systemImage: "chevron.left.forwardslash.chevron.right")
                 }
                 Link(destination: URL(string: "https://wissehes.nl/nl/projects/zermelo-app/")!) {
                     Label("about.website", systemImage: "globe")
