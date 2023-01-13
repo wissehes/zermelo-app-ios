@@ -10,10 +10,9 @@ import Alamofire
 import SwiftUI
 
 final class HomeViewModel: ObservableObject {
-    @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []
+//    @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []
+    @Published var weekAppointments: [ZermeloLivescheduleAppointment] = []
     @Published var isLoading = true
-    
-    @Published var days: [Day] = []
     
     @Published var selectedAppointment: ZermeloLivescheduleAppointment?
     
@@ -23,6 +22,12 @@ final class HomeViewModel: ObservableObject {
     }
     var tomorrowSelected: Bool {
         return Calendar.current.isDateInTomorrow(selectedDate)
+    }
+    var todayAppointments: [ZermeloLivescheduleAppointment] {
+        return weekAppointments.filter { appointment in
+            let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+            return Calendar.current.isDate(date, equalTo: selectedDate, toGranularity: .day)
+        }
     }
     
     var formatter: DateFormatter
@@ -47,16 +52,18 @@ final class HomeViewModel: ObservableObject {
     
     func load(me: ZermeloMeData, animation: Bool = true) async {
         self.me = me
+        let week = API.getWeek(selectedDate)
         do {
-            let foundAppointments = try await API.getScheduleForDay(me: me, date: selectedDate)
+            let foundAppointments = try await API.getLiveScheduleAsync(me: me, week: week)
+            
             DispatchQueue.main.async {
                 if animation {
                     withAnimation {
-                        self.todayAppointments = foundAppointments
+                        self.weekAppointments = foundAppointments
                         self.isLoading = false
                     }
                 } else {
-                    self.todayAppointments = foundAppointments
+                    self.weekAppointments = foundAppointments
                     self.isLoading = false
                 }
             }
@@ -68,6 +75,18 @@ final class HomeViewModel: ObservableObject {
     func reload() async {
         guard let me = me else { return }
         await self.load(me: me, animation: false)
+    }
+    
+    func dateChanged(_ newVal: Date) async {
+        let filtered = weekAppointments.filter { appointment in
+            let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+            return Calendar.current.isDate(date, equalTo: newVal, toGranularity: .day)
+        }
+        
+        if filtered.isEmpty {
+            guard let me = me else { return }
+            await self.load(me: me, animation: true)
+        }
     }
     
     //    func load(me: ZermeloMeData) {
