@@ -53,14 +53,14 @@ struct WeekView: View {
                     .listStyle(.sidebar)
                     .refreshable {
                         guard let me = authManager.me else { return }
-                        await viewModel.load(me: me, proxy: proxy, date: nil)
+                        await viewModel.load(me: me, date: nil)
                     }.task {
                         guard let me = authManager.me else { return }
-                        await viewModel.load(me: me, proxy: proxy, date: nil)
+                        await viewModel.load(me: me, date: nil)
                     }.onChange(of: viewModel.selectedDate, perform: { newValue in
                         Task {
                             guard let me = authManager.me else { return }
-                            await viewModel.load(me: me, proxy: proxy, date: newValue)
+                            await viewModel.load(me: me, date: newValue)
                         }
                     }).navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                         AppointmentView(item: appointment)

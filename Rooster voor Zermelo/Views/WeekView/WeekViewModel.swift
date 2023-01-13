@@ -19,6 +19,12 @@ struct Day: Hashable {
     
     let date: Date
     var appointments: [ZermeloLivescheduleAppointment]
+    
+    var shortDay: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EE"
+        return formatter.string(from: date)
+    }
 }
 
 final class WeekViewModel: ObservableObject {
@@ -29,7 +35,7 @@ final class WeekViewModel: ObservableObject {
     
     @Published var selectedDate = Date()
     
-    func load(me: ZermeloMeData, proxy: ScrollViewProxy, date: Date?) async {
+    func load(me: ZermeloMeData, date: Date?) async {
         let week = API.getWeek(date ?? selectedDate)
         
         do {
