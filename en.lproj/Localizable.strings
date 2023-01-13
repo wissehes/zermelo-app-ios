@@ -61,7 +61,7 @@
 
 
 "about.privacy" = "Privacy";
-"about.privacy.text" = "This app does not share any data with third parties. Data is only transferred between your device and Zermelo's servers.";
+"about.privacy.text" = "This app does not share any of your Zermelo data with third parties. It is only transferred between your device and Zermelo's servers.\nThis app does use *Firebase Analytics* and *Crashlytics* to ensure bugs and other errors can be fixed quickly. [Google’s privacy policy](https://firebase.google.com/support/privacy)";
 
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "This app is not made, affiliated, or endorsed by `Zermelo Software BV.`";
