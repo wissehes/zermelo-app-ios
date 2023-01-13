@@ -17,9 +17,7 @@ struct ReverseLabelStyle: LabelStyle {
     }
 }
 
-struct HomeView: View {    
-    // Only use `didSet` on `me` because it is the last
-    // thing set, after the token.
+struct HomeView: View {
     
     @EnvironmentObject var authManager: AuthManager
     
@@ -52,43 +50,64 @@ struct HomeView: View {
                 }
                 .navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                     AppointmentView(item: appointment)
+                }.task {
+                    guard let me = authManager.me else { return }
+                    await viewModel.load(me: me)
+                }.refreshable {
+                    await viewModel.reload()
+                }.onChange(of: viewModel.selectedDate) { newValue in
+                    Task {
+                        await viewModel.dateChanged(newValue)
+                    }
                 }
-        }.task {
-            guard let me = authManager.me else { return }
-            await viewModel.load(me: me)
-        }.refreshable {
-            await viewModel.reload()
-        }.onChange(of: viewModel.selectedDate) { newValue in
-            Task {
-                await viewModel.reload()
-            }
         }
     }
     
     @ViewBuilder
     var todayView: some View {
         if viewModel.isLoading {
-            ProgressView().padding()
-        } else if viewModel.todayAppointments.isEmpty {
-            VStack {
+            //        if true {
+            ProgressView()
+                .padding()
+        } else {
+            GeometryReader { geo in
+                List {
+                    Section {
+                        if viewModel.todayAppointments.isEmpty {
+                            
+                            noAppointmentsFound
+                                .listRowInsets(.none)
+                                .listRowBackground(Color.clear)
+                                .frame(height: geo.size.height / 1.5)
+                        } else {
+                            DayView(appointments: viewModel.todayAppointments)
+                        }
+                    } header: {
+                        Text(viewModel.navTitle)
+                    }.headerProminence(.increased)
+                }
+            }
+        }
+    }
+    
+    var noAppointmentsFound: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            
+            VStack(alignment: .center) {
                 Image(systemName: "calendar.badge.exclamationmark")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 75, height: 75)
+                    .frame(width: 75, height: 75, alignment: .center)
                     .foregroundColor(.secondary)
                 
                 Text("home.noAppointmentsFound")
                     .font(.title)
                     .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
             }
-        } else {
-            List {
-                Section {
-                    DayView(appointments: viewModel.todayAppointments)
-                } header: {
-                    Text(viewModel.navTitle)
-                }.headerProminence(.increased)
-            }
+            
+            Spacer()
         }
     }
 }
