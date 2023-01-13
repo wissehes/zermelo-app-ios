@@ -25,6 +25,9 @@
 		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
 		89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */; };
+		89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */; };
+		89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */; };
 		89ED829928C5307F00306872 /* TokenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829828C5307F00306872 /* TokenSaver.swift */; };
 		89ED829B28C530C000306872 /* SavedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829A28C530C000306872 /* SavedToken.swift */; };
 		89ED829F28C534A200306872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829E28C534A200306872 /* HomeView.swift */; };
@@ -59,6 +62,7 @@
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
 		89C1B60E2971523200D0BB98 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
 		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
 		89ED829E28C534A200306872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */,
+				89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */,
+				89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				898C925728C3D76000100AD6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +111,7 @@
 		892632DC28C3A94400B9C624 /* Rooster voor Zermelo */ = {
 			isa = PBXGroup;
 			children = (
+				89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */,
 				8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */,
 				89ED829728C5307200306872 /* Helpers */,
 				898C925228C3D65100100AD6 /* Types */,
@@ -226,6 +233,8 @@
 			packageProductDependencies = (
 				8965E2D428C3D06D001D9B8E /* CodeScanner */,
 				898C925628C3D76000100AD6 /* Alamofire */,
+				89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */,
 			);
 			productName = "Rooster voor Zermelo";
 			productReference = 892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */;
@@ -259,6 +268,7 @@
 			packageReferences = (
 				8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 892632DB28C3A94400B9C624 /* Products */;
 			projectDirPath = "";
@@ -275,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */,
+				89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */,
 				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
 			);
@@ -547,6 +558,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -559,6 +578,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
