@@ -6,7 +6,7 @@ Deze update bevat onder andere een oplossing voor het probleem waarbij er geen a
 
 ### 1.2 Build #4
 
-Deze update bevat verbeteringen aan de gebruikerservaring en een Engelse vertaling.
+Deze update bevat verbeteringen aan de gebruikerservaring, het uiterlijk en een Engelse vertaling.
 
 * Engelse vertaling en localisation
 * Bug opgelost waarbij de datumkiezer steeds verdwijnt wanneer je een andere week kiest.
