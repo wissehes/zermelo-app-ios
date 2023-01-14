@@ -38,28 +38,55 @@ class AuthManager: ObservableObject {
         let codeFormatted = code.trimmingCharacters(in: .whitespaces)
         let schoolFormatted = school.trimmingCharacters(in: .whitespaces).lowercased()
         
-        let params: Parameters = [
-            "grant_type": "authorization_code",
-            "code": codeFormatted
-        ]
-        
-        AF.request("https://\(schoolFormatted).zportal.nl/api/v3/oauth/token", method: .post, parameters: params)
-            .validate()
-            .responseDecodable(of: ZermeloTokenRequest.self) { response in
-                switch response.result {
-                case .failure(let err):
-                    print("AF Error")
-                    print(err)
-                    completion(err)
-                case .success(let tokenInfo):
-                    let tokenData = SavedToken.init(institution: school, tokenInfo: tokenInfo)
-                    TokenSaver.save(tokendata: tokenData)
-                    
-                    completion(nil)
-                    self.token = tokenData
-                    self.load(tokenData)
+        if school == "demo" {
+            let params: Parameters = [
+                "password": codeFormatted
+            ]
+            AF.request("\(API.DEMO_BASEURL)/api/token", method: .post, parameters: params)
+                .validate()
+                .responseDecodable(of: DemoTokenResponse.self) {response in
+                    switch response.result {
+                    case .failure(let err):
+                        print("AF Error")
+                        print(err)
+                        completion(err)
+                    case .success(let demoToken):
+                        let tokenData = SavedToken.init(
+                            portal: demoToken.portal,
+                            access_token: demoToken.token,
+                            token_type: "Bearer",
+                            expires: nil
+                        )
+                        TokenSaver.save(tokendata: tokenData)
+                        
+                        completion(nil)
+                        self.token = tokenData
+                        self.load(tokenData)
+                    }
                 }
-            }
+        } else {
+            let params: Parameters = [
+                "grant_type": "authorization_code",
+                "code": codeFormatted
+            ]
+            AF.request("https://\(schoolFormatted).zportal.nl/api/v3/oauth/token", method: .post, parameters: params)
+                .validate()
+                .responseDecodable(of: ZermeloTokenRequest.self) { response in
+                    switch response.result {
+                    case .failure(let err):
+                        print("AF Error")
+                        print(err)
+                        completion(err)
+                    case .success(let tokenInfo):
+                        let tokenData = SavedToken.init(institution: school, tokenInfo: tokenInfo)
+                        TokenSaver.save(tokendata: tokenData)
+                        
+                        completion(nil)
+                        self.token = tokenData
+                        self.load(tokenData)
+                    }
+                }
+        }
     }
     
     private func checkSavedToken() {

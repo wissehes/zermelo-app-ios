@@ -10,6 +10,8 @@ import Alamofire
 
 final class API {
     
+    static let DEMO_BASEURL = "http://localhost:3000";
+    
     static func getWeek(_ date: Date?) -> String {
         
         let components = Calendar.current.dateComponents([.year, .weekOfYear], from: date ?? Date())
@@ -80,4 +82,5 @@ final class API {
         
         return filtered
     }
+
 }

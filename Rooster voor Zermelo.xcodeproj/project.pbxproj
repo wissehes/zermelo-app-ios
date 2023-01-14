@@ -24,6 +24,7 @@
 		898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925328C3D65F00100AD6 /* ZermeloQRData.swift */; };
 		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
+		89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */; };
 		89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */; };
 		89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */; };
 		89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -60,6 +61,7 @@
 		8986658428DB8DD000D7A98C /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setup.png; sourceTree = "<group>"; };
 		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
+		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
 		89C1B60E2971523200D0BB98 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				89ED82A228C53D1800306872 /* ZermeloHTTP */,
 				898C925328C3D65F00100AD6 /* ZermeloQRData.swift */,
 				89ED829A28C530C000306872 /* SavedToken.swift */,
+				89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				89F7051D28C6826700AFF2DF /* HomeViewModel.swift in Sources */,
 				8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */,
 				89ED829928C5307F00306872 /* TokenSaver.swift in Sources */,
+				89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */,
 				89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */,
 				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,
 				898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */,
