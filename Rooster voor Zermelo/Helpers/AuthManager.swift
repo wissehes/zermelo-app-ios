@@ -38,7 +38,7 @@ class AuthManager: ObservableObject {
         let codeFormatted = code.trimmingCharacters(in: .whitespaces)
         let schoolFormatted = school.trimmingCharacters(in: .whitespaces).lowercased()
         
-        if school == "demo" {
+        if school.lowercased() == "demo" {
             let params: Parameters = [
                 "password": codeFormatted
             ]

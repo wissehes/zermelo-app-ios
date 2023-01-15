@@ -10,7 +10,7 @@ import Alamofire
 
 final class API {
     
-    static let DEMO_BASEURL = "http://localhost:3000";
+    static let DEMO_BASEURL = "https://demo.wissehes.nl";
     
     static func getWeek(_ date: Date?) -> String {
         
