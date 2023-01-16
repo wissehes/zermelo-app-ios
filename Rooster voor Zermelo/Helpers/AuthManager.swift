@@ -35,7 +35,7 @@ class AuthManager: ObservableObject {
     
     func handleLogin(_ school: String, code: String, completion: @escaping (AFError?) -> Void) {
         
-        let codeFormatted = code.trimmingCharacters(in: .whitespaces)
+        let codeFormatted = code.replacingOccurrences(of: " ", with: "")
         let schoolFormatted = school.trimmingCharacters(in: .whitespaces).lowercased()
         
         if school.lowercased() == "demo" {
