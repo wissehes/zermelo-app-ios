@@ -29,11 +29,13 @@ struct HomeView: View {
                 .navigationTitle("home.home")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            AboutView()
+                        Menu {
+                            aboutThisApp
+                            settings
                         } label: {
-                            Label("about.about", systemImage: "info.circle")
+                            Label("Menu", systemImage: "gear")
                         }
+
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
@@ -108,6 +110,21 @@ struct HomeView: View {
             }
             
             Spacer()
+        }
+    }
+    
+    var aboutThisApp: some View {
+        NavigationLink {
+            AboutView()
+        } label: {
+            Label("about.about", systemImage: "info.circle")
+        }
+    }
+    var settings: some View {
+        NavigationLink {
+            SettingsView()
+        } label: {
+            Label("settings.settings", systemImage: "gear")
         }
     }
 }

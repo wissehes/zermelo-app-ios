@@ -56,6 +56,10 @@ final class HomeViewModel: ObservableObject {
         do {
             let foundAppointments = try await API.getLiveScheduleAsync(me: me, week: week)
             
+            if animation {
+                await NotificationsManager.scheduleNotifications(foundAppointments)
+            }
+            
             DispatchQueue.main.async {
                 if animation {
                     withAnimation {
