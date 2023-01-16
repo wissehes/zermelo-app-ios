@@ -216,6 +216,8 @@ struct ManualCodeScreen: View {
     @State private var school = ""
     @State private var code = ""
     
+    @FocusState private var focusCode: Bool
+    
     @State private var isLoading = false
     @State private var loginErrorAlert = false
             
@@ -230,6 +232,8 @@ struct ManualCodeScreen: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.trailing)
+                    .submitLabel(.next)
+                    .onSubmit { focusCode = true }
                 Text(".zportal.nl")
                     .font(.subheadline)
             }
@@ -241,6 +245,8 @@ struct ManualCodeScreen: View {
                 TextField("welcome.manual.code", text: $code)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
+//                    .submitLabel(.)
+                    .focused($focusCode)
             }
             
             HStack {
