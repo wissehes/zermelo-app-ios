@@ -12,6 +12,9 @@ struct AboutView: View {
     
     @State var confirmationShowing = false
     
+    var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    var build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String ?? ""
+    
     var body: some View {
         List {
             Section("RoosterApp Voor Zermelo") {
@@ -41,6 +44,11 @@ struct AboutView: View {
             
             Section("about.disclaimer") {
                 Text("about.disclaimer.text")
+            }
+            
+            Section("Versie") {
+                Text("about.version \(version) \(build)")
+                    .font(.subheadline)
             }
         }.navigationTitle("about.about")
             .confirmationDialog("about.logout.confirm.title", isPresented: $confirmationShowing) {

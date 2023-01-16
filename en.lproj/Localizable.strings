@@ -65,6 +65,8 @@
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "This app is not made, affiliated, or endorsed by `Zermelo Software BV.`";
 
+"about.version %@ %@" = "Version **%@**, build: **#%@**";
+
 // MARK: Settings
 "settings.settings" = "Settings";
 
