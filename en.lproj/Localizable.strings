@@ -6,7 +6,6 @@
   
   English strings
 */
-
 // MARK: Welcome screen
 
 // MARK: - First screen
@@ -66,6 +65,28 @@
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "This app is not made, affiliated, or endorsed by `Zermelo Software BV.`";
 
+// MARK: Settings
+"settings.settings" = "Settings";
+
+"settings.users" = "Users";
+"settings.users.add" = "Add user";
+"settings.users.logout" = "Log out this user";
+
+"settings.openSettings" = "Open settings";
+
+"settings.language" = "Language";
+"settings.language.change" = "Change the language in Settings.";
+
+"settings.notifications" = "Notifications";
+
+"settings.notifications.status.loading" = "Loading...";
+"settings.notifications.status.permissionDenied" = "Permission denied.";
+"settings.notifications.status.permissionGranten" = "Permission granted.";
+
+// MARK: Notifications
+"notification.title %@" = "In 5 minutes: %@";
+"notification.body %@ %@ %@ %@" = "At %@: %@ in location: %@.\nTeachers: %@";
+
 // MARK: Schedule
 "schedule.empty" = "Empty";
 "schedule.cancelled" = "Cancelled";
@@ -113,4 +134,4 @@
 "word.empty" = "Empty";
 "word.none" = "None/not available";
 
-
+"word.error" = "Error";

@@ -65,6 +65,28 @@
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "Deze app is niet gemaakt door `Zermelo Software BV`. \nDeze app is niet ook verwant aan `Zermelo` of `Zermelo Software BV`.";
 
+// MARK: Settings
+"settings.settings" = "Instellingen";
+
+"settings.users" = "Gebruikers";
+"settings.users.add" = "Gebruiker toevoegen";
+"settings.users.logout" = "Deze gebruiker uitloggen";
+
+"settings.openSettings" = "Instellingen openen";
+
+"settings.language" = "Taal";
+"settings.language.change" = "Verander de taal in Instellingen.";
+
+"settings.notifications" = "Meldingen";
+
+"settings.notifications.status.loading" = "Laden...";
+"settings.notifications.status.permissionDenied" = "Toestemming geweigerd.";
+"settings.notifications.status.permissionGranten" = "Toestemming gekregen.";
+
+// MARK: Notifications
+"notification.title %@" = "Over 5 minuten: %@";
+"notification.body %@ %@ %@ %@" = "Om %@: %@ op locatie: %@.\nDocenten: %@";
+
 // MARK: Schedule
 "schedule.empty" = "Leeg";
 "schedule.cancelled" = "Uitval";
