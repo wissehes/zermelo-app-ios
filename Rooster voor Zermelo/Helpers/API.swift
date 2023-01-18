@@ -23,18 +23,18 @@ final class API {
         }
     }
     
-    static func getLiveSchedule(me: ZermeloMeData, completion: @escaping (Result<[ZermeloLivescheduleAppointment], AFError>) -> Void) {
-        guard let token = TokenSaver.get() else { return completion(.success([])) }
+    static func getLiveSchedule(completion: @escaping (Result<[ZermeloLivescheduleAppointment], AFError>) -> Void) {
+        guard let user = UserManager.getCurrent() else { return completion(.success([])) }
         
         let params: Parameters = [
-            "student": me.code,
+            "student": user.me.code,
             "week": getWeek(nil)
         ]
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(token.access_token)"
+            "Authorization": "Bearer \(user.token.access_token)"
         ]
         
-        AF.request("https://\(token.portal).zportal.nl/api/v3/liveschedule", parameters: params, headers: headers)
+        AF.request("https://\(user.token.portal).zportal.nl/api/v3/liveschedule", parameters: params, headers: headers)
             .validate()
             .responseDecodable(of: GetZermeloLiveschedule.self) { response in
                 switch response.result {
@@ -49,16 +49,16 @@ final class API {
     }
     
     static func getLiveScheduleAsync(me: ZermeloMeData, week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
-        guard let token = TokenSaver.get() else { fatalError("No token") }
+        guard let user = UserManager.getCurrent() else { fatalError("No token") }
         
-        guard var url = URLComponents(string: "https://\(token.portal).zportal.nl/api/v3/liveschedule") else { fatalError("url error") }
+        guard var url = URLComponents(string: "https://\(user.token.portal).zportal.nl/api/v3/liveschedule") else { fatalError("url error") }
         url.queryItems = [
             URLQueryItem(name: "student", value: me.code),
             URLQueryItem(name: "week", value: week)
         ]
         
         var urlRequest = URLRequest(url: url.url!)
-        urlRequest.addValue("Bearer \(token.access_token)", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer \(user.token.access_token)", forHTTPHeaderField: "Authorization")
         
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         
@@ -82,5 +82,31 @@ final class API {
         
         return filtered
     }
+    
+    static func fetchMe(token: SavedToken, completion: @escaping (Result<ZermeloMeData, FetchError>) -> ()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "\(token.token_type) \(token.access_token)"
+        ]
+        
+        AF.request("https://\(token.portal).zportal.nl/api/v3/users/~me", headers: headers)
+            .validate()
+            .responseDecodable(of: GetZermeloMe.self) { response in
+                switch response.result {
+                case .success(let data):
+                    guard let me = data.response.data.first else {
+                        completion(.failure(.noData))
+                        return
+                    }
+                    completion(.success(me))
+                case .failure(let err):
+                    completion(.failure(.AFError(error: err)))
+                }
+            }
+    }
 
+}
+
+enum FetchError: Error {
+    case noData
+    case AFError(error: AFError)
 }
