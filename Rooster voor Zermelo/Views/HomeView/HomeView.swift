@@ -53,8 +53,7 @@ struct HomeView: View {
                 .navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                     AppointmentView(item: appointment)
                 }.task {
-                    guard let me = authManager.me else { return }
-                    await viewModel.load(me: me)
+                    await viewModel.load()
                 }.refreshable {
                     await viewModel.reload()
                 }.onChange(of: viewModel.selectedDate) { newValue in

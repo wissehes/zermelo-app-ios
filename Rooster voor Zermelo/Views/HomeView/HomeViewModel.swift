@@ -47,14 +47,11 @@ final class HomeViewModel: ObservableObject {
             return "\(formatted)"
         }
     }
-    
-    var me: ZermeloMeData?
-    
-    func load(me: ZermeloMeData, animation: Bool = true) async {
-        self.me = me
+        
+    func load(animation: Bool = true) async {
         let week = API.getWeek(selectedDate)
         do {
-            let foundAppointments = try await API.getLiveScheduleAsync(me: me, week: week)
+            let foundAppointments = try await API.getLiveScheduleAsync(week: week)
             
             if animation {
                 await NotificationsManager.scheduleNotifications(foundAppointments)
@@ -77,8 +74,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func reload() async {
-        guard let me = me else { return }
-        await self.load(me: me, animation: false)
+        await self.load(animation: false)
     }
     
     func dateChanged(_ newVal: Date) async {
@@ -88,8 +84,7 @@ final class HomeViewModel: ObservableObject {
         }
         
         if filtered.isEmpty {
-            guard let me = me else { return }
-            await self.load(me: me, animation: true)
+            await self.load(animation: true)
         }
     }
     

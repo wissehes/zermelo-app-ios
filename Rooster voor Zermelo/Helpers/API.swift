@@ -48,12 +48,12 @@ final class API {
             }
     }
     
-    static func getLiveScheduleAsync(me: ZermeloMeData, week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
+    static func getLiveScheduleAsync(week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
         guard let user = UserManager.getCurrent() else { fatalError("No token") }
         
         guard var url = URLComponents(string: "https://\(user.token.portal).zportal.nl/api/v3/liveschedule") else { fatalError("url error") }
         url.queryItems = [
-            URLQueryItem(name: "student", value: me.code),
+            URLQueryItem(name: "student", value: user.me.code),
             URLQueryItem(name: "week", value: week)
         ]
         
@@ -68,8 +68,8 @@ final class API {
         } else { return [] }
     }
     
-    static func getScheduleForDay(me: ZermeloMeData, date: Date) async throws -> [ZermeloLivescheduleAppointment] {
-        let weekAppointments = try await self.getLiveScheduleAsync(me: me, week: getWeek(date))
+    static func getScheduleForDay(date: Date) async throws -> [ZermeloLivescheduleAppointment] {
+        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
         
         if weekAppointments.isEmpty {
             return []
@@ -85,7 +85,7 @@ final class API {
     
     static func fetchMe(token: SavedToken, completion: @escaping (Result<ZermeloMeData, FetchError>) -> ()) {
         let headers: HTTPHeaders = [
-            "Authorization": "\(token.token_type) \(token.access_token)"
+            "Authorization": "Bearer \(token.access_token)"
         ]
         
         AF.request("https://\(token.portal).zportal.nl/api/v3/users/~me", headers: headers)
