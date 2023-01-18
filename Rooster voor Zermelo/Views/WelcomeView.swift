@@ -278,7 +278,7 @@ struct ManualCodeScreen: View {
     func login() {
         isLoading = true
 
-        authManager.handleLogin(school, code: code) { error in
+        authManager.handleLogin(school: school, code: code) { error in
             self.isLoading = false
             if error != nil {
                 self.loginErrorAlert = true
