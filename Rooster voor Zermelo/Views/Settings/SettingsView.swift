@@ -28,19 +28,33 @@ struct SettingsView: View {
     
     @AppStorage("showNotifications") var showNotifications: Bool = false
     
+    @StateObject var viewModel = SettingsViewModel()
+    
     @State var notifError: Error? = nil
     @State var notifErrorShown: Bool = false
     @State var permissionState: UNAuthorizationStatus = .notDetermined
     
+    @State var logoutConfirmationShowing: Bool = false
+    @State var addUserShowing: Bool = false
+    
     var body: some View {
         List {
             Section("settings.users") {
-                Button {} label: {
+                
+                ForEach(viewModel.users, id: \.me.code) { user in
+                    UserListItem(user: user)
+                }
+                
+                Button {
+                    self.addUserShowing = true
+                } label: {
                     Label("settings.users.add", systemImage: "person.crop.circle.badge.plus")
                         .symbolRenderingMode(.multicolor)
                 }
                 
-                Button(role: .destructive) { } label: {
+                Button(role: .destructive) {
+                    self.logoutConfirmationShowing = true
+                } label: {
                     Label("settings.users.logout", systemImage: "person.crop.circle.badge.xmark")
                         .symbolRenderingMode(.multicolor)
                 }
@@ -74,6 +88,13 @@ struct SettingsView: View {
                 checkNotificationPermissions()
             }.onChange(of: showNotifications) { _ in
                 onChangeNotifications()
+            }.confirmationDialog("about.logout.confirm.title", isPresented: $logoutConfirmationShowing) {
+                Button("about.logout.confirm.confirm", role: .destructive) { authManager.signOut() }
+                Button("word.cancel", role: .cancel) {}
+            } message: {
+                Text("about.logout.confirm.subtitle")
+            }.sheet(isPresented: $addUserShowing) {
+                WelcomeView()
             }
         
     }
