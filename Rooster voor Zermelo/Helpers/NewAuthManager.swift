@@ -92,6 +92,7 @@ final class AuthManager: ObservableObject {
             // if there's a user saved, test their token
             testToken(user)
         } else if let token = UserManager.getOld() {
+            self.isLoggedIn = true
             getMeData(token: token)
         } else {
             // else, show the welcome screen
@@ -105,6 +106,7 @@ final class AuthManager: ObservableObject {
      Test a user's token and update their saved data.
      */
     func testToken(_ user: User) {
+        self.isLoggedIn = true
         API.fetchMe(token: user.token) { result in
             switch result {
             case .success(let data):
