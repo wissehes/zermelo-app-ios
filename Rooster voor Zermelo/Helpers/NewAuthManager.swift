@@ -19,6 +19,10 @@ final class AuthManager: ObservableObject {
         checkSavedUser()
     }
     
+    func handleWelcomeScreenClosed(_ savedToken: SavedToken){
+        getMeData(token: savedToken)
+    }
+    
     func handleLogin(school: String, code: String, completion: @escaping(AFError?) -> ()) {
         let codeFormatted = code.replacingOccurrences(of: " ", with: "")
         let schoolFormatted = school.trimmingCharacters(in: .whitespaces).lowercased()
