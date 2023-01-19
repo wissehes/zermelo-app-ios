@@ -9,8 +9,7 @@ import SwiftUI
 
 struct UserListItem: View {
     
-    var user: User
-    
+    var user: User    
     var initials: String {
         return String(user.me.firstName.prefix(1) + user.me.lastName.prefix(1))
     }
@@ -52,7 +51,11 @@ struct UserListItem_Previews: PreviewProvider {
                 Label("settings.users.logout", systemImage: "person.crop.circle.badge.xmark")
                     .symbolRenderingMode(.multicolor)
             }
-            UserListItem(user: User.example)
+            Button {
+                
+            } label: {
+                UserListItem(user: User.example)
+            }
         }
     }
 }

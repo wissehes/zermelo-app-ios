@@ -39,10 +39,22 @@ struct SettingsView: View {
     
     var body: some View {
         List {
+            
+            Section("Huidig account") {
+                if let user = viewModel.user {
+                    UserListItem(user: user)
+                }
+            }.onAppear {
+                viewModel.load()
+            }
+            
             Section("settings.users") {
                 
-                ForEach(viewModel.users, id: \.me.code) { user in
-                    UserListItem(user: user)
+                NavigationLink {
+                    Userlist()
+                } label: {
+                    Label("Account wisselen", systemImage: "person.3.fill")
+                        .symbolRenderingMode(.multicolor)
                 }
                 
                 Button {
@@ -94,7 +106,7 @@ struct SettingsView: View {
             } message: {
                 Text("about.logout.confirm.subtitle")
             }.sheet(isPresented: $addUserShowing) {
-                WelcomeView()
+                AddUserView()
             }
         
     }

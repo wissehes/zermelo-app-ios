@@ -2,15 +2,19 @@
 //  SettingsViewModel.swift
 //  Rooster voor Zermelo
 //
-//  Created by Wisse Hes on 17/01/2023.
+//  Created by Wisse Hes on 19/01/2023.
 //
 
 import Foundation
 
 final class SettingsViewModel: ObservableObject {
-    @Published var users: [User] = [];
+    @Published var user: User?
     
     init() {
-        self.users = UserManager.getAll()
+        load()
+    }
+    
+    func load() {
+        self.user = UserManager.getCurrent()
     }
 }
