@@ -22,7 +22,7 @@ final class UserManager {
         let users = self.getAll()
 
         if let currentUser = UserDefaults.standard.string(forKey: self.currentUserKey) {
-            guard let user = users.first(where: { $0.me.code == currentUser }) else {
+            guard let user = users.first(where: { $0.id == currentUser }) else {
                 return users.first
             }
             return user
@@ -46,7 +46,7 @@ final class UserManager {
     static func save(user: User, currentUser: Bool) {
         var users = getAll()
         
-        if let index = users.firstIndex(where: { $0.me.code == user.me.code }) {
+        if let index = users.firstIndex(where: { $0.id == user.id }) {
             users[index] = user
         } else {
             users.append(user)
@@ -74,5 +74,9 @@ final class UserManager {
         let users = getAll()
         let filtered = users.filter { $0.me.code != userCode }
         save(users: filtered)
+    }
+    
+    static func setCurrent(id: String) {
+        UserDefaults.standard.set(id, forKey: self.currentUserKey)
     }
 }
