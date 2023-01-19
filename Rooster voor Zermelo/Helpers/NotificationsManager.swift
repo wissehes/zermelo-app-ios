@@ -90,11 +90,8 @@ final class NotificationsManager {
         
         // Create the content
         let content = UNMutableNotificationContent()
-//        content.title = "Over 5 minuten: \(subjects)"
-        content.title = "notification.title \(subjects)";
-//        content.subtitle = "\(subjects) op locatie: \(location)"
-//        content.body = "Om \(formattedDate): \(subjects) op locatie: \(location).\nDocenten: \(teachers)"
-        content.body = "notification.body \(formattedDate) \(subjects) \(location) \(teachers)"
+        content.title = String(localized: "notification.title \(subjects)");
+        content.body = String(localized: "notification.body \(formattedDate) \(subjects) \(location) \(teachers)")
         content.sound = UNNotificationSound.default
         
         // Create dateComponents from the date minus 5 minutes.
