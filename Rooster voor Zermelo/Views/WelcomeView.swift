@@ -158,7 +158,8 @@ struct FourthWelcomeScreen: View {
             NavigationLink(value: WelcomeScreen.manualCode) {
                 Label("welcome.fourth.enterCode", systemImage: "keyboard")
 
-            }.padding()
+            }.buttonStyle(.bordered)
+                .padding()
             
         }.navigationTitle("welcome.fourth.step")
             .sheet(isPresented: $isShowingScanner) {
@@ -210,6 +211,9 @@ struct FourthWelcomeScreen: View {
 }
 
 struct ManualCodeScreen: View {
+    
+    var addUser: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var authManager: AuthManager
 
@@ -278,8 +282,11 @@ struct ManualCodeScreen: View {
     func login() {
         isLoading = true
 
-        authManager.handleLogin(school: school, code: code) { error in
+        authManager.handleLogin(school: school, code: code, addUser: addUser) { error in
             self.isLoading = false
+            if addUser {
+                dismiss()
+            }
             if error != nil {
                 self.loginErrorAlert = true
             }
