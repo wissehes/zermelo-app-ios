@@ -85,6 +85,9 @@
 "settings.notifications.status.permissionDenied" = "Permission denied.";
 "settings.notifications.status.permissionGranten" = "Permission granted.";
 
+// MARK: - Add user
+"adduser.step1.title" = "Ga op een computer naar jouw Zermelo Portal en log in met het account dat je hier wilt toevoegen. Klik dan op \"Portal\"";
+
 // MARK: Notifications
 "notification.title %@" = "In 5 minutes: %@";
 "notification.body %@ %@ %@ %@" = "At %@: %@ in location: %@.\nTeachers: %@";
@@ -137,3 +140,5 @@
 "word.none" = "None/not available";
 
 "word.error" = "Error";
+
+"word.somethingWentWrong" = "Something went wrong!";
