@@ -103,6 +103,25 @@ final class API {
                 }
             }
     }
+    
+    static func getToken(_ data: ZermeloQRData, completion: @escaping (Result<SavedToken, AFError>) -> ()) {
+        
+        let params: Parameters = [
+            "grant_type": "authorization_code",
+            "code": data.code
+        ]
+        AF.request("https://\(data.institution).zportal.nl/api/v3/oauth/token", method: .post, parameters: params)
+            .validate()
+            .responseDecodable(of: ZermeloTokenRequest.self){ response in
+                switch response.result {
+                case .failure(let err):
+                    completion(.failure(err))
+                case .success(let tokenInfo):
+                    let tokenData = SavedToken.init(qrData: data, tokenInfo: tokenInfo)
+                    completion(.success(tokenData))
+                }
+            }
+    }
 
 }
 
