@@ -13,6 +13,12 @@ struct User: Codable {
 }
 
 extension User {
+    var id: String {
+        return self.me.code + self.token.access_token
+    }
+}
+
+extension User {
     static let example = User(
         token: SavedToken(
             portal: "amadeus",
