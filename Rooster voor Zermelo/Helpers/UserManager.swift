@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum UserState {
+    case noUsers
+    case noneSelected
+    case user(user: User)
+}
+
 final class UserManager {
     static var oldUserDefaultsKey = "savedtoken"
     static var userDefaultsKey = "savedusers"
@@ -54,9 +60,19 @@ final class UserManager {
         UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
     }
     
+    static func add(user: User) {
+        // Filter users so we don't end up with duplicate users.
+//        var users = getAll().filter { $0.me.code != user.me.code }
+        var users = getAll()
+        
+        users.append(user)
+        
+        save(users: users)
+    }
+    
     static func delete(userCode: String) {
         let users = getAll()
         let filtered = users.filter { $0.me.code != userCode }
-        save(users: users)
+        save(users: filtered)
     }
 }
