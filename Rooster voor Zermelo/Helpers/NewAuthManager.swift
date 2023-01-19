@@ -23,7 +23,7 @@ final class AuthManager: ObservableObject {
         getMeData(token: savedToken)
     }
     
-    func handleLogin(school: String, code: String, completion: @escaping(AFError?) -> ()) {
+    func handleLogin(school: String, code: String, addUser: Bool = false, completion: @escaping(AFError?) -> ()) {
         let codeFormatted = code.replacingOccurrences(of: " ", with: "")
         let schoolFormatted = school.trimmingCharacters(in: .whitespaces).lowercased()
         
@@ -61,7 +61,12 @@ final class AuthManager: ObservableObject {
                     switch response.result {
                     case .success(let data):
                         let token = SavedToken.init(institution: school, tokenInfo: data)
-                        self.getMeData(token: token)
+                        if addUser {
+                            self.addUser(token: token)
+                        } else {
+                            self.getMeData(token: token)
+                        }
+                        completion(nil)
                     case .failure(let err):
                         print(err)
                         completion(err)
@@ -130,6 +135,19 @@ final class AuthManager: ObservableObject {
                 UserManager.save(user: save, currentUser: true)
                 self.isLoading = false
                 self.isLoggedIn = true
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func addUser(token: SavedToken) {
+        API.fetchMe(token: token) { result in
+            switch result {
+            case .success(let data):
+                // On success, update the saved user
+                let save = User(token: token, me: data)
+                UserManager.add(user: save)
             case .failure(let err):
                 print(err)
             }
