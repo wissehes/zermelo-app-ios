@@ -53,7 +53,7 @@ final class HomeViewModel: ObservableObject {
         do {
             let foundAppointments = try await API.getLiveScheduleAsync(week: week)
             
-            if animation {
+            if animation && shouldUpdateNotifications() {
                 await NotificationsManager.scheduleNotifications(foundAppointments)
             }
             
@@ -88,36 +88,16 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    //    func load(me: ZermeloMeData) {
-    //        self.isLoading = true
-    //        print("loading...")
-    //
-    //        API.getLiveSchedule(me: me) { result in
-    //            self.isLoading = false
-    //            switch result {
-    //            case .success(let data):
-    //
-    //                for appointment in data {
-    //                    self.days = []
-    //                    let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-    //
-    //                    let foundRow = self.days.firstIndex { day in
-    //                        Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
-    //                    }
-    //
-    //                    if let foundRow = foundRow {
-    //                        self.days[foundRow].appointments.append(appointment)
-    //                    } else {
-    //                        self.days.append(Day( date: date, appointments: [appointment] ))
-    //                    }
-    //                }
-    //
-    //                self.todayAppointments = data.filter {
-    //                    Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
-    //                }
-    //            case .failure(let failure):
-    //                print(failure)
-    //            }
-    //        }
-    //    }
+    func shouldUpdateNotifications() -> Bool {
+        let user = UserManager.getCurrent()
+        let notifUser = NotificationsManager.getNotificationsUserId()
+        
+        guard let user = user else { return false }
+        
+        if notifUser.isEmpty {
+            return true
+        } else {
+            return user.id == notifUser
+        }
+    }
 }
