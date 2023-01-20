@@ -17,11 +17,26 @@ final class UserManager {
     static var oldUserDefaultsKey = "savedtoken"
     static var userDefaultsKey = "savedusers"
     static var currentUserKey = "currentuser"
+    static var currentNotifUserKey = "notificationsuser"
     
     static func getCurrent() -> User? {
         let users = self.getAll()
-
         if let currentUser = UserDefaults.standard.string(forKey: self.currentUserKey) {
+            print("current user \(currentUser)")
+            guard let user = users.first(where: { $0.id == currentUser }) else {
+                print("curernt user id doesnt match")
+                return users.first
+            }
+            return user
+        } else {
+            print("No ucurrent user")
+            return users.first
+        }
+    }
+    
+    static func getCurrentNotificationsUser() -> User? {
+        let users = self.getAll()
+        if let currentUser = UserDefaults.standard.string(forKey: self.currentNotifUserKey) {
             guard let user = users.first(where: { $0.id == currentUser }) else {
                 return users.first
             }
@@ -72,11 +87,12 @@ final class UserManager {
     
     static func delete(userCode: String) {
         let users = getAll()
-        let filtered = users.filter { $0.me.code != userCode }
+        let filtered = users.filter { $0.id != userCode }
         save(users: filtered)
     }
     
     static func setCurrent(id: String) {
+        print("Set current user to: \(id)")
         UserDefaults.standard.set(id, forKey: self.currentUserKey)
     }
 }

@@ -176,4 +176,12 @@ final class NotificationsManager {
             }
         }
     }
+    
+    static func setNotificationUser(id: String) {
+        UserDefaults.standard.set(id, forKey: "notificationsuser")
+    }
+    
+    static func getNotificationsUserId() -> String {
+        return UserDefaults.standard.string(forKey: "notificationsuser") ?? ""
+    }
 }

@@ -90,6 +90,10 @@ struct SettingsView: View {
                     Text(permissionState.text)
                         .font(.subheadline)
                 }
+                if permissionState == .authorized && viewModel.users.count > 1 {
+                    NotificationSettings()
+                    
+                }
             }
         }.navigationTitle("settings.settings")
             .alert("word.error", isPresented: $notifErrorShown) {
