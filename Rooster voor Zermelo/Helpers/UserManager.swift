@@ -22,14 +22,11 @@ final class UserManager {
     static func getCurrent() -> User? {
         let users = self.getAll()
         if let currentUser = UserDefaults.standard.string(forKey: self.currentUserKey) {
-            print("current user \(currentUser)")
             guard let user = users.first(where: { $0.id == currentUser }) else {
-                print("curernt user id doesnt match")
                 return users.first
             }
             return user
         } else {
-            print("No ucurrent user")
             return users.first
         }
     }
@@ -92,7 +89,6 @@ final class UserManager {
     }
     
     static func setCurrent(id: String) {
-        print("Set current user to: \(id)")
         UserDefaults.standard.set(id, forKey: self.currentUserKey)
     }
 }
