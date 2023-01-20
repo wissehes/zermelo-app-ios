@@ -45,7 +45,11 @@ struct ZermeloLivescheduleAction: Codable {
 // MARK: - ZermeloLivescheduleAppointment
 struct ZermeloLivescheduleAppointment: Codable, Hashable {
     static func == (lhs: ZermeloLivescheduleAppointment, rhs: ZermeloLivescheduleAppointment) -> Bool {
-        lhs.id == rhs.id || lhs.subjects == rhs.subjects
+        if let lid = lhs.id, let rid = rhs.id {
+            return lid == rid
+        } else {
+            return lhs.subjects == rhs.subjects && lhs.start == rhs.start
+        }
     }
     
     func hash(into hasher: inout Hasher) {
@@ -59,7 +63,7 @@ struct ZermeloLivescheduleAppointment: Codable, Hashable {
     let appointmentType: String
     let online, appointmentOptional: Bool
     let appointmentInstance: Int?
-    let startTimeSlotName, endTimeSlotName: String
+    let startTimeSlotName, endTimeSlotName: String?
     let subjects, groups, locations, teachers: [String]
     let changeDescription, schedulerRemark: String?
     let id: Int?
