@@ -9,6 +9,7 @@ import Foundation
 
 final class SettingsViewModel: ObservableObject {
     @Published var user: User?
+    @Published var users: [User] = []
     
     init() {
         load()
@@ -16,5 +17,7 @@ final class SettingsViewModel: ObservableObject {
     
     func load() {
         self.user = UserManager.getCurrent()
+        self.users = UserManager.getAll()
     }
 }
+

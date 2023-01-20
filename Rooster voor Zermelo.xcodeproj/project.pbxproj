@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8905E44F28DB292D00CA8027 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905E44E28DB292D00CA8027 /* AboutView.swift */; };
 		8905E45128DB5C3700CA8027 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905E45028DB5C3700CA8027 /* AuthManager.swift */; };
+		8906E334297AEEA20064F3B1 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906E333297AEEA20064F3B1 /* NotificationSettings.swift */; };
 		890F82442979426E005F6E27 /* Userlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F82432979426E005F6E27 /* Userlist.swift */; };
 		891829222976B54B0003F81A /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829212976B54B0003F81A /* UsersViewModel.swift */; };
 		891829242976B5630003F81A /* UserListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829232976B5630003F81A /* UserListItem.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		8905E44E28DB292D00CA8027 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8905E45028DB5C3700CA8027 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		8906E333297AEEA20064F3B1 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		890F82432979426E005F6E27 /* Userlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userlist.swift; sourceTree = "<group>"; };
 		891829212976B54B0003F81A /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		891829232976B5630003F81A /* UserListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListItem.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				89346ED029789779006E1651 /* AddUserView */,
 				892DDA2B2974794000E0592E /* SettingsView.swift */,
 				896EAC7629799CD400FB0B05 /* SettingsViewModel.swift */,
+				8906E333297AEEA20064F3B1 /* NotificationSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				89ED829928C5307F00306872 /* TokenSaver.swift in Sources */,
 				89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */,
 				89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */,
+				8906E334297AEEA20064F3B1 /* NotificationSettings.swift in Sources */,
 				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,
 				89346ECF29784A8A006E1651 /* NewAuthManager.swift in Sources */,
 				898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */,

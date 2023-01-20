@@ -28,7 +28,6 @@ final class UsersViewModel: ObservableObject {
     }
     
     func setCurrent(_ id: String) {
-        guard let selectedUser = selectedUser else { return }
-        UserManager.setCurrent(id: selectedUser)
+        UserManager.setCurrent(id: id)
     }
 }

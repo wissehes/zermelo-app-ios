@@ -24,6 +24,9 @@ struct Userlist: View {
                     }.buttonStyle(.plain)
                 }
                 .onDelete { index in
+                    if viewModel.users.count == 1 {
+                        return
+                    }
                     viewModel.users.remove(atOffsets: index)
                     viewModel.save()
                 }
