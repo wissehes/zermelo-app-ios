@@ -73,6 +73,9 @@
 "settings.users" = "Accounts";
 "settings.users.add" = "Account toevoegen";
 "settings.users.logout" = "Dit account uitloggen";
+"settings.account.current" = "Huidig account";
+"settings.account.switch" = "Account wisselen";
+"settings.account.switchUsers" = "Tik op een account om naar dat account te wisselen.";
 
 "settings.openSettings" = "Instellingen openen";
 
@@ -80,6 +83,7 @@
 "settings.language.change" = "Verander de taal in Instellingen.";
 
 "settings.notifications" = "Meldingen";
+"settings.notifications.account" = "Account voor meldingen";
 
 "settings.notifications.status.loading" = "Laden...";
 "settings.notifications.status.permissionDenied" = "Toestemming geweigerd.";

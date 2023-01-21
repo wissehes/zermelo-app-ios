@@ -12,7 +12,7 @@ struct NotificationSettings: View {
     
     
     var body: some View {
-        Picker("Account voor meldingen", selection: $viewModel.selected) {
+        Picker("settings.notifications.account", selection: $viewModel.selected) {
             ForEach(viewModel.users, id: \.id) { user in
                 Text(user.me.firstName + " " + user.me.lastName)
                     .tag(user as User?)

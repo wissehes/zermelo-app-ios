@@ -40,7 +40,7 @@ struct SettingsView: View {
     var body: some View {
         List {
             
-            Section("Huidig account") {
+            Section("settings.account.current") {
                 if let user = viewModel.user {
                     UserListItem(user: user)
                 }
@@ -53,7 +53,7 @@ struct SettingsView: View {
                 NavigationLink {
                     Userlist()
                 } label: {
-                    Label("Account wisselen", systemImage: "person.3.fill")
+                    Label("settings.account.switch", systemImage: "person.3.fill")
                         .symbolRenderingMode(.multicolor)
                 }
                 

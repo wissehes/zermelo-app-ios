@@ -31,9 +31,9 @@ struct Userlist: View {
                     viewModel.save()
                 }
             } footer: {
-                Text("Tik op een account om naar dat account te wisselen.")
+                Text("settings.account.switchUsers")
             }
-        }.navigationTitle("Accounts")
+        }.navigationTitle("settings.users")
             .toolbar {
                 EditButton().disabled(viewModel.users.count == 1)
             }

@@ -73,6 +73,9 @@
 "settings.users" = "Users";
 "settings.users.add" = "Add user";
 "settings.users.logout" = "Log out this user";
+"settings.account.current" = "Current account";
+"settings.account.switch" = "Switch accounts";
+"settings.account.switchUsers" = "Press on an account to switch to it.";
 
 "settings.openSettings" = "Open settings";
 
@@ -80,6 +83,7 @@
 "settings.language.change" = "Change the language in Settings.";
 
 "settings.notifications" = "Notifications";
+"settings.notifications.account" = "Account for notifications";
 
 "settings.notifications.status.loading" = "Loading...";
 "settings.notifications.status.permissionDenied" = "Permission denied.";

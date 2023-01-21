@@ -233,6 +233,7 @@ struct ManualCodeScreen: View {
                 Label("welcome.manual.school", systemImage: "graduationcap")
                     .bold()
                 TextField("welcome.manual.school", text: $school)
+                    .lineLimit(1)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.trailing)
