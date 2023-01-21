@@ -55,6 +55,10 @@ final class UserManager {
         return decoded
     }
     
+    static func removeOld() {
+        UserDefaults.standard.removeObject(forKey: oldUserDefaultsKey)
+    }
+    
     static func save(user: User, currentUser: Bool) {
         var users = getAll()
         

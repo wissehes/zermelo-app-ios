@@ -85,8 +85,17 @@ final class AuthManager: ObservableObject {
     }
     
     func signOut() {
-        guard let user = user else { return }
-        self.removeUser(user: user)
+        let users = UserManager.getAll()
+        if users.count > 1 {
+            guard let user = user else { return print("no user") }
+            UserManager.delete(userCode: user.id)
+        } else {
+            guard let user = user else { return print("no user") }
+            UserManager.delete(userCode: user.id)
+            self.user = nil
+            self.isLoading = true
+            self.checkSavedUser()
+        }
     }
     
     /**
@@ -99,6 +108,8 @@ final class AuthManager: ObservableObject {
         } else if let token = UserManager.getOld() {
             self.isLoggedIn = true
             getMeData(token: token)
+            // Remove old storage
+            UserManager.removeOld()
         } else {
             // else, show the welcome screen
             self.showWelcomeScreen = true
@@ -120,6 +131,7 @@ final class AuthManager: ObservableObject {
                 UserManager.save(user: save, currentUser: true)
                 self.isLoading = false
                 self.isLoggedIn = true
+                self.user = save
             case .failure(let err):
                 print(err)
             }
@@ -135,6 +147,7 @@ final class AuthManager: ObservableObject {
                 UserManager.save(user: save, currentUser: true)
                 self.isLoading = false
                 self.isLoggedIn = true
+                self.user = save
             case .failure(let err):
                 print(err)
             }

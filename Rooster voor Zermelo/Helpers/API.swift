@@ -49,7 +49,7 @@ final class API {
     }
     
     static func getLiveScheduleAsync(week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
-        guard let user = UserManager.getCurrent() else { fatalError("No token") }
+        guard let user = UserManager.getCurrent() else { return [] }
         
         guard var url = URLComponents(string: "https://\(user.token.portal).zportal.nl/api/v3/liveschedule") else { fatalError("url error") }
         url.queryItems = [
