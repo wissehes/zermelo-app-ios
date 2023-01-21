@@ -1,87 +1,31 @@
 //
-//  WelcomeView.swift
+//  AddUserView.swift
 //  Rooster voor Zermelo
 //
-//  Created by Wisse Hes on 03/09/2022.
+//  Created by Wisse Hes on 18/01/2023.
 //
 
 import SwiftUI
 import CodeScanner
-import Alamofire
 
-fileprivate enum WelcomeScreen: Hashable {
-    case first
-    case second
-    case third
-    case fourth
-    
-    case manualCode
-}
-
-struct WelcomeView: View {
-    @State private var selectedView = 1
-    @State private var isShowingScanner = false
-    @State private var isLoading = false
-    
+/**
+ Meant to be shown in a .sheet
+ */
+struct AddUserView: View {
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
-            FirstWelcomeScreen()
-//            ManualCodeScreen()
-                .navigationDestination(for: WelcomeScreen.self) { i in
-                    switch i {
-                    case .first:
-                        FirstWelcomeScreen()
-                    case .second:
-                        SecondWelcomeScreen()
-                    case .third:
-                        ThirdWelcomeScreen()
-                    case .fourth:
-                        FourthWelcomeScreen()
-                    case .manualCode:
-                        ManualCodeScreen()
-                    }
-                }
+            step1
+                .navigationTitle("welcome.second.step")
+                .multilineTextAlignment(.center)
         }
     }
-}
-
-struct FirstWelcomeScreen: View {
-    var body: some View {
+    
+    var step1: some View {
         VStack {
-            Spacer()
-            
-            Text("welcome.first.title")
-                .font(.title)
-            Text("welcome.first.subtitle")
-            
-            Spacer()
-            
-            NavigationLink {
-                SecondWelcomeScreen()
-            } label: {
-                
-                NavigationLink(value: WelcomeScreen.second) {
-                    Text("welcome.first.begin")
-                }.buttonStyle(.borderedProminent)
-
-            }
-
-            
-            Spacer()
-        }
-        .multilineTextAlignment(.center)
-        .navigationTitle("word.welcome")
-        .padding()
-    }
-}
-
-struct SecondWelcomeScreen: View {
-    var body: some View {
-        VStack {
-//            Spacer()
-            
-            Text("welcome.second.title").padding()
+            Text("adduser.step1.title")
+                .padding()
             
             Image("ZermeloLogin1")
                 .resizable()
@@ -90,20 +34,23 @@ struct SecondWelcomeScreen: View {
             
             Spacer()
             
-            NavigationLink("word.next", value: WelcomeScreen.third)
-                .buttonStyle(.borderedProminent)
+            NavigationLink("word.next") {
+                step2
+            }.buttonStyle(.borderedProminent)
                 .padding()
             
-//            Spacer()
-        }.multilineTextAlignment(.center)
-            .navigationTitle("welcome.second.step")
+//            NavigationLink("Overslaan") {
+//                LoginView()
+//            }.buttonStyle(.bordered)
+//                .padding()
+            
+        }
     }
-}
-
-struct ThirdWelcomeScreen: View {
-    var body: some View {
+    
+    var step2: some View {
         VStack {
-            Text("welcome.third.title").padding()
+            Text("welcome.third.title")
+                .padding()
             
             Image("ZermeloLogin2")
                 .resizable()
@@ -112,26 +59,26 @@ struct ThirdWelcomeScreen: View {
             
             Spacer()
             
-            NavigationLink("word.next", value: WelcomeScreen.fourth)
-                .buttonStyle(.borderedProminent)
+            NavigationLink("word.next") {
+                LoginView(dismiss: dismiss)
+            }.buttonStyle(.borderedProminent)
                 .padding()
-            
-//            Spacer()
         }.navigationTitle("welcome.third.step")
     }
 }
 
-struct FourthWelcomeScreen: View {
-    
+struct LoginView: View {
+    @EnvironmentObject var authManager: AuthManager
     @State private var isShowingScanner = false
     @State private var isLoading = false
     
-    @EnvironmentObject var authManager: AuthManager
+    @State private var error: Error?
+    @State private var errorShowing: Bool = false
+    
+    var dismiss: DismissAction
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-//            Spacer()
-            
             Text("welcome.fourth.title")
                 .font(.headline)
                 .padding()
@@ -155,9 +102,10 @@ struct FourthWelcomeScreen: View {
             }
                 .buttonStyle(.borderedProminent)
             
-            NavigationLink(value: WelcomeScreen.manualCode) {
+            NavigationLink {
+                ManualLoginView(dismiss: dismiss)
+            } label: {
                 Label("welcome.fourth.enterCode", systemImage: "keyboard")
-
             }.buttonStyle(.bordered)
                 .padding()
             
@@ -169,7 +117,16 @@ struct FourthWelcomeScreen: View {
                     simulatedData: "test",
                     completion: handleScan
                 )
+            }.alert("word.somethingWentWrong", isPresented: $errorShowing) {
+                Button("word.ok") {}
+            } message: {
+                if let error = error {
+                    Text(error.localizedDescription)
+                } else {
+                    Text("welcome.manual.alert.description" )
+                }
             }
+
     }
     
     func handleScan(result: Result<ScanResult, ScanError>){
@@ -181,39 +138,24 @@ struct FourthWelcomeScreen: View {
         case .success(let data):
             let stringData = data.string.data(using: .utf8)!
             guard let decoded = try? JSONDecoder().decode(ZermeloQRData.self, from: stringData) else { return; }
-            requestAndSaveToken(data: decoded)
-        }
-    }
-    
-    func requestAndSaveToken(data: ZermeloQRData) {
-        isLoading = true
-
-        let params: Parameters = [
-            "grant_type": "authorization_code",
-            "code": data.code
-        ]
-        AF.request("https://\(data.institution).zportal.nl/api/v3/oauth/token", method: .post, parameters: params)
-            .validate()
-            .responseDecodable(of: ZermeloTokenRequest.self){ response in
-//                isLoading = false
-
-                switch response.result {
-                case .failure(let err):
-                    print("AF Error")
-                    print(err)
-                case .success(let tokenInfo):
-                    let tokenData = SavedToken.init(qrData: data, tokenInfo: tokenInfo)
-                    TokenSaver.save(tokendata: tokenData)
-                    authManager.handleWelcomeScreenClosed(tokenData)
+            
+            API.getToken(decoded) { result in
+                switch result {
+                case .success(let token):
+                    authManager.handleWelcomeScreenClosed(token)
+                    dismiss()
+                case .failure(let error):
+                    print(error)
+                    self.error = error
+                    self.errorShowing = true
                 }
             }
+        }
     }
 }
 
-struct ManualCodeScreen: View {
-    
-    var addUser: Bool = false
-    @Environment(\.dismiss) var dismiss
+struct ManualLoginView: View {
+    var dismiss: DismissAction
     
     @EnvironmentObject var authManager: AuthManager
 
@@ -223,8 +165,9 @@ struct ManualCodeScreen: View {
     @FocusState private var focusCode: Bool
     
     @State private var isLoading = false
-    @State private var loginErrorAlert = false
-            
+    @State private var error: Error?
+    @State private var errorShowing: Bool = false
+    
     var body: some View {
         Form {
             Text("welcome.manual.title")
@@ -233,7 +176,6 @@ struct ManualCodeScreen: View {
                 Label("welcome.manual.school", systemImage: "graduationcap")
                     .bold()
                 TextField("welcome.manual.school", text: $school)
-                    .lineLimit(1)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.trailing)
@@ -250,7 +192,6 @@ struct ManualCodeScreen: View {
                 TextField("welcome.manual.code", text: $code)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
-//                    .submitLabel(.)
                     .focused($focusCode)
             }
             
@@ -272,32 +213,35 @@ struct ManualCodeScreen: View {
             
         }.navigationTitle("welcome.manual.navTitle")
             .scrollDismissesKeyboard(.interactively)
-            .alert("welcome.manual.alert.title", isPresented: $loginErrorAlert) {
+            .alert("welcome.manual.alert.title", isPresented: $errorShowing) {
                 Button("word.ok", role: .cancel) { }
             } message: {
-                Text("welcome.manual.alert.description")
+                if let error = error {
+                    Text(error.localizedDescription)
+                } else {
+                    Text("welcome.manual.alert.description" )
+                }
             }
-
     }
     
     func login() {
         isLoading = true
 
-        authManager.handleLogin(school: school, code: code, addUser: addUser) { error in
+        authManager.handleLogin(school: school, code: code, addUser: true) { error in
             self.isLoading = false
-            if addUser {
                 dismiss()
-            }
             if error != nil {
-                self.loginErrorAlert = true
+                self.error = error
+                self.errorShowing = true
             }
         }
     }
 }
 
-
-struct WelcomeView_Previews: PreviewProvider {
+struct AddUserView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        AddUserView()
+            .environmentObject(AuthManager())
+            .environment(\.locale, .init(identifier: "nl"))
     }
 }

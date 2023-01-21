@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class AuthManager: ObservableObject {
+class OldAuthManager: ObservableObject {
     @Published var isLoading = true
     @Published var me: ZermeloMeData? = nil
     @Published var token: SavedToken? = nil

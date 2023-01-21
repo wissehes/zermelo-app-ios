@@ -35,11 +35,11 @@ final class WeekViewModel: ObservableObject {
     
     @Published var selectedDate = Date()
     
-    func load(me: ZermeloMeData, date: Date?) async {
+    func load(date: Date?) async {
         let week = API.getWeek(date ?? selectedDate)
         
         do {
-            let appointments = try await API.getLiveScheduleAsync(me: me, week: week)
+            let appointments = try await API.getLiveScheduleAsync(week: week)
 
             DispatchQueue.main.async {
                 self.days = []

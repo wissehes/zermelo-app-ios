@@ -39,8 +39,7 @@ struct NewWeekView: View {
             }
         }.navigationTitle("Week")
             .task {
-                guard let me = authManager.me else { return }
-                await viewModel.load(me: me, date: nil)
+                await viewModel.load(date: nil)
             }
     }
     

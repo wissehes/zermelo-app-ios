@@ -27,7 +27,7 @@
 // MARK: - Fourth screen
 
 "welcome.fourth.title" = "Als het goed is, ben je nu bij dit scherm.";
-"welcome.fourth.subtitle" = "Als dat zo is, kunnen we nu de QR-Code gaan scannen.";
+"welcome.fourth.subtitle" = "Dan kunnen we nu de QR-Code gaan scannen.";
 "welcome.fourth.scanQRCode" = "QR-Code scannen";
 "welcome.fourth.enterCode" = "Code invoeren";
 "welcome.fourth.step" = "Stap 3";
@@ -70,9 +70,12 @@
 // MARK: Settings
 "settings.settings" = "Instellingen";
 
-"settings.users" = "Gebruikers";
-"settings.users.add" = "Gebruiker toevoegen";
-"settings.users.logout" = "Deze gebruiker uitloggen";
+"settings.users" = "Accounts";
+"settings.users.add" = "Account toevoegen";
+"settings.users.logout" = "Dit account uitloggen";
+"settings.account.current" = "Huidig account";
+"settings.account.switch" = "Account wisselen";
+"settings.account.switchUsers" = "Tik op een account om naar dat account te wisselen.";
 
 "settings.openSettings" = "Instellingen openen";
 
@@ -80,10 +83,14 @@
 "settings.language.change" = "Verander de taal in Instellingen.";
 
 "settings.notifications" = "Meldingen";
+"settings.notifications.account" = "Account voor meldingen";
 
 "settings.notifications.status.loading" = "Laden...";
 "settings.notifications.status.permissionDenied" = "Toestemming geweigerd.";
 "settings.notifications.status.permissionGranten" = "Toestemming gekregen.";
+
+// MARK: - Add user
+"adduser.step1.title" = "Ga op een computer naar jouw Zermelo Portal en log in met het account dat je hier wilt toevoegen. Klik dan op \"Portal\"";
 
 // MARK: Notifications
 "notification.title %@" = "Over 5 minuten: %@";
@@ -135,3 +142,5 @@
 "word.cancel" = "Annuleren";
 "word.empty" = "Leeg";
 "word.none" = "Geen/niet beschikbaar";
+
+"word.somethingWentWrong" = "Er ging iets mis!";

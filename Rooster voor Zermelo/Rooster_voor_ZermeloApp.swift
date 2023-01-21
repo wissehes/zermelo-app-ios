@@ -17,7 +17,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        FirebaseApp.configure()
+        #if !targetEnvironment(simulator)
+            FirebaseApp.configure()
+        #endif
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         
         return true

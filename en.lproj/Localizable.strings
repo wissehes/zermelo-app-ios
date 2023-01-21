@@ -73,6 +73,9 @@
 "settings.users" = "Users";
 "settings.users.add" = "Add user";
 "settings.users.logout" = "Log out this user";
+"settings.account.current" = "Current account";
+"settings.account.switch" = "Switch accounts";
+"settings.account.switchUsers" = "Press on an account to switch to it.";
 
 "settings.openSettings" = "Open settings";
 
@@ -80,10 +83,14 @@
 "settings.language.change" = "Change the language in Settings.";
 
 "settings.notifications" = "Notifications";
+"settings.notifications.account" = "Account for notifications";
 
 "settings.notifications.status.loading" = "Loading...";
 "settings.notifications.status.permissionDenied" = "Permission denied.";
 "settings.notifications.status.permissionGranten" = "Permission granted.";
+
+// MARK: - Add user
+"adduser.step1.title" = "Ga op een computer naar jouw Zermelo Portal en log in met het account dat je hier wilt toevoegen. Klik dan op \"Portal\"";
 
 // MARK: Notifications
 "notification.title %@" = "In 5 minutes: %@";
@@ -137,3 +144,5 @@
 "word.none" = "None/not available";
 
 "word.error" = "Error";
+
+"word.somethingWentWrong" = "Something went wrong!";

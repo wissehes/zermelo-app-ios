@@ -82,7 +82,9 @@ struct AppointmentView: View {
     
     var infoSection: some View {
         Section("Info") {
-            itemDetailView([item.startTimeSlotName], icon: "clock", single: "appointment.period", multiple: nil)
+            if let slotName = item.startTimeSlotName {
+                itemDetailView([slotName], icon: "clock", single: "appointment.period", multiple: nil)
+            }
             
             itemDetailView(
                 item.subjects,

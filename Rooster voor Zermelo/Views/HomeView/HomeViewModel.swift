@@ -47,16 +47,13 @@ final class HomeViewModel: ObservableObject {
             return "\(formatted)"
         }
     }
-    
-    var me: ZermeloMeData?
-    
-    func load(me: ZermeloMeData, animation: Bool = true) async {
-        self.me = me
+        
+    func load(animation: Bool = true) async {
         let week = API.getWeek(selectedDate)
         do {
-            let foundAppointments = try await API.getLiveScheduleAsync(me: me, week: week)
+            let foundAppointments = try await API.getLiveScheduleAsync(week: week)
             
-            if animation {
+            if animation && shouldUpdateNotifications() {
                 await NotificationsManager.scheduleNotifications(foundAppointments)
             }
             
@@ -77,8 +74,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func reload() async {
-        guard let me = me else { return }
-        await self.load(me: me, animation: false)
+        await self.load(animation: false)
     }
     
     func dateChanged(_ newVal: Date) async {
@@ -88,41 +84,20 @@ final class HomeViewModel: ObservableObject {
         }
         
         if filtered.isEmpty {
-            guard let me = me else { return }
-            await self.load(me: me, animation: true)
+            await self.load(animation: true)
         }
     }
     
-    //    func load(me: ZermeloMeData) {
-    //        self.isLoading = true
-    //        print("loading...")
-    //
-    //        API.getLiveSchedule(me: me) { result in
-    //            self.isLoading = false
-    //            switch result {
-    //            case .success(let data):
-    //
-    //                for appointment in data {
-    //                    self.days = []
-    //                    let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-    //
-    //                    let foundRow = self.days.firstIndex { day in
-    //                        Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
-    //                    }
-    //
-    //                    if let foundRow = foundRow {
-    //                        self.days[foundRow].appointments.append(appointment)
-    //                    } else {
-    //                        self.days.append(Day( date: date, appointments: [appointment] ))
-    //                    }
-    //                }
-    //
-    //                self.todayAppointments = data.filter {
-    //                    Calendar.current.isDateInToday(Date(timeIntervalSince1970: TimeInterval($0.start)))
-    //                }
-    //            case .failure(let failure):
-    //                print(failure)
-    //            }
-    //        }
-    //    }
+    func shouldUpdateNotifications() -> Bool {
+        let user = UserManager.getCurrent()
+        let notifUser = NotificationsManager.getNotificationsUserId()
+        
+        guard let user = user else { return false }
+        
+        if notifUser.isEmpty {
+            return true
+        } else {
+            return user.id == notifUser
+        }
+    }
 }

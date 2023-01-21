@@ -46,6 +46,17 @@ struct DayItemView: View {
         return Text("\(start, style: .time) - \(endDate, style: .time)")
     }
     
+    @ViewBuilder
+    var slotImage: some View {
+        if let slotName = item.startTimeSlotName, !slotName.isEmpty {
+            Text(slotName)
+                .fontWeight(.bold)
+        } else {
+            Image(systemName: "calendar")
+
+        }
+    }
+    
     var body: some View {
         NavigationLink(value: item) {
             HStack {
@@ -53,8 +64,7 @@ struct DayItemView: View {
                     .stroke(item.subjects.isEmpty ? .gray : Color.accentColor, lineWidth: 5)
                     .background(RoundedRectangle(cornerRadius: 10).fill(isRightNow ? Color("TimeSlotColor") : colorScheme == .light ? .white : .black))
                     .overlay(
-                        Text(item.startTimeSlotName)
-                            .fontWeight(.bold)
+                        slotImage
                     )
                     .frame(width: 50, height: 50, alignment: .center)
                     .padding(5)
