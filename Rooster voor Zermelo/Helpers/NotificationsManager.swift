@@ -56,9 +56,6 @@ final class NotificationsManager {
                 if scheduled.first(where: { self.filterFunction($0, app: appointment) }) == nil {
                     self.scheduleNotification(appointment)
                 }
-//                else {
-//                    print("Notification already exists!")
-//                }
             }
         }
     }
@@ -78,24 +75,18 @@ final class NotificationsManager {
      Schedule a notification for an appointment
      */
     static func scheduleNotification(_ appointment: ZermeloLivescheduleAppointment) {
-        
-        // Variables for later use
-        let subjects = appointment.subjects.joined(separator: ",")
-        let location = appointment.locations.joined(separator: ",")
-        let teachers = appointment.teachers.joined(separator: ", ")
-        let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-        let formattedDate = date.formatted(date: .omitted, time: .shortened)
         // If there's no id, return, because we need the identifier.
         guard let id = appointment.id else { return }
         
         // Create the content
-        let content = UNMutableNotificationContent()
-        content.title = String(localized: "notification.title \(subjects)");
-        content.body = String(localized: "notification.body \(formattedDate) \(subjects) \(location) \(teachers)")
+        let content = self.getNotificationContent(appointment)
         content.sound = UNNotificationSound.default
         
+        
+        let startDate = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+
         // Create dateComponents from the date minus 5 minutes.
-        guard let newDate = Calendar.current.date(byAdding: .minute, value: -5, to: date) else { return }
+        guard let newDate = Calendar.current.date(byAdding: .minute, value: -5, to: startDate) else { return }
         let dateComps = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: newDate)
         // Create the trigger from the dateComponents
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComps, repeats: false)
@@ -107,37 +98,22 @@ final class NotificationsManager {
     }
     
     /**
-     Schedule a notification for an appointmen in testt
+     Generate notification content from appointment
      */
-    static func scheduleNotificationTest(_ appointment: ZermeloLivescheduleAppointment) {
-        
-        // Variables for later use
+    static func getNotificationContent(_ appointment: ZermeloLivescheduleAppointment) -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        // Variables for notification content
         let subjects = appointment.subjects.joined(separator: ",")
         let location = appointment.locations.joined(separator: ",")
         let teachers = appointment.teachers.joined(separator: ", ")
         let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
         let formattedDate = date.formatted(date: .omitted, time: .shortened)
-        // If there's no id, return, because we need the identifier.
-        guard let id = appointment.id else { return }
         
-        // Create the content
-        let content = UNMutableNotificationContent()
-//        content.title = "Over 5 minuten: \(subjects)"
+        // Set the notification content
         content.title = String(localized: "notification.title \(subjects)");
-        
-//        content.subtitle = "\(subjects) op locatie: \(location)"
-//        content.body = "Om \(formattedDate): \(subjects) op locatie: \(location).\nDocenten: \(teachers)"
         content.body = String(localized: "notification.body \(formattedDate) \(subjects) \(location) \(teachers)")
         
-        content.sound = UNNotificationSound.default
-        
-        // Create the trigger from the dateComponents
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(5), repeats: false)
-        
-        let request = UNNotificationRequest(identifier: String(describing: id), content: content, trigger: trigger)
-        
-        // add our notification request
-        UNUserNotificationCenter.current().add(request)
+        return content
     }
     
     /**
