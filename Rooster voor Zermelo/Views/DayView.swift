@@ -30,13 +30,15 @@ struct DayItemView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
+    @State var date = Date()
+    
     var item: ZermeloLivescheduleAppointment
     
     var isRightNow: Bool {
         let start = Date(timeIntervalSince1970: TimeInterval(item.start))
         let end = Date(timeIntervalSince1970: TimeInterval(item.end))
         
-        return start.timeIntervalSince1970 < Date().timeIntervalSince1970 && Date().timeIntervalSince1970 < end.timeIntervalSince1970
+        return start.timeIntervalSince1970 < date.timeIntervalSince1970 && date.timeIntervalSince1970 < end.timeIntervalSince1970
     }
     
     func timeView(appointment: ZermeloLivescheduleAppointment) -> some View {
@@ -112,6 +114,9 @@ struct DayItemView: View {
                         .foregroundColor(item.cancelled ? .red : .yellow)
                 }
             }.accentColor(item.cancelled ? .red : .accentColor)
+                .onAppear {
+                    self.date = Date()
+                }
         }
     }
 }
