@@ -64,9 +64,35 @@ final class NotificationsManager {
      Filter function for the `scheduleNotifications` function
      */
     static private func filterFunction(_ notification: UNNotificationRequest, app: ZermeloLivescheduleAppointment) -> Bool {
+        
+        /**
+         Return `false` to continue filtering (aka schedule the notification when it doesn't exist yet)
+         Return `true` when it already exists (and their contents don't match)
+         */
+        
         if let id = app.id {
-            return notification.identifier == String(describing: id)
+            // if we find a matching id, check if the contents also match
+            if notification.identifier == String(describing: id) {
+                let content = self.getNotificationContent(app)
+                
+                if notification.content.matches(content) {
+                    // The content of this notification already matches the content
+                    // of the existing notification, so we skip it, since it doesn't need
+                    // to be updated again
+                    return true
+                } else {
+                    // The existing notification and the to-be-scheduled notification don't match.
+                    // Even though their ID's match, so we remove this notification and let it be
+                    // scheduled again
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification.identifier])
+                    return false
+                }
+            } else {
+                // The ID's don't match, continuing...
+                return false
+            }
         } else {
+            // There's no ID value, continuing...
             return false
         }
     }
@@ -81,7 +107,6 @@ final class NotificationsManager {
         // Create the content
         let content = self.getNotificationContent(appointment)
         content.sound = UNNotificationSound.default
-        
         
         let startDate = Date(timeIntervalSince1970: TimeInterval(appointment.start))
 
@@ -159,5 +184,15 @@ final class NotificationsManager {
     
     static func getNotificationsUserId() -> String {
         return UserDefaults.standard.string(forKey: "notificationsuser") ?? ""
+    }
+}
+
+
+extension UNNotificationContent {
+    /**
+     Function for checking if the title and body of a notification match
+     */
+    func matches(_ notification:  UNNotificationContent) -> Bool {
+        return self.title == notification.title && self.body == notification.body
     }
 }
