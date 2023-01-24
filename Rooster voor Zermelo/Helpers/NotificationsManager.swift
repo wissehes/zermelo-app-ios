@@ -107,7 +107,8 @@ final class NotificationsManager {
         // Create the content
         let content = self.getNotificationContent(appointment)
         content.sound = UNNotificationSound.default
-        
+        content.interruptionLevel = .timeSensitive
+
         let startDate = Date(timeIntervalSince1970: TimeInterval(appointment.start))
 
         // Create dateComponents from the date minus 5 minutes.
@@ -154,6 +155,14 @@ final class NotificationsManager {
     static func getNotifications(completion: @escaping ([UNNotificationRequest]) -> ()) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
             completion(notifications)
+        }
+    }
+    
+    static func getNotifications() async -> [UNNotificationRequest] {
+        return await withCheckedContinuation { continuation in
+            UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
+                continuation.resume(returning: notifications)
+            }
         }
     }
     
