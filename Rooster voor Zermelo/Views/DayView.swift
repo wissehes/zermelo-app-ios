@@ -53,6 +53,8 @@ struct DayItemView: View {
         if let slotName = item.startTimeSlotName, !slotName.isEmpty {
             Text(slotName)
                 .fontWeight(.bold)
+        } else if item.appointmentType == "exam" {
+            Image(systemName: "magazine")
         } else {
             Image(systemName: "calendar")
 

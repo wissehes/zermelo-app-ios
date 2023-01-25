@@ -56,7 +56,6 @@ final class HomeViewModel: ObservableObject {
         let week = API.getWeek(selectedDate)
         
         let result = await API.getLiveScheduleAsync(week: week)
-        print(result)
         
         switch result {
         case .success(let data):
