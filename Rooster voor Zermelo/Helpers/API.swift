@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import FirebaseCrashlytics
 
 final class API {
     
@@ -70,7 +71,10 @@ final class API {
         switch result {
         case .success(let data):
             return data.response.data.first?.appointments ?? []
-        case .failure(_):
+        case .failure(let err):
+            if err.isResponseSerializationError {
+                Crashlytics.crashlytics().record(error: err)
+            }
             return []
         }
     }

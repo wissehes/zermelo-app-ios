@@ -40,6 +40,7 @@
 		89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */; };
 		89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */; };
+		89DBAA84297E78CF001C1EF0 /* BackgroundTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */; };
 		89ED829928C5307F00306872 /* TokenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829828C5307F00306872 /* TokenSaver.swift */; };
 		89ED829B28C530C000306872 /* SavedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829A28C530C000306872 /* SavedToken.swift */; };
 		89ED829F28C534A200306872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829E28C534A200306872 /* HomeView.swift */; };
@@ -58,6 +59,7 @@
 		891829232976B5630003F81A /* UserListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListItem.swift; sourceTree = "<group>"; };
 		891829252976B6150003F81A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		891829272976BAA80003F81A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		89185106297FEC2400C297EE /* Rooster voor Zermelo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rooster voor Zermelo.entitlements"; sourceTree = "<group>"; };
 		892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rooster voor Zermelo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rooster_voor_ZermeloApp.swift; sourceTree = "<group>"; };
 		892632DF28C3A94400B9C624 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
 		89C1B60E2971523200D0BB98 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasksController.swift; sourceTree = "<group>"; };
 		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
 		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
 		89ED829E28C534A200306872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		892632DC28C3A94400B9C624 /* Rooster voor Zermelo */ = {
 			isa = PBXGroup;
 			children = (
+				89185106297FEC2400C297EE /* Rooster voor Zermelo.entitlements */,
 				89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */,
 				8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */,
 				89ED829728C5307200306872 /* Helpers */,
@@ -251,6 +255,7 @@
 				892DDA2D29747E2000E0592E /* NotificationsManager.swift */,
 				891829272976BAA80003F81A /* UserManager.swift */,
 				89346ECE29784A8A006E1651 /* NewAuthManager.swift */,
+				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				89346ED22978978F006E1651 /* AddUserView.swift in Sources */,
 				891829242976B5630003F81A /* UserListItem.swift in Sources */,
 				89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */,
+				89DBAA84297E78CF001C1EF0 /* BackgroundTasksController.swift in Sources */,
 				89F7051F28C682A000AFF2DF /* API.swift in Sources */,
 				892632DE28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift in Sources */,
 				892DDA2C2974794100E0592E /* SettingsView.swift in Sources */,
@@ -553,6 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rooster voor Zermelo/Rooster voor Zermelo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -587,6 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rooster voor Zermelo/Rooster voor Zermelo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Rooster voor Zermelo/Preview Content\"";
