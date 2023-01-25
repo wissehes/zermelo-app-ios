@@ -50,12 +50,11 @@ final class NotificationsManager {
             return date > now
         }
         
-        self.getNotifications { scheduled in
-            
-            for appointment in filtered {
-                if scheduled.first(where: { self.filterFunction($0, app: appointment) }) == nil {
-                    self.scheduleNotification(appointment)
-                }
+        let notifications = await self.getNotifications()
+        
+        for appointment in filtered {
+            if notifications.first(where: { self.filterFunction($0, app: appointment) }) == nil {
+                self.scheduleNotification(appointment)
             }
         }
     }
