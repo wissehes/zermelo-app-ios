@@ -17,9 +17,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        #if !targetEnvironment(simulator)
-            FirebaseApp.configure()
-        #endif
+#if !targetEnvironment(simulator)
+        FirebaseApp.configure()
+#endif
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         
         return true
@@ -32,11 +32,21 @@ struct Rooster_voor_ZermeloApp: App {
     @StateObject var authManager = AuthManager()
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @Environment(\.scenePhase) private var phase
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(authManager)
+        }
+        .onChange(of: phase) { newPhase in
+            switch newPhase {
+            case .background: BackgroundTasksController.scheduleAppRefresh()
+            default: break
+            }
+        }.backgroundTask(.appRefresh("notificationrefresh")) {
+            guard let data = try? await API.getLiveScheduleAsync() else { return }
+            await NotificationsManager.scheduleNotifications(data)
         }
     }
 }

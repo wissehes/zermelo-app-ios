@@ -11,12 +11,13 @@ import Alamofire
 struct AppointmentActionView: View {
     var action: ZermeloLivescheduleAction
     @EnvironmentObject var authManager: AuthManager
-    @Environment(\.locale) var locale
+//    @Environment(\.locale) var locale
     
     @State var isLoading = false
     
     var statuses: [String] {
-        if locale.identifier == "nl" {
+        // Use Locale.current to get the current locale
+        if Locale.current.identifier == "nl" {
             return action.status.map { $0.nl }
         } else {
             return action.status.map { $0.en }

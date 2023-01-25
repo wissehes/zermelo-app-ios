@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import FirebaseCrashlytics
 
 final class API {
     
@@ -51,21 +52,31 @@ final class API {
     static func getLiveScheduleAsync(week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
         guard let user = UserManager.getCurrent() else { return [] }
         
-        guard var url = URLComponents(string: "https://\(user.token.portal).zportal.nl/api/v3/liveschedule") else { fatalError("url error") }
-        url.queryItems = [
-            URLQueryItem(name: "student", value: user.me.code),
-            URLQueryItem(name: "week", value: week)
+        let params: Parameters = [
+            "student": user.me.code,
+            "week": week
+        ]
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(user.token.access_token)"
         ]
         
-        var urlRequest = URLRequest(url: url.url!)
-        urlRequest.addValue("Bearer \(user.token.access_token)", forHTTPHeaderField: "Authorization")
+        let result = await AF.request(
+            "https://\(user.token.portal).zportal.nl/api/v3/liveschedule",
+            parameters: params,
+            headers: headers
+        )
+            .serializingDecodable(GetZermeloLiveschedule.self)
+            .result
         
-        let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        
-        let decoded = try JSONDecoder().decode(GetZermeloLiveschedule.self, from: data)
-        if let data = decoded.response.data.first {
-            return data.appointments
-        } else { return [] }
+        switch result {
+        case .success(let data):
+            return data.response.data.first?.appointments ?? []
+        case .failure(let err):
+            if err.isResponseSerializationError {
+                Crashlytics.crashlytics().record(error: err)
+            }
+            return []
+        }
     }
     
     static func getScheduleForDay(date: Date) async throws -> [ZermeloLivescheduleAppointment] {
