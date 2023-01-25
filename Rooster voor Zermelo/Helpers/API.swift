@@ -49,8 +49,8 @@ final class API {
             }
     }
     
-    static func getLiveScheduleAsync(week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
-        guard let user = UserManager.getCurrent() else { return [] }
+    static func getLiveScheduleAsync(week: String = getWeek(nil)) async -> Result<[ZermeloLivescheduleAppointment], AFError> {
+        guard let user = UserManager.getCurrent() else { return .failure(.explicitlyCancelled) }
         
         let params: Parameters = [
             "student": user.me.code,
@@ -70,28 +70,34 @@ final class API {
         
         switch result {
         case .success(let data):
-            return data.response.data.first?.appointments ?? []
+            return .success(data.response.data.first?.appointments ?? [])
         case .failure(let err):
             if err.isResponseSerializationError {
                 Crashlytics.crashlytics().record(error: err)
             }
-            return []
+            return .failure(err)
         }
     }
     
     static func getScheduleForDay(date: Date) async throws -> [ZermeloLivescheduleAppointment] {
-        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
+        let result = await self.getLiveScheduleAsync(week: getWeek(date))
+//        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
         
-        if weekAppointments.isEmpty {
+        switch result {
+        case .success(let weekAppointments):
+            if weekAppointments.isEmpty {
+                return []
+            }
+            
+            let filtered = weekAppointments.filter { app in
+                let appointmentDate = Date(timeIntervalSince1970: TimeInterval(app.start))
+                return Calendar.current.isDate(appointmentDate, equalTo: date, toGranularity: .day)
+            }
+            
+            return filtered
+        case .failure(_):
             return []
         }
-        
-        let filtered = weekAppointments.filter { app in
-            let appointmentDate = Date(timeIntervalSince1970: TimeInterval(app.start))
-            return Calendar.current.isDate(appointmentDate, equalTo: date, toGranularity: .day)
-        }
-        
-        return filtered
     }
     
     static func fetchMe(token: SavedToken, completion: @escaping (Result<ZermeloMeData, FetchError>) -> ()) {
