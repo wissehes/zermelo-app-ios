@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Alamofire
 
 struct Day: Hashable {
     static func == (lhs: Day, rhs: Day) -> Bool {
@@ -34,32 +35,40 @@ final class WeekViewModel: ObservableObject {
     @Published var selectedAppointment: ZermeloLivescheduleAppointment?
     
     @Published var selectedDate = Date()
+    @Published var error: AFError?
     
     func load(date: Date?) async {
         let week = API.getWeek(date ?? selectedDate)
         
-        do {
-            let appointments = try await API.getLiveScheduleAsync(week: week)
-
+        
+        let result = await API.getLiveScheduleAsync(week: week)
+        
+        switch result {
+        case .success(let appointments):
+            self.mapAppointments(appointments)
+        case .failure(let error):
             DispatchQueue.main.async {
-                self.days = []
-                for appointment in appointments {
-                    let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-                    
-                    let foundRow = self.days.firstIndex { day in
-                        Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
-                    }
-                    
-                    if let foundRow = foundRow {
-                        self.days[foundRow].appointments.append(appointment)
-                    } else {
-                        self.days.append(Day( date: date, appointments: [appointment] ))
-                    }
+                self.error = error
+            }
+        }
+    }
+    
+    private func mapAppointments(_ appointments: [ZermeloLivescheduleAppointment]) {
+        DispatchQueue.main.async {
+            self.days = []
+            for appointment in appointments {
+                let date = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+                
+                let foundRow = self.days.firstIndex { day in
+                    Calendar.current.isDate(day.date, equalTo: date, toGranularity: .day)
+                }
+                
+                if let foundRow = foundRow {
+                    self.days[foundRow].appointments.append(appointment)
+                } else {
+                    self.days.append(Day( date: date, appointments: [appointment] ))
                 }
             }
-            
-        } catch(let err) {
-            print(err)
         }
     }
 }

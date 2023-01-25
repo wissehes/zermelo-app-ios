@@ -74,14 +74,24 @@ struct HomeView: View {
             GeometryReader { geo in
                 List {
                     Section {
-                        if viewModel.todayAppointments.isEmpty {
-                            
-                            noAppointmentsFound
+                        switch viewModel.scheduleResult {
+                        case .success(_):
+                            if viewModel.todayAppointments.isEmpty {
+                                
+                                noAppointmentsFound
+                                    .listRowInsets(.none)
+                                    .listRowBackground(Color.clear)
+                                    .frame(height: geo.size.height / 1.5)
+                            } else {
+                                DayView(appointments: viewModel.todayAppointments)
+                            }
+                        case .failure(let error):
+                            errorView(error: error)
                                 .listRowInsets(.none)
                                 .listRowBackground(Color.clear)
                                 .frame(height: geo.size.height / 1.5)
-                        } else {
-                            DayView(appointments: viewModel.todayAppointments)
+                        case .none:
+                            ProgressView()
                         }
                     } header: {
                         Text(viewModel.navTitle)
@@ -104,6 +114,27 @@ struct HomeView: View {
                 
                 Text("home.noAppointmentsFound")
                     .font(.title)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            
+            Spacer()
+        }
+    }
+    
+    func errorView(error: AFError) -> some View {
+        HStack(alignment: .center) {
+            Spacer()
+            
+            VStack(alignment: .center) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 75, height: 75, alignment: .center)
+                    .foregroundColor(.secondary)
+                
+                Text(error.localizedDescription)
+                    .font(.title3)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }

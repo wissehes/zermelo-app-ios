@@ -45,7 +45,8 @@ struct Rooster_voor_ZermeloApp: App {
             default: break
             }
         }.backgroundTask(.appRefresh("notificationrefresh")) {
-            guard let data = try? await API.getLiveScheduleAsync() else { return }
+            let result = await API.getLiveScheduleAsync()
+            guard case .success(let data) = result else { return }
             await NotificationsManager.scheduleNotifications(data)
         }
     }
