@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct WeekView: View {
     @EnvironmentObject var authManager: AuthManager
@@ -62,6 +63,7 @@ struct WeekView: View {
                     }).navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                         AppointmentView(item: appointment)
                     }
+                    .analyticsScreen(name: "Week")
             }
         }
     }

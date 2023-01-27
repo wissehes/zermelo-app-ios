@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import FirebaseAnalytics
 
 final class AuthManager: ObservableObject {
     @Published var isLoading: Bool = true
@@ -61,6 +62,7 @@ final class AuthManager: ObservableObject {
                     switch response.result {
                     case .success(let data):
                         let token = SavedToken.init(institution: school, tokenInfo: data)
+                        FirebaseAnalytics.Analytics.logEvent(AnalyticsEventLogin, parameters: [:])
                         if addUser {
                             self.addUser(token: token)
                         } else {
@@ -132,6 +134,8 @@ final class AuthManager: ObservableObject {
                 self.isLoading = false
                 self.isLoggedIn = true
                 self.user = save
+                
+                Analytics.setUserProperty(user.token.portal, forName: "School")
             case .failure(let err):
                 print(err)
             }
@@ -155,6 +159,7 @@ final class AuthManager: ObservableObject {
     }
     
     func addUser(token: SavedToken) {
+        Analytics.logEvent("Add user", parameters: ["School": token.portal])
         API.fetchMe(token: token) { result in
             switch result {
             case .success(let data):

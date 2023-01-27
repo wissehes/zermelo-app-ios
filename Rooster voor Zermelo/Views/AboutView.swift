@@ -57,6 +57,7 @@ struct AboutView: View {
         } message: {
             Text("about.logout.confirm.subtitle")
         }
+        .analyticsScreen(name: "About")
     }
 }
 

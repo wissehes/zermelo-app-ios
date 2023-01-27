@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 final class UsersViewModel: ObservableObject {
     @Published var users: [User] = [];
@@ -21,6 +22,8 @@ final class UsersViewModel: ObservableObject {
         self.users = UserManager.getAll()
         self.currentUser = UserManager.getCurrent()
         self.selectedUser = currentUser?.id
+        
+        Analytics.setUserProperty(String(describing: self.users.count), forName: "Accounts")
     }
     
     func save() {

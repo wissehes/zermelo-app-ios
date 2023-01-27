@@ -37,6 +37,7 @@ struct Userlist: View {
             .toolbar {
                 EditButton().disabled(viewModel.users.count == 1)
             }
+            .analyticsScreen(name: "Userlist")
     }
 }
 

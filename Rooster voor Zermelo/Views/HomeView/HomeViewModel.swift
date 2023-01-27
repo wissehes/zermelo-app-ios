@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftUI
+import FirebaseAnalytics
 
 final class HomeViewModel: ObservableObject {
 //    @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []

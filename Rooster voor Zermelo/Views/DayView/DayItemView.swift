@@ -1,30 +1,11 @@
 //
-//  DayView.swift
+//  DayItemView.swift
 //  Rooster voor Zermelo
 //
-//  Created by Wisse Hes on 06/09/2022.
+//  Created by Wisse Hes on 26/01/2023.
 //
 
 import SwiftUI
-
-struct DayView: View {
-    var appointments: [ZermeloLivescheduleAppointment]
-    
-    init(appointments: [ZermeloLivescheduleAppointment]) {
-        self.appointments = appointments.sorted(by: { app1, app2 in
-            let date1 = Date(timeIntervalSince1970: TimeInterval(app1.start))
-            let date2 = Date(timeIntervalSince1970: TimeInterval(app2.start))
-            
-            return date1.compare(date2) == .orderedAscending
-        })
-    }
-    
-    var body: some View {
-        ForEach(appointments, id: \.start) { item in
-            DayItemView(item: item)
-        }
-    }
-}
 
 struct DayItemView: View {
     
@@ -57,43 +38,79 @@ struct DayItemView: View {
             Image(systemName: "magazine")
         } else {
             Image(systemName: "calendar")
-
+            
+        }
+    }
+    
+    var slotItem: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .stroke(item.subjects.isEmpty ? .gray : Color.accentColor, lineWidth: 5)
+            .background(RoundedRectangle(cornerRadius: 10).fill(isRightNow ? Color("TimeSlotColor") : colorScheme == .light ? .white : .black))
+            .overlay(
+                slotImage
+            )
+            .frame(width: 50, height: 50, alignment: .center)
+            .padding(5)
+    }
+    
+    var singleLine: some View {
+        HStack {
+            if !item.subjects.isEmpty {
+                Text(item.subjects.joined(separator: ", "))
+                    .font(.headline)
+            } else {
+                Text("word.empty")
+                    .italic()
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+            }
+            
+            if(!item.teachers.isEmpty) {
+                Text("-")
+                Text(item.teachers.joined(separator: ", "))
+            }
+            if(!item.locations.isEmpty) {
+                Text("-")
+                Text(item.locations.joined(separator: ", "))
+            }
+        }
+    }
+    
+    //    @ViewBuilder
+    var doubleLine: some View {
+        VStack(alignment: .leading) {
+            if !item.subjects.isEmpty {
+                Text(item.subjects.joined(separator: ", "))
+                    .font(.headline)
+            } else {
+                Text("word.empty")
+                    .italic()
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+            }
+            
+            HStack {
+                if(!item.teachers.isEmpty) {
+                    Text(item.teachers.joined(separator: ", "))
+                }
+                if(!item.locations.isEmpty) {
+                    Text("-")
+                    Text(item.locations.joined(separator: ", "))
+                }
+            }
         }
     }
     
     var body: some View {
         NavigationLink(value: item) {
             HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(item.subjects.isEmpty ? .gray : Color.accentColor, lineWidth: 5)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(isRightNow ? Color("TimeSlotColor") : colorScheme == .light ? .white : .black))
-                    .overlay(
-                        slotImage
-                    )
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .padding(5)
+                slotItem
                 
                 VStack(alignment: .leading) {
                     
-                    HStack {
-                        if !item.subjects.isEmpty {
-                            Text(item.subjects.joined(separator: ", "))
-                                .font(.headline)
-                        } else {
-                            Text("word.empty")
-                                .italic()
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if(!item.teachers.isEmpty) {
-                            Text("-")
-                            Text(item.teachers.joined(separator: ", "))
-                        }
-                        if(!item.locations.isEmpty) {
-                            Text("-")
-                            Text(item.locations.joined(separator: ", "))
-                        }
+                    ViewThatFits {
+                        singleLine
+                        doubleLine
                     }
                     
                     timeView(appointment: item)
@@ -105,6 +122,7 @@ struct DayItemView: View {
                                 .font(.subheadline)
                                 .italic()
                                 .foregroundColor(.secondary)
+                                .lineLimit(1)
                         }
                     }
                 }
@@ -123,8 +141,12 @@ struct DayItemView: View {
     }
 }
 
-//struct DayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DayView()
-//    }
-//}
+struct DayItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            List {
+                DayItemView(item: .example)
+            }
+        }
+    }
+}

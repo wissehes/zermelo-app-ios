@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct AppointmentView: View {
     
@@ -63,6 +64,7 @@ struct AppointmentView: View {
                     Text("appointment.cannotEnroll")
                 }
             }.navigationTitle("appointment.appointment")
+            .analyticsScreen(name: "Appointment")
     }
     
     @ViewBuilder

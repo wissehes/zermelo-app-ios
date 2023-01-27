@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Alamofire
+import FirebaseAnalytics
 
 struct ReverseLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -60,7 +61,8 @@ struct HomeView: View {
                     Task {
                         await viewModel.dateChanged(newValue)
                     }
-                }
+                }.contentTransition(.opacity)
+                .analyticsScreen(name: "Home")
         }
     }
     

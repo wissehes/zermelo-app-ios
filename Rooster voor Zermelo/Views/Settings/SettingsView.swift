@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import FirebaseAnalytics
 
 extension UNAuthorizationStatus {
     var text: LocalizedStringKey {
@@ -102,6 +103,8 @@ struct SettingsView: View {
                 Text(notifError?.localizedDescription ?? "")
             }.onAppear {
                 checkNotificationPermissions()
+                Analytics.logEvent(AnalyticsEventScreenView,
+                                   parameters: [AnalyticsParameterScreenName: "Settings"])
             }.onChange(of: showNotifications) { _ in
                 onChangeNotifications()
             }.confirmationDialog("about.logout.confirm.title", isPresented: $logoutConfirmationShowing) {
@@ -116,6 +119,8 @@ struct SettingsView: View {
     }
     
     func onChangeNotifications() {
+        Analytics.setUserProperty(showNotifications ? "ON" : "OFF", forName: "Show notifications")
+        
         if showNotifications {
             NotificationsManager.requestPermission { result in
                 switch result {
