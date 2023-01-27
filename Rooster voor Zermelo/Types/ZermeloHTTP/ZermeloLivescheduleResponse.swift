@@ -79,6 +79,13 @@ struct ZermeloLivescheduleAppointment: Codable, Hashable {
         case appointmentInstance, startTimeSlotName, endTimeSlotName, subjects, groups, locations, teachers
         case changeDescription, schedulerRemark, id, plannedAttendance, studentEnrolled, allowedActions, attendanceOverruled, availableSpace
     }
+    
+    static var example: ZermeloLivescheduleAppointment = {
+        let path = Bundle.main.path(forResource: "appointment", ofType: "json")
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        let app = try? JSONDecoder().decode(ZermeloLivescheduleAppointment.self, from: data!)
+        return app!
+    }()
 }
 
 // MARK: - ZermeloLivescheduleStatus
@@ -92,8 +99,10 @@ struct ZermeloLivescheduleStatus: Codable {
 //    case none = "none"
 //}
 //
-//enum ZermeloLivescheduleAppointmentType: String, Codable {
+//enum ZermeloAppointmentType: String, Codable {
 //    case choice = "choice"
 //    case lesson = "lesson"
+//    case exam = "exam"
+//    case talk = "talk"
 //}
 //

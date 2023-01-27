@@ -1,0 +1,143 @@
+
+{
+    "status": [
+        {
+            "code": 2002,
+            "nl": "Inschrijving in orde.",
+            "en": "Enrollment OK."
+        },
+        {
+            "code": 4009,
+            "nl": "Dit is door iemand anders bepaald.",
+            "en": "This has been decided by someone else."
+        }
+    ],
+    "actions": [
+        {
+            "appointment": {
+                "start": 1674464400,
+                "end": 1674468000,
+                "cancelled": false,
+                "plannedAttendance": false,
+                "studentEnrolled": false,
+                "allowedActions": "none",
+                "optional": true,
+                "attendanceOverruled": false,
+                "appointmentType": "lesson",
+                "online": false,
+                "onlineLocationUrl": null,
+                "appointmentInstance": 450177,
+                "startTimeSlotName": "3",
+                "endTimeSlotName": "3",
+                "subjects": [
+                    "samenwerken"
+                ],
+                "groups": [],
+                "locations": [
+                    "16r"
+                ],
+                "teachers": [
+                    "otli"
+                ],
+                "onlineTeachers": [],
+                "capacity": null,
+                "expectedStudentCount": null,
+                "expectedStudentCountOnline": null,
+                "changeDescription": "De docent is vervangen (was ojse).",
+                "schedulerRemark": "",
+                "content": null,
+                "availableSpace": 12,
+                "id": 14595559
+            },
+            "status": [
+                {
+                    "code": 4009,
+                    "nl": "Dit is door iemand anders bepaald.",
+                    "en": "This has been decided by someone else."
+                }
+            ],
+            "allowed": false,
+            "post": "/api/v3/liveschedule/enrollment?enroll=14595559&unenroll="
+        },
+        {
+            "appointment": {
+                "start": 1674464400,
+                "end": 1674468000,
+                "cancelled": false,
+                "plannedAttendance": false,
+                "studentEnrolled": false,
+                "allowedActions": "none",
+                "optional": true,
+                "attendanceOverruled": false,
+                "appointmentType": "lesson",
+                "online": false,
+                "onlineLocationUrl": null,
+                "appointmentInstance": 450259,
+                "startTimeSlotName": "3",
+                "endTimeSlotName": "3",
+                "subjects": [
+                    "wa",
+                    "wb",
+                    "wc",
+                    "wd"
+                ],
+                "groups": [],
+                "locations": [
+                    "9r"
+                ],
+                "teachers": [
+                    "rbr"
+                ],
+                "onlineTeachers": [],
+                "capacity": null,
+                "expectedStudentCount": null,
+                "expectedStudentCountOnline": null,
+                "changeDescription": "",
+                "schedulerRemark": "",
+                "content": null,
+                "availableSpace": 7,
+                "id": 14597234
+            },
+            "status": [
+                {
+                    "code": 4009,
+                    "nl": "Dit is door iemand anders bepaald.",
+                    "en": "This has been decided by someone else."
+                }
+            ],
+            "allowed": false,
+            "post": "/api/v3/liveschedule/enrollment?enroll=14597234&unenroll="
+        }
+    ],
+    "start": 1674464400,
+    "end": 1674468000,
+    "cancelled": false,
+    "appointmentType": "lesson",
+    "online": false,
+    "optional": false,
+    "appointmentInstance": 449924,
+    "startTimeSlotName": "3",
+    "endTimeSlotName": "3",
+    "subjects": [
+        "dutl"
+    ],
+    "groups": [
+        "h5.dutl1"
+    ],
+    "locations": [
+        "5c"
+    ],
+    "teachers": [
+        "kzo"
+    ],
+    "onlineTeachers": [],
+    "onlineLocationUrl": null,
+    "capacity": null,
+    "expectedStudentCount": null,
+    "expectedStudentCountOnline": null,
+    "changeDescription": "Het lokaal is gewijzigd (was 6r).",
+    "schedulerRemark": "",
+    "content": null,
+    "id": 14591238
+}
+
