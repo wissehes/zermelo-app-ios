@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AboutView: View {
-    @EnvironmentObject var authManager: AuthManager
+//    @EnvironmentObject var authManager: AuthManager
     
     @State var confirmationShowing = false
     
@@ -31,12 +31,12 @@ struct AboutView: View {
                 }
             }
             
-            Section("about.logout") {
-                Button(role: .destructive) { confirmationShowing = true } label: {
-                    Label("about.logout", systemImage: "person.crop.circle.badge.xmark.fill")
-                        .foregroundColor(.red)
-                }
-            }
+//            Section("about.logout") {
+//                Button(role: .destructive) { confirmationShowing = true } label: {
+//                    Label("about.logout", systemImage: "person.crop.circle.badge.xmark.fill")
+//                        .foregroundColor(.red)
+//                }
+//            }
             
             Section("about.privacy") {
                 Text("about.privacy.text")
@@ -51,12 +51,12 @@ struct AboutView: View {
                     .font(.subheadline)
             }
         }.navigationTitle("about.about")
-            .confirmationDialog("about.logout.confirm.title", isPresented: $confirmationShowing) {
-            Button("about.logout.confirm.confirm", role: .destructive) { authManager.signOut() }
-            Button("word.cancel", role: .cancel) {}
-        } message: {
-            Text("about.logout.confirm.subtitle")
-        }
+//            .confirmationDialog("about.logout.confirm.title", isPresented: $confirmationShowing) {
+//            Button("about.logout.confirm.confirm", role: .destructive) { authManager.signOut() }
+//            Button("word.cancel", role: .cancel) {}
+//        } message: {
+//            Text("about.logout.confirm.subtitle")
+//        }
         .analyticsScreen(name: "About")
     }
 }
