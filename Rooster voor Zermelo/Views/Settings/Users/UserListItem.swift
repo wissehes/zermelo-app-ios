@@ -29,7 +29,7 @@ struct UserListItem: View {
             }
             
             VStack(alignment: .leading, spacing: 5) {
-                Text("\(user.me.firstName) \(user.me.lastName)")
+                Text(user.name)
                     .font(.title3)
                     .bold()
                 Text("\(user.me.code) - \(user.token.portal)")

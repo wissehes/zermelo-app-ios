@@ -17,6 +17,16 @@ struct User: Codable, Hashable {
     
     let token: SavedToken
     var me: ZermeloMeData
+    
+    var name: String {
+        let me = self.me
+        
+        if let prefix = me.prefix {
+            return me.firstName + " " + prefix + " " + me.lastName
+        } else {
+            return me.firstName + " " + me.lastName
+        }
+    }
 }
 
 extension User {
@@ -36,7 +46,7 @@ extension User {
         me: ZermeloMeData(
             code: "10000",
             roles: ["leerling"],
-            firstName: "Wisse", lastName: "Hes"
+            firstName: "Wisse", prefix: nil, lastName: "Hes"
         )
     )
 }
