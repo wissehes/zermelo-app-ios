@@ -96,6 +96,10 @@ struct SettingsView: View {
                     
                 }
             }
+            
+#if DEBUG
+            devSection
+#endif
         }.navigationTitle("settings.settings")
             .alert("word.error", isPresented: $notifErrorShown) {
                 Button("word.ok") {}
@@ -116,6 +120,27 @@ struct SettingsView: View {
                 AddUserView()
             }
         
+    }
+    
+    var devSection: some View {
+        Group {
+            Button("Copy USER objects (json)") {
+                //            let json = JSONEncoder().encode(UserManager.getAll())
+                guard let json = UserDefaults.standard.data(forKey: UserManager.userDefaultsKey) else { return print("no data") }
+                
+                UIPasteboard.general.string = String(data: json, encoding: .utf8)
+            }
+            
+            Button("Add user") {
+                guard let text = UIPasteboard.general.string else { return }
+                
+                if let decoded = try? JSONDecoder().decode([User].self, from: text.data(using: .utf8)!) {
+                    for user in decoded {
+                        UserManager.add(user: user)
+                    }
+                }
+            }
+        }
     }
     
     func onChangeNotifications() {
