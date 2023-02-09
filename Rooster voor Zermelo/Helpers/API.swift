@@ -49,6 +49,38 @@ final class API {
             }
     }
     
+    static func getLiveSchedule(user: User, week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
+        let params: Parameters = [
+            "student": user.me.code,
+            "week": week
+        ]
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(user.token.access_token)"
+        ]
+        
+        let result = await AF.request(
+            "https://\(user.token.portal).zportal.nl/api/v3/liveschedule",
+            parameters: params,
+            headers: headers
+        )
+            .serializingDecodable(GetZermeloLiveschedule.self)
+            .result
+        
+        switch result {
+        case .success(let data):
+            if let apps = data.response.data.first?.appointments {
+             return apps
+            } else {
+                throw FetchError.noData
+            }
+        case .failure(let err):
+            if err.isResponseSerializationError {
+                Crashlytics.crashlytics().record(error: err)
+            }
+            throw err
+        }
+    }
+    
     static func getLiveScheduleAsync(week: String = getWeek(nil)) async -> Result<[ZermeloLivescheduleAppointment], AFError> {
         guard let user = UserManager.getCurrent() else { return .failure(.explicitlyCancelled) }
         
@@ -81,7 +113,7 @@ final class API {
     
     static func getScheduleForDay(date: Date) async throws -> [ZermeloLivescheduleAppointment] {
         let result = await self.getLiveScheduleAsync(week: getWeek(date))
-//        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
+        //        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
         
         switch result {
         case .success(let weekAppointments):
@@ -139,7 +171,7 @@ final class API {
                 }
             }
     }
-
+    
 }
 
 enum FetchError: Error {
