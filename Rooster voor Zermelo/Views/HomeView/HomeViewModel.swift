@@ -19,12 +19,20 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedAppointment: ZermeloLivescheduleAppointment?
     
     @Published var selectedDate: Date = Date()
+    
+    @Published var users: [User] = []
+    @Published var currentUser: User?
+    
+    var formatter: DateFormatter
+
     var todaySelected: Bool {
         return Calendar.current.isDateInToday(selectedDate)
     }
+    
     var tomorrowSelected: Bool {
         return Calendar.current.isDateInTomorrow(selectedDate)
     }
+    
     var todayAppointments: [ZermeloLivescheduleAppointment] {
         guard let scheduleResult = scheduleResult else { return [] }
         guard case .success(let data) = scheduleResult else { return [] }
@@ -34,8 +42,6 @@ final class HomeViewModel: ObservableObject {
             return Calendar.current.isDate(date, equalTo: selectedDate, toGranularity: .day)
         }
     }
-    
-    var formatter: DateFormatter
     
     init() {
         self.formatter = DateFormatter()
@@ -81,6 +87,18 @@ final class HomeViewModel: ObservableObject {
     
     func reload() async {
         await self.load(animation: false)
+    }
+    
+    func reloadUsers() {
+        self.users = UserManager.getAll()
+        if let current = UserManager.getCurrent() {
+            self.currentUser = current
+        }
+    }
+    
+    func updateUsers() {
+        guard let current = currentUser else { return }
+        UserManager.setCurrent(id: current.id)
     }
     
     func dateChanged(_ newVal: Date) async {

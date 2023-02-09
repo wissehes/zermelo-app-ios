@@ -33,6 +33,7 @@ struct HomeView: View {
                         Menu {
                             aboutThisApp
                             settings
+                            userPicker
                         } label: {
                             Label("Menu", systemImage: "gear")
                         }
@@ -54,6 +55,7 @@ struct HomeView: View {
                 .navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                     AppointmentView(item: appointment)
                 }.task {
+                    viewModel.reloadUsers()
                     await viewModel.load()
                 }.refreshable {
                     await viewModel.reload()
@@ -61,7 +63,8 @@ struct HomeView: View {
                     Task {
                         await viewModel.dateChanged(newValue)
                     }
-                }.contentTransition(.opacity)
+                }
+                .contentTransition(.opacity)
                 .analyticsScreen(name: "Home")
         }
     }
@@ -143,6 +146,24 @@ struct HomeView: View {
             
             Spacer()
         }
+    }
+    
+    var userPicker: some View {
+        Picker(selection: $viewModel.currentUser) {
+            ForEach(viewModel.users, id: \.id) { user in
+                Text(user.name)
+                    .tag(user as User?)
+            }
+        } label: {
+            Label("settings.users", systemImage: "person.2")
+        }.pickerStyle(.menu)
+            .onChange(of: viewModel.currentUser) { newValue in
+                Task {
+                    viewModel.updateUsers()
+                    await viewModel.load(animation: true)
+                }
+            }
+
     }
     
     var aboutThisApp: some View {
