@@ -28,7 +28,6 @@
 		8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3928C7932E0063E3DF /* WeekViewModel.swift */; };
 		8947BD3C28C797B40063E3DF /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3B28C797B40063E3DF /* DayView.swift */; };
 		8951C9CF2983BFB400EEBDCE /* Analytics+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */; };
-		895E8F0F2994E5700051360C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E8F0E2994E5700051360C /* UserController.swift */; };
 		8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 8965E2D428C3D06D001D9B8E /* CodeScanner */; };
 		896EAC7729799CD400FB0B05 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896EAC7629799CD400FB0B05 /* SettingsViewModel.swift */; };
 		897038C628FDE11600773BCD /* NewWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897038C528FDE11600773BCD /* NewWeekView.swift */; };
@@ -79,7 +78,6 @@
 		8947BD3928C7932E0063E3DF /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		8947BD3B28C797B40063E3DF /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+SwiftUI.swift"; sourceTree = "<group>"; };
-		895E8F0E2994E5700051360C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Rooster-voor-Zermelo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		896EAC7629799CD400FB0B05 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		897038C528FDE11600773BCD /* NewWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWeekView.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				89ED829828C5307F00306872 /* TokenSaver.swift */,
 				891829272976BAA80003F81A /* UserManager.swift */,
 				89346ECE29784A8A006E1651 /* AuthManager.swift */,
-				895E8F0E2994E5700051360C /* UserController.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -442,7 +439,6 @@
 				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,
 				89346ECF29784A8A006E1651 /* AuthManager.swift in Sources */,
 				898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */,
-				895E8F0F2994E5700051360C /* UserController.swift in Sources */,
 				89ED829B28C530C000306872 /* SavedToken.swift in Sources */,
 				89ED829F28C534A200306872 /* HomeView.swift in Sources */,
 				896EAC7729799CD400FB0B05 /* SettingsViewModel.swift in Sources */,
