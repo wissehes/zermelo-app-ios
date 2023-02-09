@@ -159,6 +159,13 @@ struct HomeView: View {
             Label("settings.settings", systemImage: "gear")
         }
     }
+//    var compare: some View {
+//        NavigationLink {
+//            CompareView()
+//        } label: {
+//            Label("Compare", systemImage: "gear")
+//        }
+//    }
 }
 
 struct HomeView_Previews: PreviewProvider {
