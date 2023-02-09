@@ -64,7 +64,8 @@ struct AppointmentView: View {
                     Text("appointment.cannotEnroll")
                 }
             }.navigationTitle("appointment.appointment")
-            .analyticsScreen(name: "Appointment")
+            .navigationBarTitleDisplayMode(.inline)
+            .analyticsScreen(name: "Appointment", extraParameters: ["subject": item.subjects.joined(separator: ",")])
     }
     
     @ViewBuilder
