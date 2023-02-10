@@ -33,7 +33,9 @@ struct HomeView: View {
                         Menu {
                             aboutThisApp
                             settings
-                            userPicker
+                            if viewModel.users.count > 1 {
+                                userPicker
+                            }
                         } label: {
                             Label("Menu", systemImage: "gear")
                         }
