@@ -30,12 +30,12 @@ struct AppointmentView: View {
                         
                         HStack {
                             
-                            Label("appointment.enrolled", systemImage: "checkmark.square")
+                            Label("appointment.enrolled", systemImage: "checkmark.circle")
                                 .foregroundColor(.green)
                                 .labelStyle(.iconOnly)
                             
                             VStack(alignment: .leading) {
-                                Text("**\(item.subjects.joined())** - \(item.locations.joined()) - \(item.teachers.joined())")
+                                Text("**\(item.subjects.join(.minimal))** - \(item.locations.join(.minimal)) - \(item.teachers.join(.minimal))")
                                 
                                 Text("appointment.enrolled")
                                     .foregroundColor(.secondary)
@@ -64,27 +64,35 @@ struct AppointmentView: View {
                     Text("appointment.cannotEnroll")
                 }
             }.navigationTitle("appointment.appointment")
-            .navigationBarTitleDisplayMode(.inline)
             .analyticsScreen(name: "Appointment", extraParameters: ["subject": item.subjects.joined(separator: ",")])
     }
     
     @ViewBuilder
     var statusView:  some View {
-        if let desc = item.changeDescription, !desc.isEmpty {
-            Section("Status") {
-                Label {
-                    Text(desc)
-                } icon: {
-                    Image(systemName: "exclamationmark.triangle")
-                        .foregroundColor(.yellow)
+        if item.changeDescription != "" || item.schedulerRemark != "" {
+            Section("Info") {
+                if let teacherRemark = item.content, !teacherRemark.isEmpty {
+                    Label(teacherRemark, systemImage: "exclamationmark.bubble.fill")
                 }
+                if let remark = item.schedulerRemark, !remark.isEmpty {
+                    Label(remark, systemImage: "exclamationmark.bubble.fill")
+                }
+                if let desc = item.changeDescription, !desc.isEmpty {
+                        Label {
+                            Text(desc)
+                        } icon: {
+                            Image(systemName: "exclamationmark.triangle")
+                                .foregroundColor(.yellow)
+                        }
 
+                }
             }
+
         }
     }
     
     var infoSection: some View {
-        Section("Info") {
+        Section("Les") {
             if let slotName = item.startTimeSlotName {
                 itemDetailView([slotName], icon: "clock", single: "appointment.period", multiple: nil)
             }

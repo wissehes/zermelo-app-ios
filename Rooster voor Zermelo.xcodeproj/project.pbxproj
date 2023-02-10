@@ -37,6 +37,7 @@
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
 		89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7499C2987C5730098E8C9 /* CompareView.swift */; };
 		89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */; };
+		89AE9BB92996380F00D79217 /* Array+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9BB82996380F00D79217 /* Array+Joined.swift */; };
 		89BC68CD298270D8006D6478 /* appointment.json in Resources */ = {isa = PBXBuildFile; fileRef = 89BC68CC298270D8006D6478 /* appointment.json */; };
 		89BC68D12982722F006D6478 /* DayItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC68D02982722F006D6478 /* DayItemView.swift */; };
 		89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */; };
@@ -90,6 +91,7 @@
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
 		89A7499C2987C5730098E8C9 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
+		89AE9BB82996380F00D79217 /* Array+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Joined.swift"; sourceTree = "<group>"; };
 		89BC68CC298270D8006D6478 /* appointment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appointment.json; sourceTree = "<group>"; };
 		89BC68D02982722F006D6478 /* DayItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayItemView.swift; sourceTree = "<group>"; };
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				892DDA2D29747E2000E0592E /* NotificationsManager.swift */,
 				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
 				8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */,
+				89AE9BB82996380F00D79217 /* Array+Joined.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */,
 				892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */,
 				89346ED22978978F006E1651 /* AddUserView.swift in Sources */,
+				89AE9BB92996380F00D79217 /* Array+Joined.swift in Sources */,
 				891829242976B5630003F81A /* UserListItem.swift in Sources */,
 				89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */,
 				89DBAA84297E78CF001C1EF0 /* BackgroundTasksController.swift in Sources */,
