@@ -60,7 +60,9 @@
 
 
 "about.privacy" = "Privacy";
-"about.privacy.text" = "This app does not share any of your Zermelo data with third parties. It is only transferred between your device and Zermelo's servers.\nThis app does use *Firebase Analytics* and *Crashlytics* to ensure bugs and other errors can be fixed quickly. [Google’s privacy policy](https://firebase.google.com/support/privacy)";
+"about.privacy.text" = "This app does not share any of your Zermelo data with third parties. It is only transferred between your device and Zermelo's servers.\nThis app does use *Firebase Analytics* and *Sentry* to ensure bugs and other errors can be fixed quickly.";
+"about.privacy.google" = "Google's privacy policy";
+"about.privacy.sentry" = "Sentry's privacy policy";
 
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "This app is not made, affiliated, or endorsed by `Zermelo Software BV.`";
