@@ -92,6 +92,7 @@
 		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
 		89A7499C2987C5730098E8C9 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		89A8C601299A495900D4A9B2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
 		89AE9BB82996380F00D79217 /* Array+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Joined.swift"; sourceTree = "<group>"; };
 		89BC68CC298270D8006D6478 /* appointment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appointment.json; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 				8986658028DB8DD000D7A98C /* Screenshots */,
 				89F7052028C68ACE00AFF2DF /* README.md */,
 				89C1B60E2971523200D0BB98 /* CHANGELOG.md */,
+				89A8C601299A495900D4A9B2 /* Config.xcconfig */,
 				892AA7DD296D8AD000BC883D /* Localizable.strings */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
 				892632DB28C3A94400B9C624 /* Products */,
@@ -487,6 +489,7 @@
 /* Begin XCBuildConfiguration section */
 		892632E628C3A94600B9C624 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A8C601299A495900D4A9B2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -548,6 +551,7 @@
 		};
 		892632E728C3A94600B9C624 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A8C601299A495900D4A9B2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
