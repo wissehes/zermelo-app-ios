@@ -40,6 +40,13 @@ struct AboutView: View {
             
             Section("about.privacy") {
                 Text("about.privacy.text")
+                
+                Link(destination: URL(string: "https://firebase.google.com/support/privacy")!) {
+                    Label("about.privacy.google", systemImage: "globe")
+                }
+                Link(destination: URL(string: "https://sentry.io/privacy/")!) {
+                    Label("about.privacy.sentry", systemImage: "globe")
+                }
             }
             
             Section("about.disclaimer") {

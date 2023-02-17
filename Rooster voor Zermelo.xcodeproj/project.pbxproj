@@ -36,6 +36,8 @@
 		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
 		89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7499C2987C5730098E8C9 /* CompareView.swift */; };
+		89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FD299A401900D4A9B2 /* Sentry */; };
+		89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */; };
 		89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */; };
 		89AE9BB92996380F00D79217 /* Array+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9BB82996380F00D79217 /* Array+Joined.swift */; };
 		89BC68CD298270D8006D6478 /* appointment.json in Resources */ = {isa = PBXBuildFile; fileRef = 89BC68CC298270D8006D6478 /* appointment.json */; };
@@ -90,6 +92,7 @@
 		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
 		89A7499C2987C5730098E8C9 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		89A8C601299A495900D4A9B2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
 		89AE9BB82996380F00D79217 /* Array+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Joined.swift"; sourceTree = "<group>"; };
 		89BC68CC298270D8006D6478 /* appointment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appointment.json; sourceTree = "<group>"; };
@@ -113,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */,
+				89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */,
 				8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */,
 				89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */,
 				89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -151,6 +156,7 @@
 				8986658028DB8DD000D7A98C /* Screenshots */,
 				89F7052028C68ACE00AFF2DF /* README.md */,
 				89C1B60E2971523200D0BB98 /* CHANGELOG.md */,
+				89A8C601299A495900D4A9B2 /* Config.xcconfig */,
 				892AA7DD296D8AD000BC883D /* Localizable.strings */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
 				892632DB28C3A94400B9C624 /* Products */,
@@ -337,6 +343,8 @@
 				898C925628C3D76000100AD6 /* Alamofire */,
 				89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */,
+				89A8C5FD299A401900D4A9B2 /* Sentry */,
+				89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */,
 			);
 			productName = "Rooster voor Zermelo";
 			productReference = 892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */;
@@ -371,6 +379,7 @@
 				8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 892632DB28C3A94400B9C624 /* Products */;
 			projectDirPath = "";
@@ -480,6 +489,7 @@
 /* Begin XCBuildConfiguration section */
 		892632E628C3A94600B9C624 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A8C601299A495900D4A9B2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -541,6 +551,7 @@
 		};
 		892632E728C3A94600B9C624 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A8C601299A495900D4A9B2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -703,6 +714,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -723,6 +742,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		89A8C5FD299A401900D4A9B2 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+		89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = SentrySwiftUI;
 		};
 		89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;

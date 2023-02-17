@@ -60,7 +60,9 @@
 
 
 "about.privacy" = "Privacy";
-"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, die worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo.\nDeze app gebruikt wel Firebase Analytics en Crashlytics, dit is om ervoor te zorgen dat bugs en andere fouten snel kunnen worden opgelost. [Google’s privacy policy](https://firebase.google.com/support/privacy)";
+"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, die worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo.\nDeze app gebruikt wel Firebase Analytics en Sentry, dit is om ervoor te zorgen dat bugs en andere fouten snel kunnen worden opgelost.";
+"about.privacy.google" = "Google's privacy policy";
+"about.privacy.sentry" = "Sentry's privacy policy";
 
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "Deze app is niet gemaakt door `Zermelo Software BV`. \nDeze app is niet ook verwant aan `Zermelo` of `Zermelo Software BV`.";

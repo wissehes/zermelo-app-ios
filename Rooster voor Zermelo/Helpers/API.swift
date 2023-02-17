@@ -7,7 +7,8 @@
 
 import Foundation
 import Alamofire
-import FirebaseCrashlytics
+//import FirebaseCrashlytics
+import Sentry
 
 final class API {
     
@@ -57,12 +58,13 @@ final class API {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(user.token.access_token)"
         ]
-        
-        let result = await AF.request(
+        let request = AF.request(
             "https://\(user.token.portal).zportal.nl/api/v3/liveschedule",
             parameters: params,
             headers: headers
         )
+        
+        let result = await request
             .serializingDecodable(GetZermeloLiveschedule.self)
             .result
         
@@ -75,7 +77,7 @@ final class API {
             }
         case .failure(let err):
             if err.isResponseSerializationError {
-                Crashlytics.crashlytics().record(error: err)
+                SentrySDK.capture(error: err)
             }
             throw err
         }
@@ -92,20 +94,33 @@ final class API {
             "Authorization": "Bearer \(user.token.access_token)"
         ]
         
-        let result = await AF.request(
+        let request = AF.request(
             "https://\(user.token.portal).zportal.nl/api/v3/liveschedule",
             parameters: params,
             headers: headers
         )
+        
+        let result = await request
             .serializingDecodable(GetZermeloLiveschedule.self)
             .result
+        
+        let stringData = try? await request.serializingString().value
         
         switch result {
         case .success(let data):
             return .success(data.response.data.first?.appointments ?? [])
         case .failure(let err):
             if err.isResponseSerializationError {
-                Crashlytics.crashlytics().record(error: err)
+                if let stringData = stringData {
+                    let crumb = Breadcrumb()
+                    crumb.level = .info
+                    crumb.category = "fetching"
+                    crumb.message = "GET schedule"
+                    crumb.data = ["response": stringData]
+                    crumb.type = "http"
+                    SentrySDK.addBreadcrumb(crumb)
+                }
+                SentrySDK.capture(error: err)
             }
             return .failure(err)
         }
