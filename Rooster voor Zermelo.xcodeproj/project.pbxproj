@@ -150,6 +150,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		891BEAC629AD0AEE00A4A4B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */,
+				89AE9BB82996380F00D79217 /* Array+Joined.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		892632D128C3A94400B9C624 = {
 			isa = PBXGroup;
 			children = (
@@ -291,12 +300,11 @@
 		89ED829728C5307200306872 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				891BEAC629AD0AEE00A4A4B5 /* Extensions */,
 				895E8F0C2994E51E0051360C /* Users */,
 				89F7051E28C682A000AFF2DF /* API.swift */,
 				892DDA2D29747E2000E0592E /* NotificationsManager.swift */,
 				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
-				8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */,
-				89AE9BB82996380F00D79217 /* Array+Joined.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
