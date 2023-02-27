@@ -93,12 +93,12 @@ struct AppointmentView: View {
     
     var infoSection: some View {
         Section("Les") {
-            if let slotName = item.startTimeSlotName {
+            if let slotName = item.startTimeSlotName, !slotName.isEmpty {
                 itemDetailView([slotName], icon: "clock", single: "appointment.period", multiple: nil)
             }
             
             itemDetailView(
-                item.subjects,
+                SubjectManager.shared.getFullName(item.subjects),
                 icon: "graduationcap",
                 single:"appointment.subjects.single",
                 multiple: "appointment.subjects.multiple"
