@@ -17,25 +17,24 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
 #if !targetEnvironment(simulator)
         FirebaseApp.configure()
-#endif
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         
         guard let sentry_dsn = Bundle.main.infoDictionary?["SENTRY_DSN"] as? String else {
             print("NO SENTRY DSN")
             return true
         }
-        
+
         SentrySDK.start { options in
             options.dsn = sentry_dsn
-            #if targetEnvironment(simulator)
-            options.debug = true // Enabled debug when first installing is always helpful
-            #endif
+            
+//            options.debug = true // Enabled debug when first installing is always helpful
             
             // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
             // We recommend adjusting this value in production.
             options.tracesSampleRate = 0.5
         }
-        
+#endif
+
         return true
     }
 }
