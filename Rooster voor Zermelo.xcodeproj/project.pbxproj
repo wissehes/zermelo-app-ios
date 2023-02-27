@@ -14,6 +14,9 @@
 		891829242976B5630003F81A /* UserListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829232976B5630003F81A /* UserListItem.swift */; };
 		891829262976B6150003F81A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829252976B6150003F81A /* User.swift */; };
 		891829282976BAA80003F81A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829272976BAA80003F81A /* UserManager.swift */; };
+		891BEAC829AD0B2E00A4A4B5 /* vakken.csv in Resources */ = {isa = PBXBuildFile; fileRef = 891BEAC729AD0B2E00A4A4B5 /* vakken.csv */; };
+		891BEACA29AD0B3D00A4A4B5 /* SubjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */; };
+		891BEACD29AD0CC400A4A4B5 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 891BEACC29AD0CC400A4A4B5 /* CodableCSV */; };
 		892632DE28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */; };
 		892632E028C3A94400B9C624 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DF28C3A94400B9C624 /* ContentView.swift */; };
 		892632E228C3A94600B9C624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E128C3A94600B9C624 /* Assets.xcassets */; };
@@ -65,6 +68,8 @@
 		891829252976B6150003F81A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		891829272976BAA80003F81A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		89185106297FEC2400C297EE /* Rooster voor Zermelo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rooster voor Zermelo.entitlements"; sourceTree = "<group>"; };
+		891BEAC729AD0B2E00A4A4B5 /* vakken.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vakken.csv; path = ../../../../../Downloads/vakken/vakken.csv; sourceTree = "<group>"; };
+		891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectManager.swift; sourceTree = "<group>"; };
 		892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rooster voor Zermelo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rooster_voor_ZermeloApp.swift; sourceTree = "<group>"; };
 		892632DF28C3A94400B9C624 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 			files = (
 				89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */,
 				89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */,
+				891BEACD29AD0CC400A4A4B5 /* CodableCSV in Frameworks */,
 				8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */,
 				89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */,
 				89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -186,6 +192,7 @@
 				89185106297FEC2400C297EE /* Rooster voor Zermelo.entitlements */,
 				89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */,
 				8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */,
+				891BEAC729AD0B2E00A4A4B5 /* vakken.csv */,
 				89ED829728C5307200306872 /* Helpers */,
 				898C925228C3D65100100AD6 /* Types */,
 				892632EB28C3A95800B9C624 /* Views */,
@@ -305,6 +312,7 @@
 				89F7051E28C682A000AFF2DF /* API.swift */,
 				892DDA2D29747E2000E0592E /* NotificationsManager.swift */,
 				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
+				891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -353,6 +361,7 @@
 				89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */,
 				89A8C5FD299A401900D4A9B2 /* Sentry */,
 				89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */,
+				891BEACC29AD0CC400A4A4B5 /* CodableCSV */,
 			);
 			productName = "Rooster voor Zermelo";
 			productReference = 892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */;
@@ -388,6 +397,7 @@
 				898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			productRefGroup = 892632DB28C3A94400B9C624 /* Products */;
 			projectDirPath = "";
@@ -407,6 +417,7 @@
 				89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */,
 				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
+				891BEAC829AD0B2E00A4A4B5 /* vakken.csv in Resources */,
 				89BC68CD298270D8006D6478 /* appointment.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +461,7 @@
 				892632E028C3A94400B9C624 /* ContentView.swift in Sources */,
 				897038C628FDE11600773BCD /* NewWeekView.swift in Sources */,
 				89F7051D28C6826700AFF2DF /* HomeViewModel.swift in Sources */,
+				891BEACA29AD0B3D00A4A4B5 /* SubjectManager.swift in Sources */,
 				8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */,
 				89ED829928C5307F00306872 /* TokenSaver.swift in Sources */,
 				89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */,
@@ -706,6 +718,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -741,6 +761,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		891BEACC29AD0CC400A4A4B5 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
 		8965E2D428C3D06D001D9B8E /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */;
