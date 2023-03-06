@@ -47,8 +47,20 @@ final class SubjectManager: ObservableObject {
     }
     
     func getFullName(_ acronyms: [String]) -> [String] {
-        return acronyms.map { acr in
+        let mapped = acronyms.map { acr in
             self.getFullName(acr) ?? acr
         }
+        
+        return mapped.unique()
+    }
+}
+
+extension Sequence where Element: Hashable {
+    /**
+     Removes duplicates from an array.
+     */
+    func unique() -> [Element] {
+        var set = Set<Element>()
+        return self.filter { set.insert($0).inserted }
     }
 }
