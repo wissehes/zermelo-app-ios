@@ -66,7 +66,7 @@ final class NewWeekViewModel: ObservableObject {
         
         for appointment in appointments {
             let start = Date(timeIntervalSince1970: TimeInterval(appointment.start))
-            let end = Date(timeIntervalSince1970: TimeInterval(appointment.end))
+//            let end = Date(timeIntervalSince1970: TimeInterval(appointment.end))
             if let foundIndex = week.firstIndex(where: {
                 Calendar.current.isDate(start, inSameDayAs: $0.day.date(date: currentWeek))
             }) {

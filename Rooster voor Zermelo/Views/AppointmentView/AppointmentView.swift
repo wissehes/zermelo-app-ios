@@ -23,48 +23,26 @@ struct AppointmentView: View {
                 statusView
                 
                 infoSection
-                                
-                Section {
-                    
-                    if !item.subjects.isEmpty {
-                        
-                        HStack {
-                            
-                            Label("appointment.enrolled", systemImage: "checkmark.circle")
-                                .foregroundColor(.green)
-                                .labelStyle(.iconOnly)
-                            
-                            VStack(alignment: .leading) {
-                                Text("**\(item.subjects.join(.minimal))** - \(item.locations.join(.minimal)) - \(item.teachers.join(.minimal))")
-                                
-                                Text("appointment.enrolled")
-                                    .foregroundColor(.secondary)
+                
+                Section("Add to calendar (t)") {
+                    Button {
+                        Task {
+                            do {
+                                try await item.addToDeviceCalendar()
+                            } catch(let err) {
+                                print(err)
                             }
                         }
+                    } label: {
+                        Label("Add to calendar", systemImage: "calendar.badge.plus")
                     }
-                    
-                    if item.actions == nil {
-                        Text("appointment.noOtherChoices")
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    if let actions = item.actions {
-                        if actions.isEmpty {
-                            Text("appointment.noOtherChoices")
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        ForEach(actions, id: \.post) { item in
-                            AppointmentActionView(action: item)
-                        }
-                    }
-                } header: {
-                    Text("appointment.otherChoices")
-                } footer: {
-                    Text("appointment.cannotEnroll")
+
                 }
+                                
+                otherSection
+                
             }.navigationTitle("appointment.appointment")
-            .analyticsScreen(name: "Appointment", extraParameters: ["subject": item.subjects.joined(separator: ",")])
+            .analyticsScreen(name: "Appointment", extraParameters: ["subject": item.subjects.join()])
     }
     
     @ViewBuilder
@@ -136,6 +114,48 @@ struct AppointmentView: View {
         }
     }
     
+    var otherSection: some View {
+        Section {
+            
+            if !item.subjects.isEmpty {
+                
+                HStack {
+                    
+                    Label("appointment.enrolled", systemImage: "checkmark.circle")
+                        .foregroundColor(.green)
+                        .labelStyle(.iconOnly)
+                    
+                    VStack(alignment: .leading) {
+                        Text("**\(item.subjects.join(.minimal))** - \(item.locations.join(.minimal)) - \(item.teachers.join(.minimal))")
+                        
+                        Text("appointment.enrolled")
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            
+            if item.actions == nil {
+                Text("appointment.noOtherChoices")
+                    .foregroundColor(.secondary)
+            }
+            
+            if let actions = item.actions {
+                if actions.isEmpty {
+                    Text("appointment.noOtherChoices")
+                        .foregroundColor(.secondary)
+                }
+                
+                ForEach(actions, id: \.post) { item in
+                    AppointmentActionView(action: item)
+                }
+            }
+        } header: {
+            Text("appointment.otherChoices")
+        } footer: {
+            Text("appointment.cannotEnroll")
+        }
+    }
+    
     func itemDetailView(_ value: [String], icon: String, single: LocalizedStringKey, multiple: LocalizedStringKey?) -> some View {
         HStack {
             Label(value.count == 1 ? single : multiple ?? single, systemImage: icon)
@@ -149,5 +169,18 @@ struct AppointmentView: View {
                     .font(.system(.body, design: .monospaced))
             }
         }
+    }
+}
+
+struct AppointmentView_Previews: PreviewProvider {
+//    static var data: ZermeloLivescheduleAppointment {
+//        let path = Bundle.main.path(forResource: "appointment", ofType: "json")
+//        let data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+//        let decodedAppt = try? JSONDecoder().decode(ZermeloLivescheduleAppointment.self, from: data!)
+//        return decodedAppt!
+//    }
+    
+    static var previews: some View {
+        AppointmentView(item: .example)
     }
 }
