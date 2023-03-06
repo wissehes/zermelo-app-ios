@@ -7,10 +7,14 @@
 
 import SwiftUI
 import FirebaseAnalytics
+import AlertToast
 
 struct AppointmentView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    
+    @State private var isShowingToast = false
+    @State private var saveError: String?
     
     var item: ZermeloLivescheduleAppointment
     var date: Date {
@@ -24,17 +28,22 @@ struct AppointmentView: View {
                 
                 infoSection
                 
-                Section("Add to calendar (t)") {
+                Section("calendar.add") {
                     Button {
                         Task {
                             do {
                                 try await item.addToDeviceCalendar()
-                            } catch(let err) {
-                                print(err)
+                            } catch AddToCalendarError.accessDenied {
+                                self.saveError = String(localized: "calendar.accessDenied")
+                            } catch AddToCalendarError.noSubjects {
+                                self.saveError = String(localized: "calendar.empty")
+                            } catch {
+                                self.saveError = error.localizedDescription
                             }
+                            self.isShowingToast = true
                         }
                     } label: {
-                        Label("Add to calendar", systemImage: "calendar.badge.plus")
+                        Label("calendar.add", systemImage: "calendar.badge.plus")
                     }
 
                 }
@@ -43,6 +52,19 @@ struct AppointmentView: View {
                 
             }.navigationTitle("appointment.appointment")
             .analyticsScreen(name: "Appointment", extraParameters: ["subject": item.subjects.join()])
+            .toast(isPresenting: $isShowingToast) {
+                if let error = saveError {
+                    return AlertToast(displayMode: .banner(.slide), type: .error(.red), title: error)
+                } else {
+                    return AlertToast(displayMode: .alert, type: .complete(.green), title: "calendar.added.title", subTitle: "calendar.added.subtitle")
+                }
+            } onTap: {
+                if saveError == nil {
+                    item.showInCalendar()
+                }
+            } completion: {
+                self.saveError = nil
+            }
     }
     
     @ViewBuilder
@@ -164,22 +186,17 @@ struct AppointmentView: View {
             if value.isEmpty {
                 Text("word.none")
                     .italic()
+                    .multilineTextAlignment(.trailing)
             } else {
                 Text(value.joined(separator: ", "))
                     .font(.system(.body, design: .monospaced))
+                    .multilineTextAlignment(.trailing)
             }
         }
     }
 }
 
 struct AppointmentView_Previews: PreviewProvider {
-//    static var data: ZermeloLivescheduleAppointment {
-//        let path = Bundle.main.path(forResource: "appointment", ofType: "json")
-//        let data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
-//        let decodedAppt = try? JSONDecoder().decode(ZermeloLivescheduleAppointment.self, from: data!)
-//        return decodedAppt!
-//    }
-    
     static var previews: some View {
         AppointmentView(item: .example)
     }

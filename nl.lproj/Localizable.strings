@@ -129,6 +129,15 @@
 "appointment.action.status.allowed" = "Toegestaan";
 "appointment.action.status.notAllowed" = "Niet toegestaan";
 
+// MARK: Calendar
+
+"calendar.accessDenied" = "Geen toegang tot jouw agenda.";
+"calendar.empty" = "Deze les/afspraak heeft geen vakken of locaties aangegeven.";
+
+"calendar.add" = "Toegevoegen aan agenda";
+"calendar.added.title" = "Toegevoegd!";
+"calendar.added.subtitle" = "Tik om te bekijken";
+
 // MARK: Words
 
 "word.welcome" = "Welkom";

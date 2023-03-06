@@ -9,12 +9,12 @@ import Foundation
 import EventKit
 import UIKit
 
+enum AddToCalendarError: Error {
+    case accessDenied
+    case noSubjects
+}
+
 extension ZermeloLivescheduleAppointment {
-    enum AddToCalendarError: Error {
-        case accessDenied
-        case noSubjects
-    }
-    
     func addToDeviceCalendar() async throws {
         let eventStore = EKEventStore()
 
@@ -31,21 +31,43 @@ extension ZermeloLivescheduleAppointment {
             event.title = SubjectManager.shared.getFullName(self.subjects).join(.normal)
             event.startDate = startDate
             event.endDate = endDate
+            event.notes = self.getAllRemarks()
+
             if !self.locations.isEmpty {
                 event.location = self.locations.join(.normal)
-            }
-            if let status = self.status {
-                event.location = status.map { $0.nl }.joined(separator: "\n")
             }
             
             try eventStore.save(event, span: .thisEvent)
             
-            let interval = Date().timeIntervalSinceReferenceDate
-            DispatchQueue.main.async {
-                UIApplication.shared.open(URL(string: "calshow:\(interval)")!, options: [:])
-            }            
+//            let interval = Date().timeIntervalSinceReferenceDate
+//            DispatchQueue.main.async {
+//                UIApplication.shared.open(URL(string: "calshow:\(interval)")!, options: [:])
+//            }
         } else {
             throw AddToCalendarError.accessDenied
         }
+    }
+    
+    func showInCalendar() {
+        let interval = Date(timeIntervalSince1970: TimeInterval(self.start)).timeIntervalSinceReferenceDate
+        DispatchQueue.main.async {
+            UIApplication.shared.open(URL(string: "calshow:\(interval)")!, options: [:])
+        }
+    }
+    
+    func getAllRemarks() -> String {
+        var remarks: [String] = []
+        
+        if let teacherRemark = self.content, !teacherRemark.isEmpty {
+            remarks.append(teacherRemark)
+        }
+        if let schedulerRemark = self.schedulerRemark, !schedulerRemark.isEmpty {
+            remarks.append(schedulerRemark)
+        }
+        if let desc = self.changeDescription, !desc.isEmpty {
+            remarks.append(desc)
+        }
+        
+        return remarks.joined(separator: "\n")
     }
 }

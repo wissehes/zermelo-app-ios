@@ -129,6 +129,15 @@
 "appointment.action.status.allowed" = "Allowed";
 "appointment.action.status.notAllowed" = "Not allowed";
 
+// MARK: Calendar
+
+"calendar.accessDenied" = "No access to your calendar.";
+"calendar.empty" = "This appointment does not have a subject.";
+
+"calendar.add" = "Add to calendar";
+"calendar.added.title" = "Added!";
+"calendar.added.subtitle" = "Tap to view";
+
 // MARK: Words
 
 "word.welcome" = "Welcome";
