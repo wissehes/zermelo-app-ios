@@ -126,4 +126,33 @@ final class HomeViewModel: ObservableObject {
             return user.id == notifUser
         }
     }
+    
+    func hanldeGestureEnd(_ value: DragGesture.Value) {
+        let horizontalChange = value.startLocation.x - value.predictedEndLocation.x
+        let verticalChange = value.startLocation.y -  value.predictedEndLocation.y
+        
+        print("Hor: ", horizontalChange)
+        print("Ver: ", verticalChange)
+        
+        // Make sure the horizontal change is bigger than the vertical change
+        guard makeItPositive(horizontalChange) > makeItPositive(verticalChange) else { return }
+        
+        // Swipe from right-to-left
+        if horizontalChange > 50 {
+            let newDate = Calendar.current.date(byAdding: .day, value: 1, to: self.selectedDate)
+            self.selectedDate = newDate!
+        // Swipe from left-to-right
+        } else if horizontalChange < -50 {
+            let newDate = Calendar.current.date(byAdding: .day, value: -1, to: self.selectedDate)
+            self.selectedDate = newDate!
+        }
+    }
+    
+    private func makeItPositive(_ num: Double) -> Double {
+        if num > 0 {
+            return num
+        } else {
+            return -num
+        }
+    }
 }

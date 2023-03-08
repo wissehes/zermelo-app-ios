@@ -68,6 +68,10 @@ struct HomeView: View {
                 }
                 .contentTransition(.opacity)
                 .analyticsScreen(name: "Home")
+                .gesture(
+                    DragGesture()
+                        .onEnded(viewModel.hanldeGestureEnd(_:))
+                )
         }
     }
     
