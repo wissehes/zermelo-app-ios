@@ -50,6 +50,7 @@
 		89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */; };
 		89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */; };
+		89CBA0F229BF3E8700A75743 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */; };
 		89DBAA84297E78CF001C1EF0 /* BackgroundTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */; };
 		89E0A47029B66EDE00A42F10 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 89E0A46F29B66EDE00A42F10 /* AlertToast */; };
 		89ED829928C5307F00306872 /* TokenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829828C5307F00306872 /* TokenSaver.swift */; };
@@ -107,9 +108,10 @@
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
 		89C1B60E2971523200D0BB98 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		89CBA0ED29BF3B3E00A75743 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89CBA0EF29BF3B4500A75743 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89CBA0F029BF3BA300A75743 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasksController.swift; sourceTree = "<group>"; };
-		89E0A46B29B6582500A42F10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = "en.lproj/Rooster-voor-Zermelo-Info.plist"; sourceTree = "<group>"; };
-		89E0A46D29B6582C00A42F10 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = nl; path = "nl.lproj/Rooster-voor-Zermelo-Info.plist"; sourceTree = "<group>"; };
 		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
 		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
 		89ED829E28C534A200306872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -179,7 +181,8 @@
 				89C1B60E2971523200D0BB98 /* CHANGELOG.md */,
 				89A8C601299A495900D4A9B2 /* Config.xcconfig */,
 				892AA7DD296D8AD000BC883D /* Localizable.strings */,
-				89E0A46C29B6582500A42F10 /* Rooster-voor-Zermelo-Info.plist */,
+				89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */,
+				89CBA0F029BF3BA300A75743 /* Info.plist */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
 				892632DB28C3A94400B9C624 /* Products */,
 			);
@@ -422,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */,
+				89CBA0F229BF3E8700A75743 /* InfoPlist.strings in Resources */,
 				89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */,
 				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
@@ -513,13 +517,13 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		89E0A46C29B6582500A42F10 /* Rooster-voor-Zermelo-Info.plist */ = {
+		89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				89E0A46B29B6582500A42F10 /* en */,
-				89E0A46D29B6582C00A42F10 /* nl */,
+				89CBA0ED29BF3B3E00A75743 /* en */,
+				89CBA0EF29BF3B4500A75743 /* nl */,
 			);
-			name = "Rooster-voor-Zermelo-Info.plist";
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -656,7 +660,7 @@
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Rooster-voor-Zermelo-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RoosterApp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
@@ -690,7 +694,7 @@
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Rooster-voor-Zermelo-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RoosterApp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";

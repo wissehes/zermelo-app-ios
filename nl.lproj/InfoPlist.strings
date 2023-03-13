@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Rooster voor Zermelo
+
+  Created by Wisse Hes on 13/03/2023.
+  
+*/
+
+"privacy.calendar" = "Nodig als je lessen/afspraken van Zermelo in jouw agenda wilt zetten.";
+
+"shortcuts.today.title" = "Vandaag";
+"shortcuts.tomorrow.title" = "Morgen";
