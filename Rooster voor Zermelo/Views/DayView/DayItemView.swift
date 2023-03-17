@@ -33,7 +33,8 @@ struct DayItemView: View {
     var slotImage: some View {
         if let slotName = item.startTimeSlotName, !slotName.isEmpty {
             Text(slotName)
-                .fontWeight(.bold)
+//                .fontWeight(.bold)
+                .font(.system(size: 22.5, weight: .bold, design: .rounded))
         } else if item.appointmentType == "exam" {
             Image(systemName: "magazine")
         } else {
@@ -146,7 +147,7 @@ struct DayItemView_Previews: PreviewProvider {
         NavigationStack {
             List {
                 DayItemView(item: .example)
-            }
+            }.navigationTitle("Item")
         }
     }
 }
