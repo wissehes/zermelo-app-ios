@@ -22,6 +22,7 @@
 		892632E228C3A94600B9C624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E128C3A94600B9C624 /* Assets.xcassets */; };
 		892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E428C3A94600B9C624 /* Preview Assets.xcassets */; };
 		892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632EC28C3A96100B9C624 /* WelcomeView.swift */; };
+		8926EF8D29CF3C9A008D579F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */; };
 		892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 892AA7DD296D8AD000BC883D /* Localizable.strings */; };
 		892DDA2C2974794100E0592E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2B2974794000E0592E /* SettingsView.swift */; };
 		892DDA2E29747E2100E0592E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2D29747E2000E0592E /* NotificationsManager.swift */; };
@@ -80,6 +81,7 @@
 		892632E128C3A94600B9C624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		892632E428C3A94600B9C624 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		892632EC28C3A96100B9C624 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		892AA7DC296D8AD000BC883D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		892AA7DE296D8AD300BC883D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		892DDA2B2974794000E0592E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -112,7 +114,7 @@
 		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89CBA0ED29BF3B3E00A75743 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89CBA0EF29BF3B4500A75743 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		89CBA0F029BF3BA300A75743 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		89CBA0F029BF3BA300A75743 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasksController.swift; sourceTree = "<group>"; };
 		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
 		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				892632EB28C3A95800B9C624 /* Views */,
 				892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */,
 				892632DF28C3A94400B9C624 /* ContentView.swift */,
+				8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */,
 				892632E128C3A94600B9C624 /* Assets.xcassets */,
 				892632E328C3A94600B9C624 /* Preview Content */,
 			);
@@ -429,6 +432,7 @@
 			files = (
 				892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */,
 				89CBA0F229BF3E8700A75743 /* InfoPlist.strings in Resources */,
+				8926EF8D29CF3C9A008D579F /* Launch Screen.storyboard in Resources */,
 				89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */,
 				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
@@ -669,7 +673,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -703,7 +707,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

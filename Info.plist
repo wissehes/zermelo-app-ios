@@ -15,36 +15,36 @@
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>todayAction</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeDate</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>shortcuts.today.title</string>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeDate</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>todayAction</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>tomorrowAction</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>shortcuts.tomorrow.title</string>
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeDate</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>shortcuts.tomorrow.title</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>tomorrowAction</string>
 		</dict>
-        <dict>
-            <key>UIApplicationShortcutItemType</key>
-            <string>weekAction</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>shortcuts.week.title</string>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeDate</string>
-        </dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeDate</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>shortcuts.week.title</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>weekAction</string>
+		</dict>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
 	</array>
 </dict>
 </plist>
