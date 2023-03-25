@@ -19,8 +19,6 @@
 	<array>
 		<string>fetch</string>
 	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>privacy.calendar</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

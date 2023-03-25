@@ -6,7 +6,7 @@
   
 */
 
-"privacy.calendar" = "Nodig als je lessen/afspraken van Zermelo in jouw agenda wilt zetten.";
+"NSCalendarsUsageDescription" = "Nodig als je lessen/afspraken van Zermelo in jouw agenda wilt zetten.";
 
 "shortcuts.today.title" = "Vandaag";
 "shortcuts.tomorrow.title" = "Morgen";
