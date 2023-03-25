@@ -11,8 +11,6 @@ import SwiftUI
 import FirebaseAnalytics
 
 final class HomeViewModel: ObservableObject {
-//    @Published var todayAppointments: [ZermeloLivescheduleAppointment] = []
-//    @Published var weekAppointments: [ZermeloLivescheduleAppointment] = []
     @Published var scheduleResult: Result<[ZermeloLivescheduleAppointment], AFError>?
     @Published var isLoading = true
     
@@ -110,6 +108,9 @@ final class HomeViewModel: ObservableObject {
         }
         
         if filtered.isEmpty {
+//            DispatchQueue.main.async {
+//                self.isLoading = true
+//            }
             await self.load(animation: true)
         }
     }
@@ -131,8 +132,8 @@ final class HomeViewModel: ObservableObject {
         let horizontalChange = value.startLocation.x - value.predictedEndLocation.x
         let verticalChange = value.startLocation.y -  value.predictedEndLocation.y
         
-        print("Hor: ", horizontalChange)
-        print("Ver: ", verticalChange)
+//        print("Hor: ", horizontalChange)
+//        print("Ver: ", verticalChange)
         
         // Make sure the horizontal change is bigger than the vertical change
         guard makeItPositive(horizontalChange) > makeItPositive(verticalChange) else { return }

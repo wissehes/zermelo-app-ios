@@ -85,39 +85,41 @@ struct HomeView: View {
                 )
         }
     }
-    
-    @ViewBuilder
+
     var todayView: some View {
-        if viewModel.isLoading {
-            ProgressView()
-                .padding()
-        } else {
-            GeometryReader { geo in
-                List {
-                    Section {
-                        switch viewModel.scheduleResult {
-                        case .success(_):
-                            if viewModel.todayAppointments.isEmpty {
-                                
-                                noAppointmentsFound
-                                    .listRowInsets(.none)
-                                    .listRowBackground(Color.clear)
-                                    .frame(height: geo.size.height / 1.5)
-                            } else {
-                                DayView(appointments: viewModel.todayAppointments)
-                            }
-                        case .failure(let error):
-                            errorView(error: error)
+        GeometryReader { geo in
+            List {
+                Section {
+                    switch viewModel.scheduleResult {
+                    case .success(_):
+                        if viewModel.isLoading {
+                          loadingView
                                 .listRowInsets(.none)
                                 .listRowBackground(Color.clear)
                                 .frame(height: geo.size.height / 1.5)
-                        case .none:
-                            ProgressView()
+                        } else if viewModel.todayAppointments.isEmpty {
+                            
+                            noAppointmentsFound
+                                .listRowInsets(.none)
+                                .listRowBackground(Color.clear)
+                                .frame(height: geo.size.height / 1.5)
+                        } else {
+                            DayView(appointments: viewModel.todayAppointments)
                         }
-                    } header: {
-                        Text(viewModel.navTitle)
-                    }.headerProminence(.increased)
-                }
+                    case .failure(let error):
+                        errorView(error: error)
+                            .listRowInsets(.none)
+                            .listRowBackground(Color.clear)
+                            .frame(height: geo.size.height / 1.5)
+                    case .none:
+                        loadingView
+                            .listRowInsets(.none)
+                            .listRowBackground(Color.clear)
+                            .frame(height: geo.size.height / 1.5)
+                    }
+                } header: {
+                    Text(viewModel.navTitle)
+                }.headerProminence(.increased)
             }
         }
     }
@@ -134,6 +136,24 @@ struct HomeView: View {
                     .foregroundColor(.secondary)
                 
                 Text("home.noAppointmentsFound")
+                    .font(.title)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            
+            Spacer()
+        }
+    }
+    
+    var loadingView: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            
+            VStack(alignment: .center) {
+                ProgressView()
+                    .controlSize(.large)
+                
+                Text("word.loading")
                     .font(.title)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
