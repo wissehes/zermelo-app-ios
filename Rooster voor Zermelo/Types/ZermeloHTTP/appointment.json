@@ -136,8 +136,8 @@
     "expectedStudentCount": null,
     "expectedStudentCountOnline": null,
     "changeDescription": "Het lokaal is gewijzigd (was 6r).",
-    "schedulerRemark": "",
-    "content": null,
+    "schedulerRemark": "Scheduler remark",
+    "content": "hallo kinderen bla bla",
     "id": 14591238
 }
 
