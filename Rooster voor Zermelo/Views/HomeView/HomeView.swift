@@ -9,15 +9,6 @@ import SwiftUI
 import Alamofire
 import FirebaseAnalytics
 
-struct ReverseLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            configuration.title
-            configuration.icon
-        }
-    }
-}
-
 struct HomeView: View {
     
     @EnvironmentObject var authManager: AuthManager
@@ -186,13 +177,6 @@ struct HomeView: View {
             Label("settings.settings", systemImage: "gear")
         }
     }
-//    var compare: some View {
-//        NavigationLink {
-//            CompareView()
-//        } label: {
-//            Label("Compare", systemImage: "gear")
-//        }
-//    }
 }
 
 struct HomeView_Previews: PreviewProvider {
