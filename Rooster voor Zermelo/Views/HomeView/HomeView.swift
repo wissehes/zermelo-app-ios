@@ -10,10 +10,23 @@ import Alamofire
 import FirebaseAnalytics
 
 struct HomeView: View {
-    
     @EnvironmentObject var authManager: AuthManager
-    
+    @EnvironmentObject var actionService: ActionService
+    @Environment(\.scenePhase) var scenePhase
     @StateObject var viewModel = HomeViewModel()
+    
+    func checkForAction() {
+        
+        guard let action = actionService.action else { return }
+        defer { actionService.action = nil }
+        switch action {
+        case .todayAction:
+            viewModel.selectedDate = .now
+        case .tomorrowAction:
+            viewModel.selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: .now) ?? .now
+        default: break;
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -30,7 +43,7 @@ struct HomeView: View {
                         } label: {
                             Label("Menu", systemImage: "gear")
                         }
-
+                        
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
@@ -57,6 +70,13 @@ struct HomeView: View {
                         await viewModel.dateChanged(newValue)
                     }
                 }
+                .onChange(of: scenePhase) { newValue in
+                    switch newValue {
+                    case .active:
+                        checkForAction()
+                    default: break;
+                    }
+                }
                 .contentTransition(.opacity)
                 .analyticsScreen(name: "Home")
                 .gesture(
@@ -69,7 +89,6 @@ struct HomeView: View {
     @ViewBuilder
     var todayView: some View {
         if viewModel.isLoading {
-            //        if true {
             ProgressView()
                 .padding()
         } else {
@@ -160,7 +179,7 @@ struct HomeView: View {
                     await viewModel.load(animation: true)
                 }
             }
-
+        
     }
     
     var aboutThisApp: some View {
@@ -183,5 +202,6 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(AuthManager())
+            .environmentObject(ActionService())
     }
 }

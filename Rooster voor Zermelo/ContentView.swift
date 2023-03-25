@@ -27,12 +27,14 @@ struct ContentView: View {
     
     func checkForAction() {
         guard let action = actionService.action else { return }
-        defer { actionService.action = nil }
+//        defer { actionService.action = nil }
         switch action {
         case .todayAction, .tomorrowAction:
             selectedView = .home
+            // don't set the action to nil yet. The HomeView does that.
         case .weekAction:
             selectedView = .week
+            actionService.action = nil
         }
     }
     
