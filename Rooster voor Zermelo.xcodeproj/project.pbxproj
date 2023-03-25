@@ -39,6 +39,7 @@
 		898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925328C3D65F00100AD6 /* ZermeloQRData.swift */; };
 		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
+		8990374929CF160900ED8945 /* ActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990374829CF160900ED8945 /* ActionService.swift */; };
 		89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7499C2987C5730098E8C9 /* CompareView.swift */; };
 		89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FD299A401900D4A9B2 /* Sentry */; };
 		89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */; };
@@ -99,6 +100,7 @@
 		8986658428DB8DD000D7A98C /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setup.png; sourceTree = "<group>"; };
 		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
+		8990374829CF160900ED8945 /* ActionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionService.swift; sourceTree = "<group>"; };
 		89A7499C2987C5730098E8C9 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		89A8C601299A495900D4A9B2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89CBA0ED29BF3B3E00A75743 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89CBA0EF29BF3B4500A75743 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		89CBA0F029BF3BA300A75743 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		89CBA0F029BF3BA300A75743 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasksController.swift; sourceTree = "<group>"; };
 		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
 		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				892DDA2D29747E2000E0592E /* NotificationsManager.swift */,
 				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
 				891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */,
+				8990374829CF160900ED8945 /* ActionService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				89BC68D12982722F006D6478 /* DayItemView.swift in Sources */,
 				891829262976B6150003F81A /* User.swift in Sources */,
 				8982676E28C68E0000C85D12 /* AppointmentView.swift in Sources */,
+				8990374929CF160900ED8945 /* ActionService.swift in Sources */,
 				8947BD3C28C797B40063E3DF /* DayView.swift in Sources */,
 				8905E44F28DB292D00CA8027 /* AboutView.swift in Sources */,
 				892DDA2E29747E2100E0592E /* NotificationsManager.swift in Sources */,
