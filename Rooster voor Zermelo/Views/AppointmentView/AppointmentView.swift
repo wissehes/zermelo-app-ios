@@ -69,13 +69,18 @@ struct AppointmentView: View {
     
     @ViewBuilder
     var statusView:  some View {
-        if item.changeDescription != "" || item.schedulerRemark != "" {
+        if !(item.content?.isEmpty ?? true) ||
+            !(item.changeDescription?.isEmpty ?? true) ||
+            !(item.schedulerRemark?.isEmpty ?? true) {
             Section("Info") {
                 if let teacherRemark = item.content, !teacherRemark.isEmpty {
-                    Label(teacherRemark, systemImage: "exclamationmark.bubble.fill")
+                    Label(teacherRemark, systemImage: "text.bubble")
+                        .symbolRenderingMode(.hierarchical)
+                        .tint(.pink)
                 }
                 if let remark = item.schedulerRemark, !remark.isEmpty {
-                    Label(remark, systemImage: "exclamationmark.bubble.fill")
+                    Label(remark, systemImage: "info.bubble")
+                        .symbolRenderingMode(.hierarchical)
                 }
                 if let desc = item.changeDescription, !desc.isEmpty {
                         Label {
@@ -87,7 +92,6 @@ struct AppointmentView: View {
 
                 }
             }
-
         }
     }
     
@@ -96,7 +100,7 @@ struct AppointmentView: View {
             if let slotName = item.startTimeSlotName, !slotName.isEmpty {
                 itemDetailView([slotName], icon: "clock", single: "appointment.period", multiple: nil)
             }
-            
+
             itemDetailView(
                 SubjectManager.shared.getFullName(item.subjects),
                 icon: "graduationcap",
