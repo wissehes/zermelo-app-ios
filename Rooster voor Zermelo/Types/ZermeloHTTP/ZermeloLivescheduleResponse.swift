@@ -65,7 +65,7 @@ struct ZermeloLivescheduleAppointment: Codable, Hashable {
     let appointmentInstance: Int?
     let startTimeSlotName, endTimeSlotName: String?
     let subjects, groups, locations, teachers: [String]
-    let changeDescription, schedulerRemark: String?
+    let changeDescription, schedulerRemark, content: String?
     let id: Int?
     let plannedAttendance, studentEnrolled: Bool?
     let allowedActions: String?
@@ -77,7 +77,7 @@ struct ZermeloLivescheduleAppointment: Codable, Hashable {
         case status, actions, start, end, cancelled, appointmentType, online
         case appointmentOptional = "optional"
         case appointmentInstance, startTimeSlotName, endTimeSlotName, subjects, groups, locations, teachers
-        case changeDescription, schedulerRemark, id, plannedAttendance, studentEnrolled, allowedActions, attendanceOverruled, availableSpace
+        case changeDescription, schedulerRemark, content, id, plannedAttendance, studentEnrolled, allowedActions, attendanceOverruled, availableSpace
     }
     
     static var example: ZermeloLivescheduleAppointment = {

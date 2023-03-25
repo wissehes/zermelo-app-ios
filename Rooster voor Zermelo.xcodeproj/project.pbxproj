@@ -8,27 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		8905E44F28DB292D00CA8027 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905E44E28DB292D00CA8027 /* AboutView.swift */; };
-		8905E45128DB5C3700CA8027 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8905E45028DB5C3700CA8027 /* AuthManager.swift */; };
 		8906E334297AEEA20064F3B1 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906E333297AEEA20064F3B1 /* NotificationSettings.swift */; };
 		890F82442979426E005F6E27 /* Userlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F82432979426E005F6E27 /* Userlist.swift */; };
 		891829222976B54B0003F81A /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829212976B54B0003F81A /* UsersViewModel.swift */; };
 		891829242976B5630003F81A /* UserListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829232976B5630003F81A /* UserListItem.swift */; };
 		891829262976B6150003F81A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829252976B6150003F81A /* User.swift */; };
 		891829282976BAA80003F81A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891829272976BAA80003F81A /* UserManager.swift */; };
+		891BEAC829AD0B2E00A4A4B5 /* vakken.csv in Resources */ = {isa = PBXBuildFile; fileRef = 891BEAC729AD0B2E00A4A4B5 /* vakken.csv */; };
+		891BEACA29AD0B3D00A4A4B5 /* SubjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */; };
+		891BEACD29AD0CC400A4A4B5 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 891BEACC29AD0CC400A4A4B5 /* CodableCSV */; };
 		892632DE28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */; };
 		892632E028C3A94400B9C624 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632DF28C3A94400B9C624 /* ContentView.swift */; };
 		892632E228C3A94600B9C624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E128C3A94600B9C624 /* Assets.xcassets */; };
 		892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E428C3A94600B9C624 /* Preview Assets.xcassets */; };
 		892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632EC28C3A96100B9C624 /* WelcomeView.swift */; };
+		8926EF8D29CF3C9A008D579F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */; };
 		892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 892AA7DD296D8AD000BC883D /* Localizable.strings */; };
 		892DDA2C2974794100E0592E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2B2974794000E0592E /* SettingsView.swift */; };
 		892DDA2E29747E2100E0592E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2D29747E2000E0592E /* NotificationsManager.swift */; };
-		89346ECF29784A8A006E1651 /* NewAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346ECE29784A8A006E1651 /* NewAuthManager.swift */; };
+		89346ECF29784A8A006E1651 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346ECE29784A8A006E1651 /* AuthManager.swift */; };
 		89346ED22978978F006E1651 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346ED12978978F006E1651 /* AddUserView.swift */; };
 		8947BD3828C793060063E3DF /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3728C793060063E3DF /* WeekView.swift */; };
 		8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3928C7932E0063E3DF /* WeekViewModel.swift */; };
 		8947BD3C28C797B40063E3DF /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3B28C797B40063E3DF /* DayView.swift */; };
 		8951C9CF2983BFB400EEBDCE /* Analytics+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */; };
+		895D290729B6525E0045B209 /* Appointment+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895D290629B6525E0045B209 /* Appointment+Calendar.swift */; };
 		8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 8965E2D428C3D06D001D9B8E /* CodeScanner */; };
 		896EAC7729799CD400FB0B05 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896EAC7629799CD400FB0B05 /* SettingsViewModel.swift */; };
 		897038C628FDE11600773BCD /* NewWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897038C528FDE11600773BCD /* NewWeekView.swift */; };
@@ -36,14 +40,21 @@
 		898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925328C3D65F00100AD6 /* ZermeloQRData.swift */; };
 		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
+		8990374929CF160900ED8945 /* ActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990374829CF160900ED8945 /* ActionService.swift */; };
+		89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7499C2987C5730098E8C9 /* CompareView.swift */; };
+		89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FD299A401900D4A9B2 /* Sentry */; };
+		89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */; };
 		89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */; };
+		89AE9BB92996380F00D79217 /* Array+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9BB82996380F00D79217 /* Array+Joined.swift */; };
 		89BC68CD298270D8006D6478 /* appointment.json in Resources */ = {isa = PBXBuildFile; fileRef = 89BC68CC298270D8006D6478 /* appointment.json */; };
 		89BC68D12982722F006D6478 /* DayItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC68D02982722F006D6478 /* DayItemView.swift */; };
 		89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */; };
 		89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */; };
 		89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */; };
+		89CBA0F229BF3E8700A75743 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */; };
 		89DBAA84297E78CF001C1EF0 /* BackgroundTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */; };
+		89E0A47029B66EDE00A42F10 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 89E0A46F29B66EDE00A42F10 /* AlertToast */; };
 		89ED829928C5307F00306872 /* TokenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829828C5307F00306872 /* TokenSaver.swift */; };
 		89ED829B28C530C000306872 /* SavedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829A28C530C000306872 /* SavedToken.swift */; };
 		89ED829F28C534A200306872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ED829E28C534A200306872 /* HomeView.swift */; };
@@ -55,7 +66,6 @@
 
 /* Begin PBXFileReference section */
 		8905E44E28DB292D00CA8027 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		8905E45028DB5C3700CA8027 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8906E333297AEEA20064F3B1 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		890F82432979426E005F6E27 /* Userlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userlist.swift; sourceTree = "<group>"; };
 		891829212976B54B0003F81A /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
@@ -63,23 +73,26 @@
 		891829252976B6150003F81A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		891829272976BAA80003F81A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		89185106297FEC2400C297EE /* Rooster voor Zermelo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rooster voor Zermelo.entitlements"; sourceTree = "<group>"; };
+		891BEAC729AD0B2E00A4A4B5 /* vakken.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vakken.csv; path = ../../../../../Downloads/vakken/vakken.csv; sourceTree = "<group>"; };
+		891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectManager.swift; sourceTree = "<group>"; };
 		892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rooster voor Zermelo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rooster_voor_ZermeloApp.swift; sourceTree = "<group>"; };
 		892632DF28C3A94400B9C624 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		892632E128C3A94600B9C624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		892632E428C3A94600B9C624 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		892632EC28C3A96100B9C624 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		892AA7DC296D8AD000BC883D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		892AA7DE296D8AD300BC883D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		892DDA2B2974794000E0592E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		892DDA2D29747E2000E0592E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
-		89346ECE29784A8A006E1651 /* NewAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAuthManager.swift; sourceTree = "<group>"; };
+		89346ECE29784A8A006E1651 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		89346ED12978978F006E1651 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		8947BD3728C793060063E3DF /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		8947BD3928C7932E0063E3DF /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		8947BD3B28C797B40063E3DF /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+SwiftUI.swift"; sourceTree = "<group>"; };
-		8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Rooster-voor-Zermelo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		895D290629B6525E0045B209 /* Appointment+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+Calendar.swift"; sourceTree = "<group>"; };
 		896EAC7629799CD400FB0B05 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		897038C528FDE11600773BCD /* NewWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWeekView.swift; sourceTree = "<group>"; };
 		8982676D28C68E0000C85D12 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
@@ -89,12 +102,19 @@
 		8986658428DB8DD000D7A98C /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setup.png; sourceTree = "<group>"; };
 		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
+		8990374829CF160900ED8945 /* ActionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionService.swift; sourceTree = "<group>"; };
+		89A7499C2987C5730098E8C9 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		89A8C601299A495900D4A9B2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
+		89AE9BB82996380F00D79217 /* Array+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Joined.swift"; sourceTree = "<group>"; };
 		89BC68CC298270D8006D6478 /* appointment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appointment.json; sourceTree = "<group>"; };
 		89BC68D02982722F006D6478 /* DayItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayItemView.swift; sourceTree = "<group>"; };
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
 		89C1B60E2971523200D0BB98 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		89CBA0ED29BF3B3E00A75743 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89CBA0EF29BF3B4500A75743 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89CBA0F029BF3BA300A75743 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasksController.swift; sourceTree = "<group>"; };
 		89ED829828C5307F00306872 /* TokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSaver.swift; sourceTree = "<group>"; };
 		89ED829A28C530C000306872 /* SavedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToken.swift; sourceTree = "<group>"; };
@@ -111,8 +131,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */,
+				89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */,
+				891BEACD29AD0CC400A4A4B5 /* CodableCSV in Frameworks */,
 				8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */,
 				89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */,
+				89E0A47029B66EDE00A42F10 /* AlertToast in Frameworks */,
 				89C1B613297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				898C925728C3D76000100AD6 /* Alamofire in Frameworks */,
 			);
@@ -143,13 +167,26 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		891BEAC629AD0AEE00A4A4B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */,
+				89AE9BB82996380F00D79217 /* Array+Joined.swift */,
+				895D290629B6525E0045B209 /* Appointment+Calendar.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		892632D128C3A94400B9C624 = {
 			isa = PBXGroup;
 			children = (
 				8986658028DB8DD000D7A98C /* Screenshots */,
 				89F7052028C68ACE00AFF2DF /* README.md */,
 				89C1B60E2971523200D0BB98 /* CHANGELOG.md */,
+				89A8C601299A495900D4A9B2 /* Config.xcconfig */,
 				892AA7DD296D8AD000BC883D /* Localizable.strings */,
+				89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */,
+				89CBA0F029BF3BA300A75743 /* Info.plist */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
 				892632DB28C3A94400B9C624 /* Products */,
 			);
@@ -168,12 +205,13 @@
 			children = (
 				89185106297FEC2400C297EE /* Rooster voor Zermelo.entitlements */,
 				89C1B60F29715E3800D0BB98 /* GoogleService-Info.plist */,
-				8965E2D628C3D296001D9B8E /* Rooster-voor-Zermelo-Info.plist */,
+				891BEAC729AD0B2E00A4A4B5 /* vakken.csv */,
 				89ED829728C5307200306872 /* Helpers */,
 				898C925228C3D65100100AD6 /* Types */,
 				892632EB28C3A95800B9C624 /* Views */,
 				892632DD28C3A94400B9C624 /* Rooster_voor_ZermeloApp.swift */,
 				892632DF28C3A94400B9C624 /* ContentView.swift */,
+				8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */,
 				892632E128C3A94600B9C624 /* Assets.xcassets */,
 				892632E328C3A94600B9C624 /* Preview Content */,
 			);
@@ -191,6 +229,7 @@
 		892632EB28C3A95800B9C624 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				89A7499B2987C00C0098E8C9 /* CompareView */,
 				891829202976B53D0003F81A /* Settings */,
 				8947BD3628C792F20063E3DF /* WeekView */,
 				89BC860228E2DEAE006BEC62 /* AppointmentView */,
@@ -220,6 +259,16 @@
 			path = WeekView;
 			sourceTree = "<group>";
 		};
+		895E8F0C2994E51E0051360C /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				89ED829828C5307F00306872 /* TokenSaver.swift */,
+				891829272976BAA80003F81A /* UserManager.swift */,
+				89346ECE29784A8A006E1651 /* AuthManager.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		8986658028DB8DD000D7A98C /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +292,14 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
+		89A7499B2987C00C0098E8C9 /* CompareView */ = {
+			isa = PBXGroup;
+			children = (
+				89A7499C2987C5730098E8C9 /* CompareView.swift */,
+			);
+			path = CompareView;
+			sourceTree = "<group>";
+		};
 		89BC68CF2982721C006D6478 /* DayView */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,14 +321,13 @@
 		89ED829728C5307200306872 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				89ED829828C5307F00306872 /* TokenSaver.swift */,
+				891BEAC629AD0AEE00A4A4B5 /* Extensions */,
+				895E8F0C2994E51E0051360C /* Users */,
 				89F7051E28C682A000AFF2DF /* API.swift */,
-				8905E45028DB5C3700CA8027 /* AuthManager.swift */,
 				892DDA2D29747E2000E0592E /* NotificationsManager.swift */,
-				891829272976BAA80003F81A /* UserManager.swift */,
-				89346ECE29784A8A006E1651 /* NewAuthManager.swift */,
 				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
-				8951C9CE2983BFB400EEBDCE /* Analytics+SwiftUI.swift */,
+				891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */,
+				8990374829CF160900ED8945 /* ActionService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -318,6 +374,10 @@
 				898C925628C3D76000100AD6 /* Alamofire */,
 				89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				89C1B614297160AD00D0BB98 /* FirebaseCrashlytics */,
+				89A8C5FD299A401900D4A9B2 /* Sentry */,
+				89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */,
+				891BEACC29AD0CC400A4A4B5 /* CodableCSV */,
+				89E0A46F29B66EDE00A42F10 /* AlertToast */,
 			);
 			productName = "Rooster voor Zermelo";
 			productReference = 892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */;
@@ -352,6 +412,9 @@
 				8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */,
+				89E0A46E29B66EDE00A42F10 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 892632DB28C3A94400B9C624 /* Products */;
 			projectDirPath = "";
@@ -368,9 +431,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */,
+				89CBA0F229BF3E8700A75743 /* InfoPlist.strings in Resources */,
+				8926EF8D29CF3C9A008D579F /* Launch Screen.storyboard in Resources */,
 				89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */,
 				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
+				891BEAC829AD0B2E00A4A4B5 /* vakken.csv in Resources */,
 				89BC68CD298270D8006D6478 /* appointment.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,21 +474,23 @@
 				89BC68D12982722F006D6478 /* DayItemView.swift in Sources */,
 				891829262976B6150003F81A /* User.swift in Sources */,
 				8982676E28C68E0000C85D12 /* AppointmentView.swift in Sources */,
-				8905E45128DB5C3700CA8027 /* AuthManager.swift in Sources */,
+				8990374929CF160900ED8945 /* ActionService.swift in Sources */,
 				8947BD3C28C797B40063E3DF /* DayView.swift in Sources */,
 				8905E44F28DB292D00CA8027 /* AboutView.swift in Sources */,
 				892DDA2E29747E2100E0592E /* NotificationsManager.swift in Sources */,
 				892632E028C3A94400B9C624 /* ContentView.swift in Sources */,
 				897038C628FDE11600773BCD /* NewWeekView.swift in Sources */,
 				89F7051D28C6826700AFF2DF /* HomeViewModel.swift in Sources */,
+				891BEACA29AD0B3D00A4A4B5 /* SubjectManager.swift in Sources */,
 				8947BD3A28C7932E0063E3DF /* WeekViewModel.swift in Sources */,
 				89ED829928C5307F00306872 /* TokenSaver.swift in Sources */,
 				89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */,
 				89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */,
 				8951C9CF2983BFB400EEBDCE /* Analytics+SwiftUI.swift in Sources */,
+				895D290729B6525E0045B209 /* Appointment+Calendar.swift in Sources */,
 				8906E334297AEEA20064F3B1 /* NotificationSettings.swift in Sources */,
 				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,
-				89346ECF29784A8A006E1651 /* NewAuthManager.swift in Sources */,
+				89346ECF29784A8A006E1651 /* AuthManager.swift in Sources */,
 				898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */,
 				89ED829B28C530C000306872 /* SavedToken.swift in Sources */,
 				89ED829F28C534A200306872 /* HomeView.swift in Sources */,
@@ -431,8 +499,10 @@
 				89ED82A128C53ADB00306872 /* ZermeloMeResponse.swift in Sources */,
 				891829282976BAA80003F81A /* UserManager.swift in Sources */,
 				8947BD3828C793060063E3DF /* WeekView.swift in Sources */,
+				89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */,
 				892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */,
 				89346ED22978978F006E1651 /* AddUserView.swift in Sources */,
+				89AE9BB92996380F00D79217 /* Array+Joined.swift in Sources */,
 				891829242976B5630003F81A /* UserListItem.swift in Sources */,
 				89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */,
 				89DBAA84297E78CF001C1EF0 /* BackgroundTasksController.swift in Sources */,
@@ -455,11 +525,21 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89CBA0ED29BF3B3E00A75743 /* en */,
+				89CBA0EF29BF3B4500A75743 /* nl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		892632E628C3A94600B9C624 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A8C601299A495900D4A9B2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -521,6 +601,7 @@
 		};
 		892632E728C3A94600B9C624 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A8C601299A495900D4A9B2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -581,18 +662,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Rooster voor Zermelo/Rooster voor Zermelo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Rooster voor Zermelo/Preview Content\"";
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Rooster-voor-Zermelo-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RoosterApp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -600,7 +681,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Rooster-voor-Zermelo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -616,17 +697,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Rooster voor Zermelo/Rooster voor Zermelo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Rooster voor Zermelo/Preview Content\"";
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Rooster-voor-Zermelo-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RoosterApp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nodig om de QR code te kunnen scannen.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -634,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Rooster-voor-Zermelo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -667,6 +748,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -683,6 +772,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -691,9 +788,22 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		89E0A46E29B66EDE00A42F10 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		891BEACC29AD0CC400A4A4B5 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
 		8965E2D428C3D06D001D9B8E /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */;
@@ -704,6 +814,16 @@
 			package = 898C925528C3D76000100AD6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
+		89A8C5FD299A401900D4A9B2 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+		89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = SentrySwiftUI;
+		};
 		89C1B612297160AD00D0BB98 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -713,6 +833,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89C1B611297160AD00D0BB98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		89E0A46F29B66EDE00A42F10 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89E0A46E29B66EDE00A42F10 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

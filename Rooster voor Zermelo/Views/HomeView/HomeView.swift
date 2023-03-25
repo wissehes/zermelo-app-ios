@@ -9,20 +9,24 @@ import SwiftUI
 import Alamofire
 import FirebaseAnalytics
 
-struct ReverseLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            configuration.title
-            configuration.icon
+struct HomeView: View {
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var actionService: ActionService
+    @Environment(\.scenePhase) var scenePhase
+    @StateObject var viewModel = HomeViewModel()
+    
+    func checkForAction() {
+        
+        guard let action = actionService.action else { return }
+        defer { actionService.action = nil }
+        switch action {
+        case .todayAction:
+            viewModel.selectedDate = .now
+        case .tomorrowAction:
+            viewModel.selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: .now) ?? .now
+        default: break;
         }
     }
-}
-
-struct HomeView: View {
-    
-    @EnvironmentObject var authManager: AuthManager
-    
-    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationStack {
@@ -33,10 +37,13 @@ struct HomeView: View {
                         Menu {
                             aboutThisApp
                             settings
+                            if viewModel.users.count > 1 {
+                                userPicker
+                            }
                         } label: {
                             Label("Menu", systemImage: "gear")
                         }
-
+                        
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
@@ -54,6 +61,7 @@ struct HomeView: View {
                 .navigationDestination(for: ZermeloLivescheduleAppointment.self) { appointment in
                     AppointmentView(item: appointment)
                 }.task {
+                    viewModel.reloadUsers()
                     await viewModel.load()
                 }.refreshable {
                     await viewModel.reload()
@@ -61,44 +69,57 @@ struct HomeView: View {
                     Task {
                         await viewModel.dateChanged(newValue)
                     }
-                }.contentTransition(.opacity)
+                }
+                .onChange(of: scenePhase) { newValue in
+                    switch newValue {
+                    case .active:
+                        checkForAction()
+                    default: break;
+                    }
+                }
+                .contentTransition(.opacity)
                 .analyticsScreen(name: "Home")
+                .gesture(
+                    DragGesture()
+                        .onEnded(viewModel.hanldeGestureEnd(_:))
+                )
         }
     }
-    
-    @ViewBuilder
+
     var todayView: some View {
-        if viewModel.isLoading {
-            //        if true {
-            ProgressView()
-                .padding()
-        } else {
-            GeometryReader { geo in
-                List {
-                    Section {
-                        switch viewModel.scheduleResult {
-                        case .success(_):
-                            if viewModel.todayAppointments.isEmpty {
-                                
-                                noAppointmentsFound
-                                    .listRowInsets(.none)
-                                    .listRowBackground(Color.clear)
-                                    .frame(height: geo.size.height / 1.5)
-                            } else {
-                                DayView(appointments: viewModel.todayAppointments)
-                            }
-                        case .failure(let error):
-                            errorView(error: error)
+        GeometryReader { geo in
+            List {
+                Section {
+                    switch viewModel.scheduleResult {
+                    case .success(_):
+                        if viewModel.isLoading {
+                          loadingView
                                 .listRowInsets(.none)
                                 .listRowBackground(Color.clear)
                                 .frame(height: geo.size.height / 1.5)
-                        case .none:
-                            ProgressView()
+                        } else if viewModel.todayAppointments.isEmpty {
+                            
+                            noAppointmentsFound
+                                .listRowInsets(.none)
+                                .listRowBackground(Color.clear)
+                                .frame(height: geo.size.height / 1.5)
+                        } else {
+                            DayView(appointments: viewModel.todayAppointments)
                         }
-                    } header: {
-                        Text(viewModel.navTitle)
-                    }.headerProminence(.increased)
-                }
+                    case .failure(let error):
+                        errorView(error: error)
+                            .listRowInsets(.none)
+                            .listRowBackground(Color.clear)
+                            .frame(height: geo.size.height / 1.5)
+                    case .none:
+                        loadingView
+                            .listRowInsets(.none)
+                            .listRowBackground(Color.clear)
+                            .frame(height: geo.size.height / 1.5)
+                    }
+                } header: {
+                    Text(viewModel.navTitle)
+                }.headerProminence(.increased)
             }
         }
     }
@@ -115,6 +136,24 @@ struct HomeView: View {
                     .foregroundColor(.secondary)
                 
                 Text("home.noAppointmentsFound")
+                    .font(.title)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            
+            Spacer()
+        }
+    }
+    
+    var loadingView: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            
+            VStack(alignment: .center) {
+                ProgressView()
+                    .controlSize(.large)
+                
+                Text("word.loading")
                     .font(.title)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -145,6 +184,24 @@ struct HomeView: View {
         }
     }
     
+    var userPicker: some View {
+        Picker(selection: $viewModel.currentUser) {
+            ForEach(viewModel.users, id: \.id) { user in
+                Text(user.name)
+                    .tag(user as User?)
+            }
+        } label: {
+            Label("settings.users", systemImage: "person.2")
+        }.pickerStyle(.menu)
+            .onChange(of: viewModel.currentUser) { newValue in
+                Task {
+                    viewModel.updateUsers()
+                    await viewModel.load(animation: true)
+                }
+            }
+        
+    }
+    
     var aboutThisApp: some View {
         NavigationLink {
             AboutView()
@@ -165,5 +222,6 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(AuthManager())
+            .environmentObject(ActionService())
     }
 }

@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Rooster voor Zermelo
+
+  Created by Wisse Hes on 13/03/2023.
+  
+*/
+
+"NSCalendarsUsageDescription" = "Nodig als je lessen/afspraken van Zermelo in jouw agenda wilt zetten.";
+
+"shortcuts.today.title" = "Vandaag";
+"shortcuts.tomorrow.title" = "Morgen";
+"shortcuts.week.title" = "Week";

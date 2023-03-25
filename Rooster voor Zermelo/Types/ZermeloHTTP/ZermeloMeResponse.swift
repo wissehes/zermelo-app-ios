@@ -19,5 +19,6 @@ struct ZermeloMeData: Codable {
     let code: String
     let roles: [String]
     let firstName: String
+    let prefix: String?
     let lastName: String
 }

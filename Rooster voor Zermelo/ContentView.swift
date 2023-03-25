@@ -9,27 +9,38 @@ import SwiftUI
 import Alamofire
 import FirebaseAnalytics
 
+enum SelectedView {
+    case home
+    case week
+}
+
 struct ContentView: View {
-    
-//    @State private var isShowingWelcomeScreen = false
-//    @State private var token: SavedToken? = nil
-//    @State private var me: ZermeloMeData? = nil
-    
     @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var actionService: ActionService
+    @Environment(\.scenePhase) var scenePhase
+    
+    @State private var selectedView: SelectedView = .home
     
     init() {
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
-
+    }
+    
+    func checkForAction() {
+        guard let action = actionService.action else { return }
+        switch action {
+        case .todayAction, .tomorrowAction:
+            selectedView = .home
+            // don't set the action to nil yet. The HomeView does that.
+        case .weekAction:
+            selectedView = .week
+            actionService.action = nil
+        }
     }
     
     var body: some View {
         Group {
             if authManager.isLoggedIn {
-                if authManager.isLoading {
-                    ProgressView()
-                } else {
-                    loggedInScreen
-                }
+                loggedInScreen
             } else {
                 WelcomeView()
             }
@@ -37,16 +48,24 @@ struct ContentView: View {
     }
     
     var loggedInScreen: some View {
-        TabView {
+        TabView(selection: $selectedView) {
             HomeView()
                 .tabItem {
                     Label("Vandaag", systemImage: "calendar")
                 }
+                .tag(SelectedView.home)
             
             WeekView()
                 .tabItem {
                     Label("Week", systemImage: "calendar.badge.clock")
                 }
+                .tag(SelectedView.week)
+        }.onChange(of: scenePhase) { newValue in
+            switch newValue {
+            case .active:
+                checkForAction()
+            default: break;
+            }
         }
     }
 }
@@ -54,50 +73,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AuthManager())
+            .environmentObject(ActionService())
     }
 }
-
-//import SwiftUI
-//
-//import FirebaseCore
-//
-//
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//
-//  func application(_ application: UIApplication,
-//
-//                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//
-//    FirebaseApp.configure()
-//
-//    return true
-//
-//  }
-//
-//}
-//
-//
-//@main
-//
-//struct YourApp: App {
-//
-//  // register app delegate for Firebase setup
-//
-//  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-//
-//
-//  var body: some Scene {
-//
-//    WindowGroup {
-//
-//      NavigationView {
-//
-//        ContentView()
-//
-//      }
-//
-//    }
-//
-//  }
-//
-//}

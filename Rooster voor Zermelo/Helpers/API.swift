@@ -7,7 +7,8 @@
 
 import Foundation
 import Alamofire
-import FirebaseCrashlytics
+//import FirebaseCrashlytics
+import Sentry
 
 final class API {
     
@@ -49,6 +50,39 @@ final class API {
             }
     }
     
+    static func getLiveSchedule(user: User, week: String = getWeek(nil)) async throws -> [ZermeloLivescheduleAppointment] {
+        let params: Parameters = [
+            "student": user.me.code,
+            "week": week
+        ]
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(user.token.access_token)"
+        ]
+        let request = AF.request(
+            "https://\(user.token.portal).zportal.nl/api/v3/liveschedule",
+            parameters: params,
+            headers: headers
+        )
+        
+        let result = await request
+            .serializingDecodable(GetZermeloLiveschedule.self)
+            .result
+        
+        switch result {
+        case .success(let data):
+            if let apps = data.response.data.first?.appointments {
+             return apps
+            } else {
+                throw FetchError.noData
+            }
+        case .failure(let err):
+            if err.isResponseSerializationError {
+                SentrySDK.capture(error: err)
+            }
+            throw err
+        }
+    }
+    
     static func getLiveScheduleAsync(week: String = getWeek(nil)) async -> Result<[ZermeloLivescheduleAppointment], AFError> {
         guard let user = UserManager.getCurrent() else { return .failure(.explicitlyCancelled) }
         
@@ -60,20 +94,33 @@ final class API {
             "Authorization": "Bearer \(user.token.access_token)"
         ]
         
-        let result = await AF.request(
+        let request = AF.request(
             "https://\(user.token.portal).zportal.nl/api/v3/liveschedule",
             parameters: params,
             headers: headers
         )
+        
+        let result = await request
             .serializingDecodable(GetZermeloLiveschedule.self)
             .result
+        
+        let stringData = try? await request.serializingString().value
         
         switch result {
         case .success(let data):
             return .success(data.response.data.first?.appointments ?? [])
         case .failure(let err):
             if err.isResponseSerializationError {
-                Crashlytics.crashlytics().record(error: err)
+                if let stringData = stringData {
+                    let crumb = Breadcrumb()
+                    crumb.level = .info
+                    crumb.category = "fetching"
+                    crumb.message = "GET schedule"
+                    crumb.data = ["response": stringData]
+                    crumb.type = "http"
+                    SentrySDK.addBreadcrumb(crumb)
+                }
+                SentrySDK.capture(error: err)
             }
             return .failure(err)
         }
@@ -81,7 +128,7 @@ final class API {
     
     static func getScheduleForDay(date: Date) async throws -> [ZermeloLivescheduleAppointment] {
         let result = await self.getLiveScheduleAsync(week: getWeek(date))
-//        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
+        //        let weekAppointments = try await self.getLiveScheduleAsync(week: getWeek(date))
         
         switch result {
         case .success(let weekAppointments):
@@ -139,7 +186,7 @@ final class API {
                 }
             }
     }
-
+    
 }
 
 enum FetchError: Error {

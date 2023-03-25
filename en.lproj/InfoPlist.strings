@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Rooster voor Zermelo
+
+  Created by Wisse Hes on 13/03/2023.
+  
+*/
+
+"NSCalendarsUsageDescription" = "Needed if you want to add appointments from Zermelo to your calendar.";
+
+"shortcuts.today.title" = "Today";
+"shortcuts.tomorrow.title" = "Tomorrow";
+"shortcuts.week.title" = "Week";

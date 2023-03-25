@@ -1,5 +1,5 @@
 //
-//  NewAuthManager.swift
+//  AuthManager.swift
 //  Rooster voor Zermelo
 //
 //  Created by Wisse Hes on 18/01/2023.

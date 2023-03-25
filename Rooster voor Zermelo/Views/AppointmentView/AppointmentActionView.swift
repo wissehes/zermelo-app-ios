@@ -17,7 +17,7 @@ struct AppointmentActionView: View {
     
     var statuses: [String] {
         // Use Locale.current to get the current locale
-        if Locale.current.identifier == "nl" {
+        if Locale.current.identifier.contains("NL") {
             return action.status.map { $0.nl }
         } else {
             return action.status.map { $0.en }

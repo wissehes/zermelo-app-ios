@@ -60,7 +60,9 @@
 
 
 "about.privacy" = "Privacy";
-"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, die worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo.\nDeze app gebruikt wel Firebase Analytics en Crashlytics, dit is om ervoor te zorgen dat bugs en andere fouten snel kunnen worden opgelost. [Google’s privacy policy](https://firebase.google.com/support/privacy)";
+"about.privacy.text" = "Deze app deelt jouw Zermelo gegevens niet met derden, die worden alleen gegevens uitgewisseld tussen jouw telefoon en Zermelo.\nDeze app gebruikt wel Firebase Analytics en Sentry, dit is om ervoor te zorgen dat bugs en andere fouten snel kunnen worden opgelost.";
+"about.privacy.google" = "Google's privacy policy";
+"about.privacy.sentry" = "Sentry's privacy policy";
 
 "about.disclaimer" = "Disclaimer";
 "about.disclaimer.text" = "Deze app is niet gemaakt door `Zermelo Software BV`. \nDeze app is niet ook verwant aan `Zermelo` of `Zermelo Software BV`.";
@@ -106,7 +108,7 @@
 "appointment.noOtherChoices" = "Geen andere keuzes.";
 "appointment.otherChoices" = "Andere keuzes";
 "appointment.cannotEnroll" = "Via deze app kan je (nog) geen andere keuzes invullen.";
-"appointment.appointment" = "Blokinformatie";
+"appointment.appointment" = "Lesinformatie";
 
 "appointment.period" = "Blok:";
 
@@ -127,6 +129,15 @@
 "appointment.action.status.allowed" = "Toegestaan";
 "appointment.action.status.notAllowed" = "Niet toegestaan";
 
+// MARK: Calendar
+
+"calendar.accessDenied" = "Geen toegang tot jouw agenda.";
+"calendar.empty" = "Deze les/afspraak heeft geen vakken of locaties aangegeven.";
+
+"calendar.add" = "Toegevoegen aan agenda";
+"calendar.added.title" = "Toegevoegd!";
+"calendar.added.subtitle" = "Tik om te bekijken";
+
 // MARK: Words
 
 "word.welcome" = "Welkom";
@@ -144,3 +155,4 @@
 "word.none" = "Geen/niet beschikbaar";
 
 "word.somethingWentWrong" = "Er ging iets mis!";
+"word.loading" = "Laden...";
