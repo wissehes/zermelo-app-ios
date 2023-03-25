@@ -27,7 +27,6 @@ struct ContentView: View {
     
     func checkForAction() {
         guard let action = actionService.action else { return }
-//        defer { actionService.action = nil }
         switch action {
         case .todayAction, .tomorrowAction:
             selectedView = .home
@@ -41,11 +40,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if authManager.isLoggedIn {
-                if authManager.isLoading {
-                    ProgressView()
-                } else {
-                    loggedInScreen
-                }
+                loggedInScreen
             } else {
                 WelcomeView()
             }
