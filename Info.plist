@@ -23,7 +23,7 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemType</key>
-			<string>nl.wissehes.Rooster-voor-Zermelo.todayAction</string>
+			<string>todayAction</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>shortcuts.today.title</string>
 			<key>UIApplicationShortcutItemIconType</key>
@@ -31,12 +31,20 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemType</key>
-			<string>nl.wissehes.Rooster-voor-Zermelo.tomorrowAction</string>
+			<string>tomorrowAction</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>shortcuts.tomorrow.title</string>
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeDate</string>
 		</dict>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>weekAction</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>shortcuts.week.title</string>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeDate</string>
+        </dict>
 	</array>
 </dict>
 </plist>
