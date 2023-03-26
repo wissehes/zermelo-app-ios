@@ -26,6 +26,8 @@
 		892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 892AA7DD296D8AD000BC883D /* Localizable.strings */; };
 		892DDA2C2974794100E0592E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2B2974794000E0592E /* SettingsView.swift */; };
 		892DDA2E29747E2100E0592E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2D29747E2000E0592E /* NotificationsManager.swift */; };
+		8930FD2729D07914007F1503 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8930FD2629D07914007F1503 /* Defaults */; };
+		8930FD2929D0796C007F1503 /* AppointmentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8930FD2829D0796C007F1503 /* AppointmentsManager.swift */; };
 		89346ECF29784A8A006E1651 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346ECE29784A8A006E1651 /* AuthManager.swift */; };
 		89346ED22978978F006E1651 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346ED12978978F006E1651 /* AddUserView.swift */; };
 		8947BD3828C793060063E3DF /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947BD3728C793060063E3DF /* WeekView.swift */; };
@@ -86,6 +88,7 @@
 		892AA7DE296D8AD300BC883D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		892DDA2B2974794000E0592E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		892DDA2D29747E2000E0592E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		8930FD2829D0796C007F1503 /* AppointmentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsManager.swift; sourceTree = "<group>"; };
 		89346ECE29784A8A006E1651 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		89346ED12978978F006E1651 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		8947BD3728C793060063E3DF /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 				89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */,
 				89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */,
 				891BEACD29AD0CC400A4A4B5 /* CodableCSV in Frameworks */,
+				8930FD2729D07914007F1503 /* Defaults in Frameworks */,
 				8965E2D528C3D06D001D9B8E /* CodeScanner in Frameworks */,
 				89C1B615297160AD00D0BB98 /* FirebaseCrashlytics in Frameworks */,
 				89E0A47029B66EDE00A42F10 /* AlertToast in Frameworks */,
@@ -328,6 +332,7 @@
 				89DBAA83297E78CF001C1EF0 /* BackgroundTasksController.swift */,
 				891BEAC929AD0B3D00A4A4B5 /* SubjectManager.swift */,
 				8990374829CF160900ED8945 /* ActionService.swift */,
+				8930FD2829D0796C007F1503 /* AppointmentsManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */,
 				891BEACC29AD0CC400A4A4B5 /* CodableCSV */,
 				89E0A46F29B66EDE00A42F10 /* AlertToast */,
+				8930FD2629D07914007F1503 /* Defaults */,
 			);
 			productName = "Rooster voor Zermelo";
 			productReference = 892632DA28C3A94400B9C624 /* Rooster voor Zermelo.app */;
@@ -415,6 +421,7 @@
 				89A8C5FC299A401900D4A9B2 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 				89E0A46E29B66EDE00A42F10 /* XCRemoteSwiftPackageReference "AlertToast" */,
+				8930FD2529D07913007F1503 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 892632DB28C3A94400B9C624 /* Products */;
 			projectDirPath = "";
@@ -472,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BC68D12982722F006D6478 /* DayItemView.swift in Sources */,
+				8930FD2929D0796C007F1503 /* AppointmentsManager.swift in Sources */,
 				891829262976B6150003F81A /* User.swift in Sources */,
 				8982676E28C68E0000C85D12 /* AppointmentView.swift in Sources */,
 				8990374929CF160900ED8945 /* ActionService.swift in Sources */,
@@ -756,6 +764,14 @@
 				kind = branch;
 			};
 		};
+		8930FD2529D07913007F1503 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8965E2D328C3D06D001D9B8E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -803,6 +819,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 891BEACB29AD0CC300A4A4B5 /* XCRemoteSwiftPackageReference "CodableCSV" */;
 			productName = CodableCSV;
+		};
+		8930FD2629D07914007F1503 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8930FD2529D07913007F1503 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
 		};
 		8965E2D428C3D06D001D9B8E /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
