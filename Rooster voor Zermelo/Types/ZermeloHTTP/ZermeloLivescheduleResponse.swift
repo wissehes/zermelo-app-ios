@@ -60,7 +60,7 @@ struct ZermeloLivescheduleAppointment: Codable, Hashable {
     let actions: [ZermeloLivescheduleAction]?
     let start, end: Int
     let cancelled: Bool
-    let appointmentType: String
+    let appointmentType: ZermeloAppointmentType
     let online, appointmentOptional: Bool
     let appointmentInstance: Int?
     let startTimeSlotName, endTimeSlotName: String?
@@ -100,9 +100,33 @@ struct ZermeloLivescheduleStatus: Codable {
 //}
 //
 //enum ZermeloAppointmentType: String, Codable {
-//    case choice = "choice"
-//    case lesson = "lesson"
-//    case exam = "exam"
-//    case talk = "talk"
-//}
-//
+enum ZermeloAppointmentType: Codable, Equatable {
+    case choice
+    case lesson
+    case exam
+    case talk
+    case other(String)
+    
+    init(rawValue: String) {
+        switch rawValue {
+        case "choice": self = .choice
+        case "lesson": self = .lesson
+        case "exam": self = .exam
+        case "talk": self = .talk
+        default: self = .other(rawValue)
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let string = try container.decode(String.self)
+        switch string {
+        case "choice": self = .choice
+        case "lesson": self = .lesson
+        case "exam": self = .exam
+        case "talk": self = .talk
+        default: self = .other(string)
+        }
+        
+    }
+}

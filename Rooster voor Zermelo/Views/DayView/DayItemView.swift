@@ -35,11 +35,10 @@ struct DayItemView: View {
             Text(slotName)
 //                .fontWeight(.bold)
                 .font(.system(size: 22.5, weight: .bold, design: .rounded))
-        } else if item.appointmentType == "exam" {
+        } else if item.appointmentType == .exam {
             Image(systemName: "magazine")
         } else {
             Image(systemName: "calendar")
-            
         }
     }
     
