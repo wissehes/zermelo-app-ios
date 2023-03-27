@@ -41,6 +41,7 @@
 		898C925728C3D76000100AD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 898C925628C3D76000100AD6 /* Alamofire */; };
 		898C925928C3D7FB00100AD6 /* ZermeloTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */; };
 		8990374929CF160900ED8945 /* ActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990374829CF160900ED8945 /* ActionService.swift */; };
+		89A3B80929D1C5C10047D49F /* SubjectTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A3B80829D1C5C10047D49F /* SubjectTextView.swift */; };
 		89A7499D2987C5730098E8C9 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7499C2987C5730098E8C9 /* CompareView.swift */; };
 		89A8C5FE299A401900D4A9B2 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FD299A401900D4A9B2 /* Sentry */; };
 		89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */; };
@@ -103,6 +104,7 @@
 		898C925328C3D65F00100AD6 /* ZermeloQRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloQRData.swift; sourceTree = "<group>"; };
 		898C925828C3D7FB00100AD6 /* ZermeloTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZermeloTokenRequest.swift; sourceTree = "<group>"; };
 		8990374829CF160900ED8945 /* ActionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionService.swift; sourceTree = "<group>"; };
+		89A3B80829D1C5C10047D49F /* SubjectTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTextView.swift; sourceTree = "<group>"; };
 		89A7499C2987C5730098E8C9 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		89A8C601299A495900D4A9B2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				8982676D28C68E0000C85D12 /* AppointmentView.swift */,
 				89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */,
+				89A3B80829D1C5C10047D49F /* SubjectTextView.swift */,
 			);
 			path = AppointmentView;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */,
 				89ED82A428C53D2E00306872 /* ZermeloLivescheduleResponse.swift in Sources */,
 				8951C9CF2983BFB400EEBDCE /* Analytics+SwiftUI.swift in Sources */,
+				89A3B80929D1C5C10047D49F /* SubjectTextView.swift in Sources */,
 				895D290729B6525E0045B209 /* Appointment+Calendar.swift in Sources */,
 				8906E334297AEEA20064F3B1 /* NotificationSettings.swift in Sources */,
 				898C925428C3D65F00100AD6 /* ZermeloQRData.swift in Sources */,

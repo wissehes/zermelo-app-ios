@@ -18,6 +18,15 @@ final class SubjectManager: ObservableObject {
     
     lazy var all: [Vak] = getAll()
     
+    private func getAll() async -> [Vak] {
+        return await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .background).async {
+                let result = self.getAll()
+                continuation.resume(returning: result)
+            }
+        }
+    }
+    
     private func getAll() -> [Vak] {
         guard let url = Bundle.main.url(forResource: "vakken", withExtension: "csv") else { return [] }
         
@@ -49,6 +58,25 @@ final class SubjectManager: ObservableObject {
     func getFullName(_ acronyms: [String]) -> [String] {
         let mapped = acronyms.map { acr in
             self.getFullName(acr) ?? acr
+        }
+        
+        return mapped.unique()
+    }
+    
+    func getFullName(_ acronym: String, all: [Vak]) -> String? {
+        if let vak = all.first(where: { $0.afkorting.localizedLowercase == acronym.localizedLowercase }) {
+            // Split into words, uppercase the first letter and combine again
+            return vak.naam.split(separator: " ").map { $0.prefix(1).uppercased() + $0.dropFirst() }.joined(separator: " ")
+        } else {
+            return nil
+        }
+    }
+    
+    func getFullNameAsync(_ acronyms: [String]) async -> [String] {
+        let all = await self.getAll()
+        
+        let mapped = acronyms.map {
+            self.getFullName($0, all: all) ?? $0
         }
         
         return mapped.unique()

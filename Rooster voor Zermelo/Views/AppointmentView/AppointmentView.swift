@@ -100,13 +100,13 @@ struct AppointmentView: View {
             if let slotName = item.startTimeSlotName, !slotName.isEmpty {
                 itemDetailView([slotName], icon: "clock", single: "appointment.period", multiple: nil)
             }
-
-            itemDetailView(
-                SubjectManager.shared.getFullName(item.subjects),
-                icon: "graduationcap",
-                single:"appointment.subjects.single",
-                multiple: "appointment.subjects.multiple"
-            )
+//            itemDetailView(
+//                SubjectManager.shared.getFullName(item.subjects),
+//                icon: "graduationcap",
+//                single:"appointment.subjects.single",
+//                multiple: "appointment.subjects.multiple"
+//            )
+            SubjectTextView(subjects: item.subjects)
             
             itemDetailView(
                 item.teachers,
