@@ -26,7 +26,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
         SentrySDK.start { options in
             options.dsn = sentry_dsn
-            options.tracesSampleRate = 0.5
+            options.tracesSampleRate = 0.25
+            options.profilesSampleRate = 0.25
         }
 #endif
         
