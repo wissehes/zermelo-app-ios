@@ -163,6 +163,57 @@
         }
       }
     },
+    "about.maintenance.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No worries, you can keep using this app, it just won't be updated anymore for new features or bug fixes."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen zorgen, je kan de app gewoon blijven gebruiken, er komen alleen geen nieuwe features of bugfixes."
+          }
+        }
+      }
+    },
+    "about.maintenance.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warning"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waarschuwing"
+          }
+        }
+      }
+    },
+    "about.maintenance.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app is no longer being maintained"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RoosterApp voor Zermelo wordt niet meer onderhouden"
+          }
+        }
+      }
+    },
     "about.privacy" : {
       "localizations" : {
         "en" : {

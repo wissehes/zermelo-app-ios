@@ -17,7 +17,7 @@ struct AboutView: View {
     
     var body: some View {
         List {
-            Section("RoosterApp Voor Zermelo") {
+            Section {
                 Text("about.madeBy")
                 
                 Link(destination: URL(string: "https://github.com/wissehes/zermelo-app-ios")!) {
@@ -29,16 +29,29 @@ struct AboutView: View {
                 Link(destination: URL(string: "https://wissehes.nl/nl/contact/")!) {
                     Label("about.contact", systemImage: "envelope")
                 }
+            } header: {
+                Label("RoosterApp Voor Zermelo", systemImage: "app.badge")
             }
             
-//            Section("about.logout") {
-//                Button(role: .destructive) { confirmationShowing = true } label: {
-//                    Label("about.logout", systemImage: "person.crop.circle.badge.xmark.fill")
-//                        .foregroundColor(.red)
-//                }
-//            }
+            Section {
+                HStack(alignment: .center) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(.yellow)
+                        .frame(height: 30)
+                        .padding([.trailing])
+                    Text("about.maintenance.title")
+                        .font(.headline)
+                }
+                
+                Text("about.maintenance.description")
+            } header: {
+                Label("about.maintenance.header", systemImage: "exclamationmark.triangle.fill")
+            }
+
             
-            Section("about.privacy") {
+            Section {
                 Text("about.privacy.text")
                 
                 Link(destination: URL(string: "https://firebase.google.com/support/privacy")!) {
@@ -47,6 +60,8 @@ struct AboutView: View {
                 Link(destination: URL(string: "https://sentry.io/privacy/")!) {
                     Label("about.privacy.sentry", systemImage: "globe")
                 }
+            } header: {
+                Label("about.privacy", systemImage: "lock")
             }
             
             Section("about.disclaimer") {
@@ -58,12 +73,6 @@ struct AboutView: View {
                     .font(.subheadline)
             }
         }.navigationTitle("about.about")
-//            .confirmationDialog("about.logout.confirm.title", isPresented: $confirmationShowing) {
-//            Button("about.logout.confirm.confirm", role: .destructive) { authManager.signOut() }
-//            Button("word.cancel", role: .cancel) {}
-//        } message: {
-//            Text("about.logout.confirm.subtitle")
-//        }
         .analyticsScreen(name: "About")
     }
 }
