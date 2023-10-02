@@ -46,14 +46,15 @@ final class HomeViewModel: ObservableObject {
         self.formatter.dateFormat = "EEEE d MMMM"
     }
     
-    var navTitle: LocalizedStringKey {
+    var navTitle: String {
         let formatted = formatter.string(from: self.selectedDate)
+        
         if self.todaySelected {
-            return "word.today.parentheses \(formatted)"
+            return String(localized: "word.today.parentheses \(formatted)")
         } else if self.tomorrowSelected {
-            return "word.tomorrow.parentheses \(formatted)"
+            return String(localized: "word.tomorrow.parentheses \(formatted)")
         } else {
-            return "\(formatted)"
+            return formatted
         }
     }
         

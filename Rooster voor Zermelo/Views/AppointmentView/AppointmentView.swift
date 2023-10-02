@@ -96,7 +96,7 @@ struct AppointmentView: View {
     }
     
     var infoSection: some View {
-        Section("Les") {
+        Section("word.lesson") {
             if let slotName = item.startTimeSlotName, !slotName.isEmpty {
                 itemDetailView([slotName], icon: "clock", single: "appointment.period", multiple: nil)
             }
@@ -152,7 +152,7 @@ struct AppointmentView: View {
                         .labelStyle(.iconOnly)
                     
                     VStack(alignment: .leading) {
-                        Text("**\(item.subjects.join(.minimal))** - \(item.locations.join(.minimal)) - \(item.teachers.join(.minimal))")
+                        Text(verbatim: "**\(item.subjects.join(.minimal))** - \(item.locations.join(.minimal)) - \(item.teachers.join(.minimal))")
                         
                         Text("appointment.enrolled")
                             .foregroundColor(.secondary)

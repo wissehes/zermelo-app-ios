@@ -23,7 +23,6 @@
 		892632E528C3A94600B9C624 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892632E428C3A94600B9C624 /* Preview Assets.xcassets */; };
 		892632ED28C3A96100B9C624 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892632EC28C3A96100B9C624 /* WelcomeView.swift */; };
 		8926EF8D29CF3C9A008D579F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */; };
-		892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 892AA7DD296D8AD000BC883D /* Localizable.strings */; };
 		892DDA2C2974794100E0592E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2B2974794000E0592E /* SettingsView.swift */; };
 		892DDA2E29747E2100E0592E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DDA2D29747E2000E0592E /* NotificationsManager.swift */; };
 		89346ECF29784A8A006E1651 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89346ECE29784A8A006E1651 /* AuthManager.swift */; };
@@ -47,6 +46,7 @@
 		89A8C600299A401900D4A9B2 /* SentrySwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 89A8C5FF299A401900D4A9B2 /* SentrySwiftUI */; };
 		89ACDEFC2972DAEF008C8640 /* DemoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */; };
 		89AE9BB92996380F00D79217 /* Array+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE9BB82996380F00D79217 /* Array+Joined.swift */; };
+		89B7CEAF2ACB532F000CC37E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 89B7CEAE2ACB532F000CC37E /* Localizable.xcstrings */; };
 		89BC68CD298270D8006D6478 /* appointment.json in Resources */ = {isa = PBXBuildFile; fileRef = 89BC68CC298270D8006D6478 /* appointment.json */; };
 		89BC68D12982722F006D6478 /* DayItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC68D02982722F006D6478 /* DayItemView.swift */; };
 		89BC860428E2DEC6006BEC62 /* AppointmentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */; };
@@ -83,8 +83,6 @@
 		892632E428C3A94600B9C624 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		892632EC28C3A96100B9C624 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		8926EF8C29CF3C9A008D579F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		892AA7DC296D8AD000BC883D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		892AA7DE296D8AD300BC883D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		892DDA2B2974794000E0592E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		892DDA2D29747E2000E0592E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		89346ECE29784A8A006E1651 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -109,6 +107,7 @@
 		89A8C601299A495900D4A9B2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89ACDEFB2972DAEF008C8640 /* DemoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTokenResponse.swift; sourceTree = "<group>"; };
 		89AE9BB82996380F00D79217 /* Array+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Joined.swift"; sourceTree = "<group>"; };
+		89B7CEAE2ACB532F000CC37E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		89BC68CC298270D8006D6478 /* appointment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appointment.json; sourceTree = "<group>"; };
 		89BC68D02982722F006D6478 /* DayItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayItemView.swift; sourceTree = "<group>"; };
 		89BC860328E2DEC6006BEC62 /* AppointmentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentActionView.swift; sourceTree = "<group>"; };
@@ -186,7 +185,7 @@
 				89F7052028C68ACE00AFF2DF /* README.md */,
 				89C1B60E2971523200D0BB98 /* CHANGELOG.md */,
 				89A8C601299A495900D4A9B2 /* Config.xcconfig */,
-				892AA7DD296D8AD000BC883D /* Localizable.strings */,
+				89B7CEAE2ACB532F000CC37E /* Localizable.xcstrings */,
 				89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */,
 				89CBA0F029BF3BA300A75743 /* Info.plist */,
 				892632DC28C3A94400B9C624 /* Rooster voor Zermelo */,
@@ -437,10 +436,10 @@
 				89CBA0F229BF3E8700A75743 /* InfoPlist.strings in Resources */,
 				8926EF8D29CF3C9A008D579F /* Launch Screen.storyboard in Resources */,
 				89C1B61029715E3900D0BB98 /* GoogleService-Info.plist in Resources */,
-				892AA7DB296D8AD000BC883D /* Localizable.strings in Resources */,
 				892632E228C3A94600B9C624 /* Assets.xcassets in Resources */,
 				891BEAC829AD0B2E00A4A4B5 /* vakken.csv in Resources */,
 				89BC68CD298270D8006D6478 /* appointment.json in Resources */,
+				89B7CEAF2ACB532F000CC37E /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,15 +519,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		892AA7DD296D8AD000BC883D /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				892AA7DC296D8AD000BC883D /* en */,
-				892AA7DE296D8AD300BC883D /* nl */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		89CBA0EE29BF3B3E00A75743 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -666,10 +656,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Rooster voor Zermelo/Rooster voor Zermelo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Rooster voor Zermelo/Preview Content\"";
-				DEVELOPMENT_TEAM = C4HKS39B24;
+				DEVELOPMENT_TEAM = U3CH3X8GK4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
@@ -685,7 +675,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Rooster-voor-Zermelo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -701,9 +691,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Rooster voor Zermelo/Rooster voor Zermelo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Rooster voor Zermelo/Preview Content\"";
-				DEVELOPMENT_TEAM = C4HKS39B24;
+				DEVELOPMENT_TEAM = U3CH3X8GK4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
@@ -719,7 +709,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Rooster-voor-Zermelo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

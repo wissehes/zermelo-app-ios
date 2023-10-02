@@ -23,10 +23,12 @@ struct DayItemView: View {
     }
     
     func timeView(appointment: ZermeloLivescheduleAppointment) -> some View {
-        let start = Date(timeIntervalSince1970: TimeInterval(appointment.start))
+        let startDate = Date(timeIntervalSince1970: TimeInterval(appointment.start))
         let endDate = Date(timeIntervalSince1970: TimeInterval(appointment.end))
+        let start = Text(startDate, style: .time)
+        let end = Text(endDate, style: .time)
         
-        return Text("\(start, style: .time) - \(endDate, style: .time)")
+        return Text(verbatim: "\(start) - \(end)")
     }
     
     @ViewBuilder
@@ -66,11 +68,11 @@ struct DayItemView: View {
             }
             
             if(!item.teachers.isEmpty) {
-                Text("-")
+                Text(verbatim: "-")
                 Text(item.teachers.joined(separator: ", "))
             }
             if(!item.locations.isEmpty) {
-                Text("-")
+                Text(verbatim: "-")
                 Text(item.locations.joined(separator: ", "))
             }
         }
@@ -94,7 +96,7 @@ struct DayItemView: View {
                     Text(item.teachers.joined(separator: ", "))
                 }
                 if(!item.locations.isEmpty) {
-                    Text("-")
+                    Text(verbatim: "-")
                     Text(item.locations.joined(separator: ", "))
                 }
             }

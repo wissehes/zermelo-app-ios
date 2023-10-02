@@ -38,7 +38,7 @@ struct AppointmentActionView: View {
     var info: some View {
         VStack(alignment: .leading) {
             if let app = action.appointment {
-                Text("**\(app.subjects.joined(separator: ","))** - \(app.locations.joined(separator: ",")) - \(app.teachers.joined(separator: ","))")
+                Text(verbatim: "**\(app.subjects.joined(separator: ","))** - \(app.locations.joined(separator: ",")) - \(app.teachers.joined(separator: ","))")
             }
             
             ForEach(statuses, id: \.self) { status in
