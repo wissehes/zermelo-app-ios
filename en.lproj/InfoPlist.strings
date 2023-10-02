@@ -6,7 +6,7 @@
   
 */
 
-"NSCalendarsUsageDescription" = "Needed if you want to add appointments from Zermelo to your calendar.";
+"NSCalendarsUsageDescription" = "Necessary if you want to add appointments from Zermelo to your calendar.";
 
 "shortcuts.today.title" = "Today";
 "shortcuts.tomorrow.title" = "Tomorrow";
