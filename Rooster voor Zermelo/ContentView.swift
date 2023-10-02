@@ -18,8 +18,10 @@ struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
     @EnvironmentObject var actionService: ActionService
     @Environment(\.scenePhase) var scenePhase
+    @AppStorage("maintenanceWarningShown") var maintenanceWarningShown: Bool = false
     
     @State private var selectedView: SelectedView = .home
+    @State private var showingWarning: Bool = false
     
     init() {
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
@@ -44,6 +46,16 @@ struct ContentView: View {
             } else {
                 WelcomeView()
             }
+        }.onAppear {
+            if maintenanceWarningShown == false {
+                showingWarning = true
+            }
+        }.alert("about.maintenance.title", isPresented: $showingWarning) {
+            Button("word.ok", role: .cancel) {
+                maintenanceWarningShown = true
+            }
+        } message: {
+            Text("about.maintenance.description")
         }
     }
     
