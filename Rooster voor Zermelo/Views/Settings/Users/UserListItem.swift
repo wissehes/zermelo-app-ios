@@ -32,7 +32,7 @@ struct UserListItem: View {
                 Text(user.name)
                     .font(.title3)
                     .bold()
-                Text("\(user.me.code) - \(user.token.portal)")
+                Text(verbatim: "\(user.me.code) - \(user.token.portal)")
                     .font(.system(.subheadline, design: .monospaced))
             }
         }

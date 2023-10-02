@@ -181,7 +181,7 @@ struct ManualLoginView: View {
                     .multilineTextAlignment(.trailing)
                     .submitLabel(.next)
                     .onSubmit { focusCode = true }
-                Text(".zportal.nl")
+                Text(verbatim: ".zportal.nl")
                     .font(.subheadline)
             }
             
